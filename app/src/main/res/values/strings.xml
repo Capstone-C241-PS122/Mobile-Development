@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">FitAssist</string>
+    <string name="headerFirstpage">Welcome to FitAssist</string>
+    <string name="description_textFirstPage">Lets start your fitness journey! We all help you every step of the way. Firstly, tell us a little bit about yourself.</string>
+    //Button text
+    <string name="button_getStarted">Get Started</string>
+    //list menu
+    <string name="menu_mybody">My body</string>
+    <string name="menu_fitcenter">Fit Center</string>
+    //select gender
+    <string name="woman">Woman</string>
+    <string name="man">Man</string>
 </resources>

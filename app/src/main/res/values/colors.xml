@@ -2,4 +2,21 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    //background
+    <color name="background">#1E1E1E</color>
+    //button
+    <color name="button_defaultLight">#F2ECEC</color>
+    <color name="button_pressedLight">#D5CFCF</color>
+    //descriptiontext
+    <color name ="colorTextDescription">#F2ECEC</color>
+    //additional
+    <color name="backgroundAdditional">#D9D9D9</color>
+    //allColorNavigation
+    <color name="backgroundNavigationBottom">#161616</color>
+    <color name="backgroundIconButtonActive">#FF6AA0</color>
+    <color name="backgroundIconButtonInactive">#FFFFFF</color>
+    <color name="backgroundWhilepressed">#FF8CB6</color>
+    <color name="colorPlusButton">#FFBED5</color>
+    //background button
+    <color name="background_button">#8E363535</color>
 </resources>
