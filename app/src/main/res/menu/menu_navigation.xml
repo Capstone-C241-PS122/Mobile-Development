@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_listStory"
+        android:icon="@drawable/fitness_center_24px"
+        android:title="@string/menu_fitcenter" />
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/conditions_24px"
+        android:title="@string/menu_mybody" />
+    <item
+        android:enabled="false"
+        android:visible="true"
+        android:title="" />
+    <item
+        android:enabled="false"
+        android:visible="true"
+        android:title="" />
+</menu>
