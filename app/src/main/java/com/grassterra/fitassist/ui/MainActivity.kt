@@ -1,4 +1,4 @@
-package com.grassterra.fitassist
+package com.grassterra.fitassist.ui
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.animation.AlphaAnimation
-import android.view.animation.AnimationSet
-import android.view.animation.TranslateAnimation
 import androidx.core.view.isVisible
+import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

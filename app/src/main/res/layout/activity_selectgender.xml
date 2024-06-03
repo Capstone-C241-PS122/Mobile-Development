@@ -6,7 +6,7 @@
     android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivitySelectgender">
+    tools:context=".ui.ActivitySelectgender">
         <TextView
             android:id="@+id/textSelectedWoman"
             android:layout_width="wrap_content"

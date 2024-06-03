@@ -1,8 +1,7 @@
-package com.grassterra.fitassist
+package com.grassterra.fitassist.ui
 
 import android.os.Bundle
 import android.view.View
-import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.grassterra.fitassist.R
 
 class ActivitySelectgender : AppCompatActivity() {
     private var isZoomedIn = false
