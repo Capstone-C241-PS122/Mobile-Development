@@ -1,5 +1,6 @@
-package com.grassterra.fitassist
+package com.grassterra.fitassist.ui
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,5 +16,11 @@ class DetailExerciseActivity : AppCompatActivity() {
         binding = ActivityDetailExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupImage()
+    }
+
+    private fun setupImage(){
+        val imageUri = Uri.parse(intent.getStringExtra("imageUri"))
+        binding.resultImage.setImageURI(imageUri)
     }
 }
