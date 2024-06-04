@@ -15,6 +15,7 @@ class DetailExerciseActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityDetailExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
         setupImage()
     }
 
