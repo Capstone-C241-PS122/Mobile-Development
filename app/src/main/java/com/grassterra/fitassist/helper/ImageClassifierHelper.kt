@@ -68,7 +68,6 @@ class ImageClassifierHelper(
             val tensorImage = TensorImage.fromBitmap(bitmap)
             val processedImage = imageProcessor.process(tensorImage)
 
-            // Convert the TensorImage to TensorBuffer
             val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
             inputFeature0.loadBuffer(processedImage.buffer)
 
