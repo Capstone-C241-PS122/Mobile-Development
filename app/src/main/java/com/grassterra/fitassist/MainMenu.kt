@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.grassterra.fitassist.databinding.ActivityMainMenuBinding
 import com.grassterra.fitassist.databinding.AlertDialogBinding
 
@@ -16,24 +18,36 @@ class MainMenu : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupBottomNavigation()
         binding.btnupload.setOnClickListener {
-            showAlert(this, "Choose an Option", {
+            showAlert(this, {
                 // Handle Gallery action
             }, {
                 // Handle Camera action
             })
         }
     }
+    private fun setupBottomNavigation() {
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavigation
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            var selectedFragment: Fragment? = null
+            when (item.itemId) {
+                R.id.id_home -> selectedFragment = HomeFragment()
+                R.id.id_mybody -> selectedFragment = MyBodyFragment()
+            }
+            if (selectedFragment != null) {
+                supportFragmentManager.beginTransaction().replace(R.id.idHostFragment, selectedFragment).commit()
+            }
+            true
+        }
+        bottomNavigationView.selectedItemId = R.id.id_home
+    }
     private fun showAlert(
         context: Context,
-        title: String,
         galleryCallback: () -> Unit,
         cameraCallback: () -> Unit
     ) {
         val binding = AlertDialogBinding.inflate(LayoutInflater.from(context))
-
-        binding.alertTitle.text = title
-
         val alertDialog = AlertDialog.Builder(context)
             .setView(binding.root)
             .setCancelable(false)

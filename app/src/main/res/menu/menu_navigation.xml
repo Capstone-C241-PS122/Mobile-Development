@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_listStory"
-        android:icon="@drawable/fitness_center_24px"
-        android:title="@string/menu_fitcenter" />
+        android:id="@+id/id_home"
+        android:icon="@drawable/home_24px"
+        android:title="@string/menu_home" />
 
     <item
-        android:id="@+id/navigation_setting"
+        android:id="@+id/id_mybody"
         android:icon="@drawable/conditions_24px"
         android:title="@string/menu_mybody" />
     <item
