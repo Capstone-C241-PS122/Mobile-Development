@@ -8,12 +8,12 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.grassterra.fitassist.ActivityInputHeight
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.grassterra.fitassist.ActivityInputWeight
@@ -133,7 +133,7 @@ class ActivitySelectgender : AppCompatActivity() {
         }
     }
     private fun NavigateNextPage(context:Context){
-        val intent = Intent(context, ActivityInputWeight::class.java)
+        val intent = Intent(context,ActivityInputHeight::class.java)
         context.startActivity(intent)
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
     }
