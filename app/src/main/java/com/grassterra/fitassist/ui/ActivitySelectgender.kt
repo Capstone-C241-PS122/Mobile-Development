@@ -14,10 +14,11 @@ import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.grassterra.fitassist.ActivityInputHeight
-
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.grassterra.fitassist.ActivityInputWeight
 import com.grassterra.fitassist.databinding.ActivitySelectgenderBinding
 import com.grassterra.fitassist.R
-
 
 class ActivitySelectgender : AppCompatActivity() {
     private var isZoomedIn = false
