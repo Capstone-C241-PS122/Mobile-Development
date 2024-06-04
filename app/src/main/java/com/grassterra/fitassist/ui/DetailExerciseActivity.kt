@@ -22,5 +22,8 @@ class DetailExerciseActivity : AppCompatActivity() {
     private fun setupImage(){
         val imageUri = Uri.parse(intent.getStringExtra("imageUri"))
         binding.resultImage.setImageURI(imageUri)
+
+        val result = intent.getStringExtra("result")
+        binding.textDescriptionLabel.setText(result)
     }
 }

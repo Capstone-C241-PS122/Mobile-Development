@@ -10,4 +10,5 @@
     //select gender
     <string name="woman">Woman</string>
     <string name="man">Man</string>
+    <string name="image_classifier_failed">Fail</string>
 </resources>
