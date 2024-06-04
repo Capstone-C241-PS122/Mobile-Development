@@ -6,19 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-<<<<<<< HEAD
-    tools:context=".MainMenu">
+    tools:context="ui.MainMenu">
     <FrameLayout
         android:id="@+id/idHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="3dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
-=======
-    tools:context=".ui.MainMenu">
 
-    <!-- BottomNavigationView -->
->>>>>>> 35e99518ec1b829ace1d27d6ff155629d6092f45
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,8 +24,6 @@
         app:itemIconTint="@drawable/selector_icon_nav"
         app:itemTextColor="@drawable/selector_icon_nav"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-
     <ImageButton
         android:id="@+id/btnupload"
         android:layout_width="67dp"

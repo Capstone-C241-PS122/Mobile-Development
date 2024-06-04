@@ -15,9 +15,6 @@ class DetailExerciseActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityDetailExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-<<<<<<< HEAD:app/src/main/java/com/grassterra/fitassist/DetailExerciseActivity.kt
-=======
-
         setupImage()
     }
 
@@ -27,6 +24,5 @@ class DetailExerciseActivity : AppCompatActivity() {
 
         val result = intent.getStringExtra("result")
         binding.textDescriptionLabel.setText(result)
->>>>>>> 35e99518ec1b829ace1d27d6ff155629d6092f45:app/src/main/java/com/grassterra/fitassist/ui/DetailExerciseActivity.kt
     }
 }

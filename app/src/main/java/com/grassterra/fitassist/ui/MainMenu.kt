@@ -18,11 +18,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.grassterra.fitassist.HomeFragment
+import com.grassterra.fitassist.MyBodyFragment
+import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.ActivityMainMenuBinding
 import com.grassterra.fitassist.databinding.AlertDialogBinding
 import com.grassterra.fitassist.helper.ImageClassifierHelper
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
-import org.tensorflow.lite.task.vision.classifier.Classifications
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -41,7 +45,7 @@ class MainMenu : AppCompatActivity() {
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnupload.setOnClickListener {
-            showAlert(this, "Choose an Option", {
+            showAlert(this, {
                 //gallery action
                 if (checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
                     startGallery()
@@ -49,7 +53,6 @@ class MainMenu : AppCompatActivity() {
                     requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
                 }
             }, {
-                // Handle Camera action
                 if (checkPermission(Manifest.permission.CAMERA)) {
                     startCamera()
                 } else {
@@ -57,6 +60,7 @@ class MainMenu : AppCompatActivity() {
                 }
             })
         }
+        setupBottomNavigation()
     }
 
     private fun startGallery() {
@@ -91,7 +95,6 @@ class MainMenu : AppCompatActivity() {
             currentPhotoPath = absolutePath
         }
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -145,14 +148,10 @@ class MainMenu : AppCompatActivity() {
 
     private fun showAlert(
         context: Context,
-        title: String,
         galleryCallback: () -> Unit,
         cameraCallback: () -> Unit
     ) {
         val binding = AlertDialogBinding.inflate(LayoutInflater.from(context))
-
-        binding.alertTitle.text = title
-
         val alertDialog = AlertDialog.Builder(context)
             .setView(binding.root)
             .setCancelable(false)
@@ -185,5 +184,20 @@ class MainMenu : AppCompatActivity() {
         if (!isGranted) {
             Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
         }
+    }
+    private fun setupBottomNavigation() {
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavigation
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            var selectedFragment: Fragment? = null
+            when (item.itemId) {
+                R.id.id_home -> selectedFragment = HomeFragment()
+                R.id.id_mybody -> selectedFragment = MyBodyFragment()
+            }
+            if (selectedFragment != null) {
+                supportFragmentManager.beginTransaction().replace(R.id.idHostFragment, selectedFragment).commit()
+            }
+            true
+        }
+        bottomNavigationView.selectedItemId = R.id.id_home
     }
 }

@@ -18,7 +18,6 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".SelectExercise"
             android:exported="false" />
         <activity
@@ -29,22 +28,15 @@
             android:exported="false" />
         <activity
             android:name=".ActivityInputWeight"
-=======
-            android:name=".ui.DetailExerciseActivity"
->>>>>>> 35e99518ec1b829ace1d27d6ff155629d6092f45
             android:exported="false" />
         <activity
             android:name=".ui.ActivitySelectgender"
             android:exported="false" />
         <activity
-<<<<<<< HEAD
-            android:name=".DetailExerciseActivity"
+            android:name=".ui.DetailExerciseActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-=======
             android:name=".ui.MainActivity"
->>>>>>> 35e99518ec1b829ace1d27d6ff155629d6092f45
             android:exported="false" />
         <activity
             android:name=".ui.MainMenu"
