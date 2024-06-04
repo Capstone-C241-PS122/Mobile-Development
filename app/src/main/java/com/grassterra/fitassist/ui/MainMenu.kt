@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -19,6 +20,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.grassterra.fitassist.databinding.ActivityMainMenuBinding
 import com.grassterra.fitassist.databinding.AlertDialogBinding
+import com.grassterra.fitassist.helper.ImageClassifierHelper
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import org.tensorflow.lite.task.vision.classifier.Classifications
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -30,6 +34,7 @@ class MainMenu : AppCompatActivity() {
     private val CAPTURE_IMAGE_REQUEST = 2
     private lateinit var currentPhotoPath: String
     private lateinit var binding: ActivityMainMenuBinding
+    private lateinit var imageClassifierHelper: ImageClassifierHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -92,18 +97,49 @@ class MainMenu : AppCompatActivity() {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val selectedImageUri = data.data
+            val result = selectedImageUri?.let { analyzeImage(it) }
             if (selectedImageUri != null) {
-                moveToDetailActivity(selectedImageUri)
+                if (result != null) {
+                    Log.d("MainMenu", result.toString())
+                    moveToDetailActivity(selectedImageUri, result)
+                }
             }
         } else if (requestCode == CAPTURE_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
             val file = File(currentPhotoPath)
-            moveToDetailActivity(Uri.fromFile(file))
+            val result = analyzeImage(Uri.fromFile(file))
+            moveToDetailActivity(Uri.fromFile(file), result)
         }
     }
 
-    private fun moveToDetailActivity(imageUri: Uri){
+    private fun analyzeImage(imageUri: Uri): String {
+        var res = ""
+        imageClassifierHelper = ImageClassifierHelper(
+            context = this,
+            classifierListener = object : ImageClassifierHelper.ClassifierListener {
+                override fun onError(error: String) {
+                    Log.d("MainMenu", "classifier error!")
+                }
+
+                override fun onResults(results: TensorBuffer) {
+                    val outputArray = results.floatArray
+                    res = outputArray.joinToString { it.toString() }
+
+                    //Utilize predefined list of labels
+                    // val classLabels = arrayOf("Class1", "Class2", "Class3", ...) // define your class labels
+                    // val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
+                    // res = resultMap.entries.joinToString { "${it.key}: ${it.value}" }
+                }
+            }
+        )
+        imageClassifierHelper.classifyStaticImage(imageUri)
+        return res
+    }
+
+
+    private fun moveToDetailActivity(imageUri: Uri, res: String){
         val intent = Intent(this, DetailExerciseActivity::class.java)
         intent.putExtra("imageUri", imageUri.toString())
+        intent.putExtra("result", res)
         startActivity(intent)
     }
 
