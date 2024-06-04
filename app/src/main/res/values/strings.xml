@@ -6,9 +6,26 @@
     <string name="button_getStarted">Get Started</string>
     //list menu
     <string name="menu_mybody">My body</string>
-    <string name="menu_fitcenter">Fit Center</string>
-    //select gender
+    <string name="menu_home">Home</string>
+
+    <string name="select_gender">Select Your Gender</string>
     <string name="woman">Woman</string>
     <string name="man">Man</string>
+<<<<<<< HEAD
+    <string name="next">Next </string>
+    <string name="e_weight">Enter your weight</string>
+    <string name="e_height">Enter your height</string>
+    <string name="e_age">Enter your age</string>
+    <string name="years">Years</string>
+    <string name="kg">kg</string>
+    <string name="cm">cm</string>
+    //Option Photo
+    <string name="gallery">Add from Gallery</string>
+    <string name="camera">Add from Camera</string>
+    <string name="upload_image">Upload Image</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
     <string name="image_classifier_failed">Fail</string>
+>>>>>>> 35e99518ec1b829ace1d27d6ff155629d6092f45
 </resources>

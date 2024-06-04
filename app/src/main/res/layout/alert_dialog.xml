@@ -1,38 +1,69 @@
 <!-- res/layout/alert_dialog.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="175dp"
+    android:padding="15dp"
+    android:id="@+id/materialCardView"
     android:orientation="vertical"
-    android:padding="20dp">
-
-    <TextView
-        android:id="@+id/alertTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Image Source"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"/>
-
-    <Button
-        android:id="@+id/galleryButton"
+    android:layout_gravity="bottom"
+    android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+    android:background="@color/background_alert">
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gallery"
-        android:layout_marginBottom="10dp"/>
-
-    <Button
-        android:id="@+id/cameraButton"
-        android:layout_width="match_parent"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_image"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_gravity="center"/>
+        <ImageView
+            android:id="@+id/cancelButton"
+            android:scrollbarFadeDuration="@integer/material_motion_duration_long_1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/close_24px"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="start" />
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Camera"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="15dp"
+        android:padding="15dp"
+        android:layout_gravity="center">
 
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cancel"/>
+        <Button
+            android:id="@+id/galleryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center|start"
+            android:textColor="@color/white"
+            android:text="@string/gallery"
+            android:textAllCaps="false"
+            android:drawableTop="@drawable/library_add_24px"
+            android:drawablePadding="10dp"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            android:text="@string/camera"
+            android:textAllCaps="false"
+            android:layout_gravity="center|end"
+            android:drawableTop="@drawable/photo_camera_24px"
+            android:drawablePadding="10dp"/>
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

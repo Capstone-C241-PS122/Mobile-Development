@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#FF6AA0</color>
     //background
     <color name="background">#1E1E1E</color>
     //button
@@ -19,4 +20,7 @@
     <color name="colorPlusButton">#FFBED5</color>
     //background button
     <color name="background_button">#8E363535</color>
+    //background alert
+    <color name="background_alert">#242323</color>
+    <color name="divider_alert">#434242</color>
 </resources>
