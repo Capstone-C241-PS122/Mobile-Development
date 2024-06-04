@@ -125,12 +125,12 @@ class MainMenu : AppCompatActivity() {
 
                 override fun onResults(results: TensorBuffer) {
                     val outputArray = results.floatArray
-                    res = outputArray.joinToString { it.toString() }
+//                    res = outputArray.joinToString { it.toString() }
 
                     //Utilize predefined list of labels
-                    // val classLabels = arrayOf("Class1", "Class2", "Class3", ...) // define your class labels
-                    // val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
-                    // res = resultMap.entries.joinToString { "${it.key}: ${it.value}" }
+                     val classLabels = arrayOf("Lat_pulldown_machine", "Shoulder_press", "elliptical_trainer", "leg_curl_machine", "legpress_machine", "rowing_machine") // define your class labels
+                     val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
+                     res = resultMap.entries.joinToString { "${it.key}: ${it.value}" }
                 }
             }
         )
