@@ -4,15 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-<<<<<<< HEAD
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <TextureView
         android:id="@+id/textureView"
-=======
-    tools:context=".ui.MainActivity">
-    <androidx.constraintlayout.widget.ConstraintLayout
->>>>>>> 35e99518ec1b829ace1d27d6ff155629d6092f45
+        tools:context=".ui.MainActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY" />

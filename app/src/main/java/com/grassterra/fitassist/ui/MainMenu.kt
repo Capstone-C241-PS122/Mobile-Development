@@ -151,8 +151,6 @@ class MainMenu : AppCompatActivity() {
     ) {
         val binding = AlertDialogBinding.inflate(LayoutInflater.from(context))
 
-        binding.alertTitle.text = title
-
         val alertDialog = AlertDialog.Builder(context)
             .setView(binding.root)
             .setCancelable(false)
