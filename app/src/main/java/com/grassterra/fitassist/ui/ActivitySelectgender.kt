@@ -16,11 +16,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-<<<<<<< HEAD:app/src/main/java/com/grassterra/fitassist/ActivitySelectgender.kt
+import com.grassterra.fitassist.ActivityInputWeight
 import com.grassterra.fitassist.databinding.ActivitySelectgenderBinding
-=======
 import com.grassterra.fitassist.R
->>>>>>> 35e99518ec1b829ace1d27d6ff155629d6092f45:app/src/main/java/com/grassterra/fitassist/ui/ActivitySelectgender.kt
 
 class ActivitySelectgender : AppCompatActivity() {
     private var isZoomedIn = false
@@ -135,7 +133,7 @@ class ActivitySelectgender : AppCompatActivity() {
         }
     }
     private fun NavigateNextPage(context:Context){
-        val intent = Intent(context,ActivityInputWeight::class.java)
+        val intent = Intent(context, ActivityInputWeight::class.java)
         context.startActivity(intent)
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
     }
