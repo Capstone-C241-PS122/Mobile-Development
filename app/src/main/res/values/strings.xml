@@ -29,4 +29,16 @@
     <string name="feedback">Feedback</string>
     <string name="libraryvideo">Library Video</string>
     <string name="history">History</string>
+    //select exercise
+    <string name="chest">Chest</string>
+    <string name="forearms">Forearms</string>
+    <string name="glutes">Glutes</string>
+    <string name="hamstrings">Hamstrings</string>
+    <string name="lats">Lats</string>
+    <string name="lower_back">Lower Back</string>
+    <string name="middle_back">Middle Back</string>
+    <string name="quadriceps">Quadriceps</string>
+    <string name="shoulders">Shoulders</string>
+    <string name="triceps">Triceps</string>
+
 </resources>
