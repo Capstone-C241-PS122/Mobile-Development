@@ -1,10 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SelectExercise">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_gender"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:layout_gravity="center|top"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="75dp" />
+    <ToggleButton
+        android:id="@+id/btnChest"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="120dp"
+        android:textOff="@string/chest"
+        android:textOn="@string/chest"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ToggleButton
+        android:id="@+id/btnForearms"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="150dp"
+        android:textOff="@string/forearms"
+        android:textOn="@string/forearms"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <ToggleButton
+        android:id="@+id/btnGlutes"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="120dp"
+        android:textOff="@string/glutes"
+        android:textOn="@string/glutes"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <ToggleButton
+        android:id="@+id/btnHamstrings"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="215dp"
+        android:layout_marginStart="120dp"
+        android:textOff="@string/hamstrings"
+        android:textOn="@string/hamstrings"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <ToggleButton
+        android:id="@+id/btnLats"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="215dp"
+        android:textOff="@string/lats"
+        android:textOn="@string/lats"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <ToggleButton
+        android:id="@+id/btnLowerBack"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="215dp"
+        android:layout_marginEnd="120dp"
+        android:textOff="@string/lower_back"
+        android:textOn="@string/lower_back"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <ToggleButton
+        android:id="@+id/btnMiddleBack"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="120dp"
+        android:textOff="@string/middle_back"
+        android:textOn="@string/middle_back"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <ToggleButton
+        android:id="@+id/btnQuadriceps"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="345dp"
+        android:textOff="@string/quadriceps"
+        android:textOn="@string/quadriceps"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <ToggleButton
+        android:id="@+id/btnShoulders"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="280dp"
+        android:layout_marginStart="120dp"
+        android:textOff="@string/shoulders"
+        android:textOn="@string/shoulders"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <ToggleButton
+        android:id="@+id/btnTriceps"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="280dp"
+        android:textOff="@string/triceps"
+        android:textOn="@string/triceps"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_exercise" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/button_light"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@color/background"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/blur_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/animation_dumbell" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -1,12 +1,11 @@
 package com.grassterra.fitassist
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.grassterra.fitassist.databinding.ActivityInputAgeBinding
 
 class ActivityInputAge : AppCompatActivity() {
@@ -14,7 +13,7 @@ class ActivityInputAge : AppCompatActivity() {
     private val handler = Handler()
     private val typingDelay: Long = 100
     private val blinkDelay: Long = 250
-    private val fullText = "How old are you? "
+    private val fullText = "How old are you? \uD83C\uDF82"
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +29,9 @@ class ActivityInputAge : AppCompatActivity() {
             setOnValueChangedListener { _, _, newVal ->
             }
         }
-
-
+        binding.btnNext.setOnClickListener {
+            NavigateNextPage(this)
+        }
         typeText(fullText)
     }
     private fun typeText(text: String, index: Int = 0) {
@@ -52,5 +52,10 @@ class ActivityInputAge : AppCompatActivity() {
                 }
             })
         }
+    }
+    private fun NavigateNextPage(context: Context) {
+        val intent = Intent(context,SelectExercise::class.java)
+        context.startActivity(intent)
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
     }
 }

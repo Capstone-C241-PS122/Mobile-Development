@@ -3,12 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MyBodyFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+       <ImageButton
+           android:layout_width="120dp"
+           android:layout_height="120dp"
+           android:background="@drawable/card_style"/>
+        <ImageButton
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/card_style"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/card_style"/>
+            <ImageButton
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/card_style"/>
+        </LinearLayout>
+    </FrameLayout>
 </FrameLayout>

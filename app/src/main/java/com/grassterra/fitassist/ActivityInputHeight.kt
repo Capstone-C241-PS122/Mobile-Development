@@ -14,7 +14,7 @@ class ActivityInputHeight : AppCompatActivity() {
     private val handler = Handler()
     private val typingDelay: Long = 100
     private val blinkDelay: Long = 250
-    private val fullText = "What is your height? "
+    private val fullText = "What is your height? \uD83D\uDCCF"
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
     override fun onCreate(savedInstanceState: Bundle?) {

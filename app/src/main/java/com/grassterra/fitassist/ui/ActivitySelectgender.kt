@@ -14,11 +14,8 @@ import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.grassterra.fitassist.ActivityInputHeight
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.grassterra.fitassist.ActivityInputWeight
-import com.grassterra.fitassist.databinding.ActivitySelectgenderBinding
 import com.grassterra.fitassist.R
+import com.grassterra.fitassist.databinding.ActivitySelectgenderBinding
 
 class ActivitySelectgender : AppCompatActivity() {
     private var isZoomedIn = false
@@ -26,7 +23,7 @@ class ActivitySelectgender : AppCompatActivity() {
     private val handler = Handler()
     private val typingDelay: Long = 100
     private val blinkDelay: Long = 250
-    private val fullText = "What is your gender? "
+    private val fullText = "What is your gender? \uD83D\uDC68 or \uD83D\uDC69 "
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
     override fun onCreate(savedInstanceState: Bundle?) {
