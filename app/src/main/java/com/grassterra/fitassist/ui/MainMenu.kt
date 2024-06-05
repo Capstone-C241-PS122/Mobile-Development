@@ -18,8 +18,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.grassterra.fitassist.HomeFragment
 import com.grassterra.fitassist.MyBodyFragment
 import com.grassterra.fitassist.R
@@ -46,7 +49,6 @@ class MainMenu : AppCompatActivity() {
         setContentView(binding.root)
         binding.btnupload.setOnClickListener {
             showAlert(this, {
-                //gallery action
                 if (checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
                     startGallery()
                 } else {
@@ -60,6 +62,28 @@ class MainMenu : AppCompatActivity() {
                 }
             })
         }
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        val navigationView: NavigationView = findViewById(R.id.navigationView)
+        binding.btnSidebar.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_history -> {
+                    val intent = Intent(this@MainMenu, HistoryActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.nav_library_video -> {
+                    true
+                }
+                R.id.nav_feedback -> {
+                    true
+                }
+                else -> false
+            }
+        }
+
         setupBottomNavigation()
     }
 
@@ -128,7 +152,7 @@ class MainMenu : AppCompatActivity() {
 //                    res = outputArray.joinToString { it.toString() }
 
                     //Utilize predefined list of labels
-                     val classLabels = arrayOf("Lat_pulldown_machine", "Shoulder_press", "elliptical_trainer", "leg_curl_machine", "legpress_machine", "rowing_machine") // define your class labels
+                     val classLabels = arrayOf("Lat_pulldown_machine", "Shoulder_press", "elliptical_trainer", "leg_curl_machine", "legpress_machine", "rowing_machine")
                      val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
                      res = resultMap.entries.joinToString { "${it.key}: ${it.value}" }
                 }
@@ -200,4 +224,5 @@ class MainMenu : AppCompatActivity() {
         }
         bottomNavigationView.selectedItemId = R.id.id_home
     }
+
 }
