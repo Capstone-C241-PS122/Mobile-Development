@@ -25,4 +25,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="image_classifier_failed">Fail</string>
+    //Sidebar
+    <string name="feedback">Feedback</string>
+    <string name="libraryvideo">Library Video</string>
+    <string name="history">History</string>
 </resources>
