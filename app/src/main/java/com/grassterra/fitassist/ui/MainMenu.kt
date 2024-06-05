@@ -26,6 +26,9 @@ import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.ActivityMainMenuBinding
 import com.grassterra.fitassist.databinding.AlertDialogBinding
 import com.grassterra.fitassist.helper.ImageClassifierHelper
+import com.grassterra.fitassist.helper.ParcelableMap
+import com.grassterra.fitassist.helper.compressImageFile
+import com.grassterra.fitassist.helper.uriToFile
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.File
 import java.io.IOException
@@ -100,22 +103,58 @@ class MainMenu : AppCompatActivity() {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val selectedImageUri = data.data
-            val result = selectedImageUri?.let { analyzeImage(it) }
+            val compressedFile =
+                selectedImageUri?.let { uriToFile(this, it)?.let { compressImageFile(it, 2) } }
+            val result = analyzeImage(Uri.fromFile(compressedFile))
             if (selectedImageUri != null) {
-                if (result != null) {
-                    Log.d("MainMenu", result.toString())
-                    moveToDetailActivity(selectedImageUri, result)
-                }
+                Log.d("MainMenu", result.toString())
+                moveToDetailActivity(Uri.fromFile(compressedFile), result)
             }
         } else if (requestCode == CAPTURE_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
             val file = File(currentPhotoPath)
-            val result = analyzeImage(Uri.fromFile(file))
-            moveToDetailActivity(Uri.fromFile(file), result)
+            val compressedFile = compressImageFile(file, 2)
+            val result = analyzeImage(Uri.fromFile(compressedFile))
+            moveToDetailActivity(Uri.fromFile(compressedFile), result)
         }
     }
 
-    private fun analyzeImage(imageUri: Uri): String {
-        var res = ""
+//    private fun analyzeImage(imageUri: Uri): String {
+//        var res = ""
+//        imageClassifierHelper = ImageClassifierHelper(
+//            context = this,
+//            classifierListener = object : ImageClassifierHelper.ClassifierListener {
+//                override fun onError(error: String) {
+//                    Log.d("MainMenu", "classifier error!")
+//                }
+//
+//                override fun onResults(results: TensorBuffer) {
+//                    val outputArray = results.floatArray
+//
+//                    //Utilize predefined list of labels
+//                     val classLabels = arrayOf("cable_machine",
+//                         "calfraise_machine",
+//                         "chestfly_machine",
+//                         "elliptical_trainer",
+//                         "hacksquat_machine",
+//                         "hyperextension_bench",
+//                         "latpulldown_machine",
+//                         "legcurl_machine",
+//                         "legpress_machine",
+//                         "rotarycalf_machine",
+//                         "rowing_machine",
+//                         "shoulder_press",
+//                         "smith_machine") // define your class labels
+//                     val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
+//                     res = resultMap.entries.joinToString { "${it.key}: ${it.value}" }
+//                }
+//            }
+//        )
+//        imageClassifierHelper.classifyStaticImage(imageUri)
+//        return res
+//    }
+
+    private fun analyzeImage(imageUri: Uri): Map<String, Float> {
+        var res: Map<String, Float> = emptyMap()
         imageClassifierHelper = ImageClassifierHelper(
             context = this,
             classifierListener = object : ImageClassifierHelper.ClassifierListener {
@@ -125,12 +164,29 @@ class MainMenu : AppCompatActivity() {
 
                 override fun onResults(results: TensorBuffer) {
                     val outputArray = results.floatArray
-//                    res = outputArray.joinToString { it.toString() }
 
-                    //Utilize predefined list of labels
-                     val classLabels = arrayOf("Lat_pulldown_machine", "Shoulder_press", "elliptical_trainer", "leg_curl_machine", "legpress_machine", "rowing_machine") // define your class labels
-                     val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
-                     res = resultMap.entries.joinToString { "${it.key}: ${it.value}" }
+                    // Utilize predefined list of labels
+                    val classLabels = arrayOf(
+                        "cable_machine",
+                        "calfraise_machine",
+                        "chestfly_machine",
+                        "elliptical_trainer",
+                        "hacksquat_machine",
+                        "hyperextension_bench",
+                        "latpulldown_machine",
+                        "legcurl_machine",
+                        "legpress_machine",
+                        "rotarycalf_machine",
+                        "rowing_machine",
+                        "shoulder_press",
+                        "smith_machine"
+                    ) // define your class labels
+
+                    // Create a map of class labels to their corresponding output values
+                    val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
+
+                    // Sort the map by values in descending order
+                    res = resultMap.entries.sortedByDescending { it.value }.associate { it.toPair() }
                 }
             }
         )
@@ -139,8 +195,9 @@ class MainMenu : AppCompatActivity() {
     }
 
 
-    private fun moveToDetailActivity(imageUri: Uri, res: String){
+    private fun moveToDetailActivity(imageUri: Uri, map: Map<String, Float>){
         val intent = Intent(this, DetailExerciseActivity::class.java)
+        val res = ParcelableMap(map)
         intent.putExtra("imageUri", imageUri.toString())
         intent.putExtra("result", res)
         startActivity(intent)
