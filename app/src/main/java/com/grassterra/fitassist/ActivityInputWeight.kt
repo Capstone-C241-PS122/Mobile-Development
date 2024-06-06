@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.grassterra.fitassist.database.user.Userdata
 import com.grassterra.fitassist.databinding.ActivityInputWeightBinding
 
 class ActivityInputWeight : AppCompatActivity() {
@@ -16,11 +17,15 @@ class ActivityInputWeight : AppCompatActivity() {
     private val fullText = "How much do you weight? \uD83E\uDDD0"
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
+    private lateinit var userData: Userdata
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInputWeightBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        userData = intent.getParcelableExtra("userdata") ?: Userdata()
+
         cursorDrawable = resources.getDrawable(R.drawable.drawable_indicator, null)
         startBlinkingCursor()
         binding.numberPicker.apply {
@@ -28,9 +33,11 @@ class ActivityInputWeight : AppCompatActivity() {
             maxValue = 300
             value = 60
             setOnValueChangedListener { _, _, newVal ->
+                userData.weight = newVal
             }
         }
         binding.btnNext.setOnClickListener {
+            nullCheck(userData)
             NavigateNextPage(this)
         }
         typeText(fullText)
@@ -54,8 +61,16 @@ class ActivityInputWeight : AppCompatActivity() {
             })
         }
     }
+
+    private fun nullCheck(userData: Userdata){
+        if (userData.weight == null){
+            userData.weight = 60
+        }
+    }
+
     private fun NavigateNextPage(context: Context) {
         val intent = Intent(context,ActivityInputHeight::class.java)
+        intent.putExtra("userdata",userData)
         context.startActivity(intent)
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
     }

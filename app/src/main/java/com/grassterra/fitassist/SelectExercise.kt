@@ -12,9 +12,15 @@ import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.commit
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.grassterra.fitassist.database.user.Userdata
 import com.grassterra.fitassist.databinding.ActivitySelectExerciseBinding
+import com.grassterra.fitassist.helper.ViewModelFactory
 import com.grassterra.fitassist.ui.LottieLoadingFragment
 import com.grassterra.fitassist.ui.MainMenu
+import com.grassterra.fitassist.ui.MainViewModel
+import com.grassterra.fitassist.ui.SelectExerciseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -29,6 +35,8 @@ class SelectExercise : AppCompatActivity() {
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
     private lateinit var loadingFragment: LottieLoadingFragment
+    private lateinit var userData: Userdata
+
     private val toggleButtons: List<ToggleButton> by lazy {
         listOf(
             binding.btnChest, binding.btnForearms, binding.btnGlutes,
@@ -42,12 +50,23 @@ class SelectExercise : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySelectExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val selectExerciseViewModel = obtainViewModel(this@SelectExercise)
+        userData = intent.getParcelableExtra("userdata") ?: Userdata()
+        selectExerciseViewModel.clear()
+
+
+
         cursorDrawable = resources.getDrawable(R.drawable.drawable_indicator, null)
         toggleButtons.forEach { button ->
             button.setOnCheckedChangeListener { _, isChecked ->
                 updateTextColor(button, isChecked)
                 if (isChecked) {
-                    Log.d("ToggleButton", "${button.text} is checked")
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        selectExerciseViewModel.toggle(button.text.toString())
+                        Log.d("ToggleButton", "${button.text} is checked")
+                        Log.d("ToggleButton", selectExerciseViewModel.getAll().toString())
+                    }
                 }
             }
             updateTextColor(button, button.isChecked)
@@ -119,10 +138,18 @@ class SelectExercise : AppCompatActivity() {
             })
         }
     }
+
+    private fun obtainViewModel(activity: AppCompatActivity): SelectExerciseViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory).get(SelectExerciseViewModel::class.java)
+    }
+
     private fun NavigateNextPage(context: Context) {
         loadingFragment.stopAnimation()
         binding.loadingFragmentContainer.visibility = View.GONE
         val intent = Intent(context, MainMenu::class.java)
+        intent.putExtra("flag", true)
+        intent.putExtra("userdata",userData)
         startActivity(intent)
         finish()
     }

@@ -1,4 +1,4 @@
-package com.grassterra.fitassist.database
+package com.grassterra.fitassist.database.user
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
@@ -18,5 +18,8 @@ data class Userdata(
     var height: Int? = null,
 
     @ColumnInfo(name = "age")
-    var age: Int? = null
+    var age: Int? = null,
+
+    @ColumnInfo(name = "gender")
+    var gender: Boolean = false
 ): Parcelable

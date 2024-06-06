@@ -21,17 +21,24 @@ import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.grassterra.fitassist.HomeFragment
 import com.grassterra.fitassist.MyBodyFragment
 import com.grassterra.fitassist.R
+import com.grassterra.fitassist.database.user.Userdata
 import com.grassterra.fitassist.databinding.ActivityMainMenuBinding
 import com.grassterra.fitassist.databinding.AlertDialogBinding
 import com.grassterra.fitassist.helper.ImageClassifierHelper
 import com.grassterra.fitassist.helper.ParcelableMap
+import com.grassterra.fitassist.helper.ViewModelFactory
 import com.grassterra.fitassist.helper.compressImageFile
 import com.grassterra.fitassist.helper.uriToFile
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.File
 import java.io.IOException
@@ -39,17 +46,45 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@Suppress("DEPRECATION")
 class MainMenu : AppCompatActivity() {
     private val PICK_IMAGE_REQUEST = 1
     private val CAPTURE_IMAGE_REQUEST = 2
     private lateinit var currentPhotoPath: String
     private lateinit var binding: ActivityMainMenuBinding
     private lateinit var imageClassifierHelper: ImageClassifierHelper
+    private lateinit var userData: Userdata
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val mainViewModel = obtainViewModel(this@MainMenu)
+        val flag = intent.getBooleanExtra("flag", false)
+
+        Log.d("MainMenu", flag.toString())
+
+        if (flag) {
+            userData = intent.getParcelableExtra("userdata") ?: Userdata()
+            lifecycleScope.launch(Dispatchers.IO) {
+                if (mainViewModel.isEmpty()) {
+                    mainViewModel.insertUser(userData)
+                    Log.d("MainMenu", "insert ${userData.weight}")
+                } else {
+                    mainViewModel.overwriteUser(userData)
+                    Log.d("MainMenu", "overwrite into ${userData.weight}")
+                }
+                withContext(Dispatchers.Main) {
+                    Log.d("MainMenu", "age: ${userData.age}, height: ${userData.height}, gender: ${userData.gender}")
+                }
+            }
+        } else {
+            //TODO: MOVE TO MAINACTIVITY
+            userData = Userdata()
+        }
+
         binding.btnupload.setOnClickListener {
             showAlert(this, {
                 if (checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -142,41 +177,6 @@ class MainMenu : AppCompatActivity() {
         }
     }
 
-//    private fun analyzeImage(imageUri: Uri): String {
-//        var res = ""
-//        imageClassifierHelper = ImageClassifierHelper(
-//            context = this,
-//            classifierListener = object : ImageClassifierHelper.ClassifierListener {
-//                override fun onError(error: String) {
-//                    Log.d("MainMenu", "classifier error!")
-//                }
-//
-//                override fun onResults(results: TensorBuffer) {
-//                    val outputArray = results.floatArray
-//
-//                    //Utilize predefined list of labels
-//                     val classLabels = arrayOf("cable_machine",
-//                         "calfraise_machine",
-//                         "chestfly_machine",
-//                         "elliptical_trainer",
-//                         "hacksquat_machine",
-//                         "hyperextension_bench",
-//                         "latpulldown_machine",
-//                         "legcurl_machine",
-//                         "legpress_machine",
-//                         "rotarycalf_machine",
-//                         "rowing_machine",
-//                         "shoulder_press",
-//                         "smith_machine") // define your class labels
-//                     val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
-//                     res = resultMap.entries.joinToString { "${it.key}: ${it.value}" }
-//                }
-//            }
-//        )
-//        imageClassifierHelper.classifyStaticImage(imageUri)
-//        return res
-//    }
-
     private fun analyzeImage(imageUri: Uri): Map<String, Float> {
         var res: Map<String, Float> = emptyMap()
         imageClassifierHelper = ImageClassifierHelper(
@@ -204,7 +204,7 @@ class MainMenu : AppCompatActivity() {
                         "rowing_machine",
                         "shoulder_press",
                         "smith_machine"
-                    ) // define your class labels
+                    )
 
                     // Create a map of class labels to their corresponding output values
                     val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
@@ -266,6 +266,12 @@ class MainMenu : AppCompatActivity() {
             Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun obtainViewModel(activity: AppCompatActivity): MainViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory).get(MainViewModel::class.java)
+    }
+
     private fun setupBottomNavigation() {
         val bottomNavigationView: BottomNavigationView = binding.bottomNavigation
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
