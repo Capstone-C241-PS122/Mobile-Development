@@ -10,6 +10,5 @@ class FeedbackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding =  ActivityFeedbackBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 }
