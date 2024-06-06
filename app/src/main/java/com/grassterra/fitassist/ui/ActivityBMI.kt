@@ -43,12 +43,12 @@ class ActivityBMI : AppCompatActivity() {
                     imgResource = R.drawable.underweight
                 }
 
-                bmi < 24.9 -> {
+                bmi < 23.9 -> {
                     bmiCategory = "Normal weight"
                     imgResource = R.drawable.normal_weight
                 }
 
-                bmi < 29.9 -> {
+                bmi < 32.9 -> {
                     bmiCategory = "Overweight"
                     imgResource = R.drawable.overweight
                 }

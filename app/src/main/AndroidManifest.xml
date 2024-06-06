@@ -18,6 +18,15 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".ui.ActivityCalculateNutrition"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ActivityHydration"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ActivityBMR"
+            android:exported="false" />
+        <activity
             android:name=".ui.ActivityBMI"
             android:exported="false" />
         <activity

@@ -1,10 +1,16 @@
 package com.grassterra.fitassist
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.fragment.app.Fragment
+import com.grassterra.fitassist.ui.ActivityBMI
+import com.grassterra.fitassist.ui.ActivityBMR
+import com.grassterra.fitassist.ui.ActivityCalculateNutrition
+import com.grassterra.fitassist.ui.ActivityHydration
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,9 +39,27 @@ class MyBodyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_body, container, false)
+        val view = inflater.inflate(R.layout.fragment_my_body, container, false)
+        view.findViewById<ImageButton>(R.id.btnNavigateBMI)?.setOnClickListener {
+            val intent = Intent(requireContext(), ActivityBMI::class.java)
+            startActivity(intent)
+        }
+        view.findViewById<ImageButton>(R.id.btnNavigateBMR)?.setOnClickListener{
+            val intent = Intent(requireContext(), ActivityBMR::class.java)
+            startActivity(intent)
+        }
+        view.findViewById<ImageButton>(R.id.btnNavigateHydration)?.setOnClickListener{
+            val intent = Intent(requireContext(), ActivityHydration::class.java)
+            startActivity(intent)
+        }
+        view.findViewById<ImageButton>(R.id.btnNavigateNutritionCalculate)?.setOnClickListener{
+            val intent = Intent(requireContext(), ActivityCalculateNutrition::class.java)
+            startActivity(intent)
+        }
+
+        return view
     }
+
 
     companion object {
         /**
@@ -47,13 +71,12 @@ class MyBodyFragment : Fragment() {
          * @return A new instance of fragment MyBodyFragment.
          */
         // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyBodyFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        @JvmStatic fun newInstance(param1: String, param2: String) =
+                MyBodyFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(ARG_PARAM1, param1)
+                        putString(ARG_PARAM2, param2)
+                    }
                 }
-            }
     }
 }
