@@ -5,32 +5,79 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".MyBodyFragment">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:background="@drawable/shadow_bar"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="135dp"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/white"
+        android:text="@string/header_mybody"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"/>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-       <ImageButton
-           android:layout_width="120dp"
-           android:layout_height="120dp"
-           android:background="@drawable/card_style"/>
+        android:layout_height="100dp"
+        android:background="@color/background_bar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/menu_mybody"
+            android:layout_marginTop="42dp"
+            android:layout_marginStart="25dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="22sp"
+            android:textColor="@color/white"/>
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="150dp">
         <ImageButton
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="@drawable/card_style"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageButton
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:background="@drawable/card_style"/>
-            <ImageButton
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:background="@drawable/card_style"/>
-        </LinearLayout>
+            android:id="@+id/btnNavigateBMI"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="10dp"
+            android:src="@drawable/bmi_img"
+            android:padding="5dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/background_card_by_img"/>
+        <ImageButton
+            android:id="@+id/btnNavigateBMR"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="10dp"
+            android:padding="5dp"
+            android:src="@drawable/bmr_img"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/background_card_by_img"/>
+        <ImageButton
+            android:id="@+id/btnNavigateHydration"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="10dp"
+            android:padding="5dp"
+            android:src="@drawable/hydration_img"
+            android:layout_gravity="start"
+            android:layout_marginStart="110dp"
+            android:background="@drawable/background_card_by_img"/>
+        <ImageButton
+            android:id="@+id/btnNavigateNutritionCalculate"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="10dp"
+            android:padding="5dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="110dp"
+            android:src="@drawable/nutcal_img"
+            android:background="@drawable/background_card_by_img"/>
     </FrameLayout>
 </FrameLayout>
