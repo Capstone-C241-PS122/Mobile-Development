@@ -40,5 +40,10 @@
     <string name="quadriceps">Quadriceps</string>
     <string name="shoulders">Shoulders</string>
     <string name="triceps">Triceps</string>
-
+    //Mybody
+    <string name="bmi">BMI</string>
+    <string name="bmr">BMR</string>
+    <string name="water_intake">Water Intake</string>
+    <string name="calc_nutrition">Calculate Nutrition</string>
+    <string name="header_mybody">Check your body</string>
 </resources>

@@ -78,9 +78,13 @@ class MainMenu : AppCompatActivity() {
                     true
                 }
                 R.id.nav_library_video -> {
+                    val intent = Intent(this@MainMenu,LibraryVideo::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.nav_feedback -> {
+                    val intent = Intent(this@MainMenu,FeedbackActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false
