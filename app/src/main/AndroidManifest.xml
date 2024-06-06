@@ -18,6 +18,12 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".ui.FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LibraryVideo"
+            android:exported="false" />
+        <activity
             android:name=".ui.HistoryActivity"
             android:exported="false" />
         <activity

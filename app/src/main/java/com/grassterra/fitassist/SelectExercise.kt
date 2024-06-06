@@ -6,11 +6,19 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.commit
 import com.grassterra.fitassist.databinding.ActivitySelectExerciseBinding
+import com.grassterra.fitassist.ui.LottieLoadingFragment
 import com.grassterra.fitassist.ui.MainMenu
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SelectExercise : AppCompatActivity() {
     private  lateinit var binding: ActivitySelectExerciseBinding
@@ -20,6 +28,7 @@ class SelectExercise : AppCompatActivity() {
     private val fullText = "Select your target body part? \uD83C\uDFCB\uFE0F\u200D♂\uFE0F"
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
+    private lateinit var loadingFragment: LottieLoadingFragment
     private val toggleButtons: List<ToggleButton> by lazy {
         listOf(
             binding.btnChest, binding.btnForearms, binding.btnGlutes,
@@ -27,6 +36,7 @@ class SelectExercise : AppCompatActivity() {
             binding.btnMiddleBack, binding.btnQuadriceps, binding.btnShoulders,
             binding.btnTriceps
         )
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +53,43 @@ class SelectExercise : AppCompatActivity() {
             updateTextColor(button, button.isChecked)
         }
         binding.btnNext.setOnClickListener{
-            NavigateNextPage(this)
+            showLoadingAndNavigate(this)
         }
-
-
+        loadingFragment = LottieLoadingFragment()
         startBlinkingCursor()
         typeText(fullText)
+    }
+    private fun showLoadingAndNavigate(context: Context) {
+        binding.apply {
+            btnChest.visibility = View.INVISIBLE
+            btnForearms.visibility = View.INVISIBLE
+            btnGlutes.visibility = View.INVISIBLE
+            btnHamstrings.visibility = View.INVISIBLE
+            btnLats.visibility = View.INVISIBLE
+            btnLowerBack.visibility = View.INVISIBLE
+            btnMiddleBack.visibility = View.INVISIBLE
+            btnQuadriceps.visibility = View.INVISIBLE
+            btnShoulders.visibility = View.INVISIBLE
+            btnTriceps.visibility = View.INVISIBLE
+            btnNext.visibility = View.INVISIBLE
+            textView.visibility = View.INVISIBLE
+            lottieAnimationView.visibility = View.INVISIBLE
+            loadingFragmentContainer.visibility = View.VISIBLE
+        }
+        supportFragmentManager.commit {
+            replace(R.id.loading_fragment_container, loadingFragment)
+            setReorderingAllowed(true)
+            addToBackStack(null)
+
+        }
+        val fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        binding.loadingFragmentContainer.startAnimation(fadeInAnimation)
+        supportFragmentManager.executePendingTransactions()
+        loadingFragment.startAnimation()
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(2000)
+            NavigateNextPage(context)
+        }
     }
 
     private fun updateTextColor(button: ToggleButton, isChecked: Boolean) {
@@ -79,7 +120,10 @@ class SelectExercise : AppCompatActivity() {
         }
     }
     private fun NavigateNextPage(context: Context) {
-        val intent = Intent(context,MainMenu::class.java)
-        context.startActivity(intent)
+        loadingFragment.stopAnimation()
+        binding.loadingFragmentContainer.visibility = View.GONE
+        val intent = Intent(context, MainMenu::class.java)
+        startActivity(intent)
+        finish()
     }
 }
