@@ -60,6 +60,8 @@ dependencies {
     implementation ("org.tensorflow:tensorflow-lite-gpu:2.10.0") // Optional: Add GPU support if needed
     implementation ("org.tensorflow:tensorflow-lite-support:0.3.1") // For TensorImage and TensorBuffer
     implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
     ksp("androidx.room:room-compiler:2.5.2")
     implementation("androidx.compose.animation:animation-core-android:1.6.7")
     testImplementation("junit:junit:4.13.2")
