@@ -7,6 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SelectExercise">
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/loading_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -208,4 +213,5 @@
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/animation_dumbell" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
