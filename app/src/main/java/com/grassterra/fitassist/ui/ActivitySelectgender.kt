@@ -8,6 +8,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
@@ -42,65 +43,18 @@ class ActivitySelectgender : AppCompatActivity() {
         val toggleButtonWoman: ToggleButton = binding.toggleButtonWoman
         val backgroundWoman: ImageView = binding.idbackgroundWoman
         val textSelectedWoman: TextView = binding.textSelectedWoman
+
         toggleButtonMan.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                if (!isZoomedIn) {
-                    buttonView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.zoom_in))
-                    isZoomedIn = true
-                    bottomMan.visibility = View.VISIBLE
-                    backgroundMan.visibility = View.VISIBLE
-                    textSelectedMan.visibility = View.VISIBLE
-                    if (toggleButtonWoman.isChecked) {
-                        toggleButtonWoman.isChecked = false
-                        backgroundWoman.visibility = View.INVISIBLE
-                        bottomWoman.visibility = View.INVISIBLE
-                        textSelectedWoman.visibility = View.INVISIBLE
-                    }
-                }
-                val gender = getSelectedGender(toggleButtonMan, toggleButtonWoman)
-                Log.d("YourActivity", "Selected Gender: $gender")
-            } else {
-                if (isZoomedIn) {
-                    buttonView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.zoom_out))
-                    isZoomedIn = false
-                    backgroundMan.visibility = View.INVISIBLE
-                    bottomMan.visibility = View.INVISIBLE
-                    textSelectedMan.visibility = View.INVISIBLE
-                }
-            }
+            onToggleButtonChecked(buttonView, isChecked, toggleButtonWoman, bottomMan, backgroundMan, textSelectedMan, bottomWoman, backgroundWoman, textSelectedWoman)
         }
 
         toggleButtonWoman.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                if (!isZoomedIn) {
-                    buttonView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.zoom_in))
-                    isZoomedIn = true
-                    bottomWoman.visibility = View.VISIBLE
-                    backgroundWoman.visibility = View.VISIBLE
-                    textSelectedWoman.visibility = View.VISIBLE
-                    if (toggleButtonMan.isChecked) {
-                        toggleButtonMan.isChecked = false
-                        backgroundMan.visibility = View.INVISIBLE
-                        bottomMan.visibility = View.INVISIBLE
-                        textSelectedMan.visibility = View.INVISIBLE
-                    }
-                }
-                val gender = getSelectedGender(toggleButtonMan, toggleButtonWoman)
-                Log.d("YourActivity", "Selected Gender: $gender")
-            } else {
-                if (isZoomedIn) {
-                    buttonView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.zoom_out))
-                    isZoomedIn = false
-                    backgroundWoman.visibility = View.INVISIBLE
-                    bottomWoman.visibility = View.INVISIBLE
-                    textSelectedWoman.visibility = View.INVISIBLE
-                }
-            }
-        }
-        binding.btnNext.setOnClickListener {
-           NavigateNextPage(this)
+            onToggleButtonChecked(buttonView, isChecked, toggleButtonMan, bottomWoman, backgroundWoman, textSelectedWoman, bottomMan, backgroundMan, textSelectedMan)
         }
 
+        binding.btnNext.setOnClickListener {
+            NavigateNextPage(this)
+        }
     }
     private fun typeText(text: String, index: Int = 0) {
         if (index < text.length) {
@@ -118,6 +72,43 @@ class ActivitySelectgender : AppCompatActivity() {
                     handler.postDelayed(this, blinkDelay)
                 }
             })
+        }
+    }
+    private fun onToggleButtonChecked(
+        buttonView: CompoundButton,
+        isChecked: Boolean,
+        otherToggleButton: ToggleButton,
+        visibleView1: View,
+        visibleView2: View,
+        visibleView3: View,
+        invisibleView1: View,
+        invisibleView2: View,
+        invisibleView3: View
+    ) {
+        if (isChecked) {
+            if (!isZoomedIn) {
+                buttonView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.zoom_in))
+                isZoomedIn = true
+                visibleView1.visibility = View.VISIBLE
+                visibleView2.visibility = View.VISIBLE
+                visibleView3.visibility = View.VISIBLE
+                if (otherToggleButton.isChecked) {
+                    otherToggleButton.isChecked = false
+                    invisibleView1.visibility = View.INVISIBLE
+                    invisibleView2.visibility = View.INVISIBLE
+                    invisibleView3.visibility = View.INVISIBLE
+                }
+            }
+            val gender = getSelectedGender(binding.btnSelectman, binding.toggleButtonWoman)
+            Log.d("YourActivity", "Selected Gender: $gender")
+        } else {
+            if (isZoomedIn) {
+                buttonView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.zoom_out))
+                isZoomedIn = false
+                visibleView2.visibility = View.INVISIBLE
+                visibleView1.visibility = View.INVISIBLE
+                visibleView3.visibility = View.INVISIBLE
+            }
         }
     }
     private fun getSelectedGender(toggleButtonMan: ToggleButton, toggleButtonWoman: ToggleButton): String {
