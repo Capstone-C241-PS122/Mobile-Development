@@ -14,8 +14,9 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.grassterra.fitassist.ActivityInputHeight
+import com.grassterra.fitassist.ActivityInputWeight
 import com.grassterra.fitassist.R
+import com.grassterra.fitassist.database.user.Userdata
 import com.grassterra.fitassist.databinding.ActivitySelectgenderBinding
 
 class ActivitySelectgender : AppCompatActivity() {
@@ -27,11 +28,16 @@ class ActivitySelectgender : AppCompatActivity() {
     private val fullText = "What is your gender? \uD83D\uDC68 or \uD83D\uDC69 "
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
+    private lateinit var userData: Userdata
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivitySelectgenderBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        userData = intent.getParcelableExtra("userdata") ?: Userdata()
+
         cursorDrawable = resources.getDrawable(R.drawable.drawable_indicator, null)
         startBlinkingCursor()
         typeText(fullText)
@@ -113,15 +119,18 @@ class ActivitySelectgender : AppCompatActivity() {
     }
     private fun getSelectedGender(toggleButtonMan: ToggleButton, toggleButtonWoman: ToggleButton): String {
         return if (toggleButtonMan.isChecked) {
+            userData.gender = true
             "Man"
         } else if (toggleButtonWoman.isChecked) {
+            userData.gender = false
             "Woman"
         } else {
             "Unknown"
         }
     }
     private fun NavigateNextPage(context:Context){
-        val intent = Intent(context,ActivityInputHeight::class.java)
+        val intent = Intent(context, ActivityInputWeight::class.java)
+        intent.putExtra("userdata",userData)
         context.startActivity(intent)
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
     }
