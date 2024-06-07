@@ -66,7 +66,6 @@ class ActivityInputAge : AppCompatActivity() {
             userData.age = 18
         }
     }
-
     private fun NavigateNextPage(context: Context) {
         val intent = Intent(context,SelectExercise::class.java)
         intent.putExtra("userdata",userData)

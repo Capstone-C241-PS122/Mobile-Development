@@ -19,7 +19,6 @@ import com.grassterra.fitassist.databinding.ActivitySelectExerciseBinding
 import com.grassterra.fitassist.helper.ViewModelFactory
 import com.grassterra.fitassist.ui.LottieLoadingFragment
 import com.grassterra.fitassist.ui.MainMenu
-import com.grassterra.fitassist.ui.MainViewModel
 import com.grassterra.fitassist.ui.SelectExerciseViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -50,13 +49,9 @@ class SelectExercise : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySelectExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val selectExerciseViewModel = obtainViewModel(this@SelectExercise)
         userData = intent.getParcelableExtra("userdata") ?: Userdata()
         selectExerciseViewModel.clear()
-
-
-
         cursorDrawable = resources.getDrawable(R.drawable.drawable_indicator, null)
         toggleButtons.forEach { button ->
             button.setOnCheckedChangeListener { _, isChecked ->
