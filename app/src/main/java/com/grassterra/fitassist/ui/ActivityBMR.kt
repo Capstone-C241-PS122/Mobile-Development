@@ -1,8 +1,15 @@
 package com.grassterra.fitassist.ui
 
 import android.os.Bundle
+import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.grassterra.fitassist.databinding.ActivityBmrBinding
+import com.grassterra.fitassist.helper.ViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ActivityBMR : AppCompatActivity() {
     private lateinit var binding: ActivityBmrBinding
@@ -10,6 +17,10 @@ class ActivityBMR : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBmrBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val bmiViewModel = obtainViewModel(this@ActivityBMR)
+        setFields(bmiViewModel)
+
         binding.btnCalculate.setOnClickListener{
             calculateBMR()
         }
@@ -28,5 +39,26 @@ class ActivityBMR : AppCompatActivity() {
         val roundBmr = bmr.toInt()
 
         binding.resultTextView.text = "Hasil BMR: $roundBmr kalori per hari"
+    }
+
+    private fun setFields(bmiViewModel: BMIViewModel) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val height = bmiViewModel.getUser()?.height.toString()
+            val weight = bmiViewModel.getUser()?.weight.toString()
+            val age = bmiViewModel.getUser()?.age.toString()
+            val gender = if (bmiViewModel.getUser()?.gender == true) "pria" else "wanita"
+
+            withContext(Dispatchers.Main) {
+                binding.etHeight.text = Editable.Factory.getInstance().newEditable(height)
+                binding.etWeight.text = Editable.Factory.getInstance().newEditable(weight)
+                binding.etAge.text = Editable.Factory.getInstance().newEditable(age)
+                binding.etGender.text = Editable.Factory.getInstance().newEditable(gender)
+            }
+        }
+    }
+
+    private fun obtainViewModel(activity: AppCompatActivity): BMIViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory).get(BMIViewModel::class.java)
     }
 }
