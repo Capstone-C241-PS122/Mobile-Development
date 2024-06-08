@@ -282,6 +282,8 @@ class MainMenu : AppCompatActivity() {
             when (item.itemId) {
                 R.id.id_home -> selectedFragment = HomeFragment()
                 R.id.id_mybody -> selectedFragment = MyBodyFragment()
+                R.id.id_running -> selectedFragment = BurnCaloriesTrackerFragment()
+
             }
             if (selectedFragment != null) {
                 supportFragmentManager.beginTransaction().replace(R.id.idHostFragment, selectedFragment).commit()

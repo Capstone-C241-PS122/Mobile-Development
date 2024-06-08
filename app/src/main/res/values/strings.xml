@@ -46,4 +46,6 @@
     <string name="water_intake">Water Intake</string>
     <string name="calc_nutrition">Calculate Nutrition</string>
     <string name="header_mybody">Check your body</string>
+    //BurnCaloriesTracker
+    <string name="running_calories_tracker">Running Calories Tracker</string>
 </resources>
