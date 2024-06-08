@@ -15,7 +15,6 @@ class FavoriteExerciseRepository(application: Application) {
         val dbExercise = FavoriteExerciseRoomDatabase.getDatabase(application)
         mExerciseDao = dbExercise.favoriteExerciseDao()
     }
-
     fun insert(exercise: FavoriteExercise){
         executorService.execute{mExerciseDao.insert(exercise)}
     }

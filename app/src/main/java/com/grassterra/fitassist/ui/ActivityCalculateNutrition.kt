@@ -18,56 +18,41 @@ class ActivityCalculateNutrition : AppCompatActivity() {
         }
     }
     private fun resultCalculate() {
-        var makanan: String
-        var kaloripergram = 0.0
-        var proteinpergram = 0.0
-        var karbohidratpergram = 0.0
-        var lemakpergram = 0.0
+        var kalori100gram = 0.0
+        var protein100gram = 0.0
+        var karbohidrat100gram = 0.0
+        var lemak100gram = 0.0
         val df = DecimalFormat("#.##")
         val editTextFood = binding.editTextFood.text.toString()
 
         when (editTextFood.toLowerCase(Locale.getDefault())) {
             "dada ayam" -> {
-                kaloripergram = 1.95
-                proteinpergram = 0.3
-                karbohidratpergram = 0.0
-                lemakpergram = 0.08
+                kalori100gram = 195.0
+                protein100gram  = 30.0
+                karbohidrat100gram = 0.0
+                lemak100gram = 8.0
             }
             "wortel" -> {
-                kaloripergram = 0.41
-                proteinpergram = 0.0093
-                karbohidratpergram = 0.0958
-                lemakpergram = 0.0024
+                kalori100gram  = 41.0
+                protein100gram = 0.93
+                karbohidrat100gram = 9.58
+                lemak100gram = 0.24
             }
-            "dada ayam tanpa kulit dan tulang dengan dikukus" -> {
-                kaloripergram = 1.45
-                proteinpergram = 0.29
-                karbohidratpergram = 0.0858
-                lemakpergram = 0.03
-            }
-            "bayam" -> {
-                kaloripergram = 0.23
-                proteinpergram = 0.0286
-                karbohidratpergram = 0.0363
-                lemakpergram = 0.0039
-            }
-            "udang" -> {
-                kaloripergram = 1.44
-                proteinpergram = 0.2759
-                karbohidratpergram = 0.0124
-                lemakpergram = 0.0235
-            }
+
             else -> {
                 binding.textViewResult.text = "Makanan tidak ditemukan."
                 return
             }
         }
-
         val makananpergram = binding.editTextWeight.text.toString().toInt()
-        val hasilkalori = makananpergram * kaloripergram
-        val hasilprotein = makananpergram * proteinpergram
-        val hasilkarbohidrat = makananpergram * karbohidratpergram
-        val hasillemak = makananpergram * lemakpergram
+        val dibagiPergramKalori = kalori100gram / 100
+        val dibagiPergramProtein = protein100gram / 100
+        val dibagiPergramLemak = lemak100gram / 100
+        val dibagiPergramKarbohidrat = karbohidrat100gram / 100
+        val hasilkalori = makananpergram * dibagiPergramKalori
+        val hasilprotein = makananpergram * dibagiPergramProtein
+        val hasilkarbohidrat = makananpergram * dibagiPergramKarbohidrat
+        val hasillemak = makananpergram * dibagiPergramLemak
 
         val formattedKalori = df.format(hasilkalori)
         val formattedProtein = df.format(hasilprotein)
