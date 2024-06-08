@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation ("androidx.fragment:fragment-ktx:1.7.1")
     implementation ("com.airbnb.android:lottie:3.7.0")
     implementation("androidx.core:core-ktx:1.13.1")
@@ -62,6 +63,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.5.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
     ksp("androidx.room:room-compiler:2.5.2")
     implementation("androidx.compose.animation:animation-core-android:1.6.7")
     testImplementation("junit:junit:4.13.2")

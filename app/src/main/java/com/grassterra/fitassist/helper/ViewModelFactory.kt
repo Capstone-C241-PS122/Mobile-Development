@@ -3,6 +3,7 @@ package com.grassterra.fitassist.helper
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.grassterra.fitassist.ui.BMIViewModel
 import com.grassterra.fitassist.ui.MainViewModel
 import com.grassterra.fitassist.ui.SelectExerciseViewModel
 
@@ -28,6 +29,9 @@ class ViewModelFactory private constructor(private val mApplication: Application
         }
         else if (modelClass.isAssignableFrom(SelectExerciseViewModel::class.java)) {
             return SelectExerciseViewModel(mApplication) as T
+        }
+        else if (modelClass.isAssignableFrom(BMIViewModel::class.java)) {
+            return BMIViewModel(mApplication) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

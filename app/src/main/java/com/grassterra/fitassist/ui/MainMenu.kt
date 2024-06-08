@@ -189,7 +189,6 @@ class MainMenu : AppCompatActivity() {
                 override fun onError(error: String) {
                     Log.d("MainMenu", "classifier error!")
                 }
-
                 override fun onResults(results: TensorBuffer) {
                     val outputArray = results.floatArray
 

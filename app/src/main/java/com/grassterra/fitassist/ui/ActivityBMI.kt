@@ -1,9 +1,15 @@
 package com.grassterra.fitassist.ui
 
 import android.os.Bundle
+import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.ActivityBmiBinding
+import com.grassterra.fitassist.helper.ViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ActivityBMI : AppCompatActivity() {
     private lateinit var binding:ActivityBmiBinding
@@ -11,6 +17,9 @@ class ActivityBMI : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBmiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val bmiViewModel = obtainViewModel(this@ActivityBMI)
+        setFields(bmiViewModel)
 
         binding.btnCalculate.setOnClickListener {
             calculateBMI()
@@ -24,6 +33,14 @@ class ActivityBMI : AppCompatActivity() {
         binding.etWeight.text.clear()
         binding.tvResult.text = ""
         binding.imgResult.setImageResource(0)
+    }
+    private fun setFields(bmiViewModel: BMIViewModel){
+        lifecycleScope.launch(Dispatchers.IO){
+            val height = bmiViewModel.getUser()?.height.toString()
+            val weight = bmiViewModel.getUser()?.weight.toString()
+            binding.etHeight.text = Editable.Factory.getInstance().newEditable(height)
+            binding.etWeight.text = Editable.Factory.getInstance().newEditable(weight)
+        }
     }
     private fun calculateBMI() {
         val heightStr = binding.etHeight.text.toString()
@@ -62,5 +79,10 @@ class ActivityBMI : AppCompatActivity() {
             binding.tvResult.text = String.format("BMI: %.2f (%s)", bmi, bmiCategory)
             binding.imgResult.setImageResource(imgResource)
         }
+    }
+
+    private fun obtainViewModel(activity: AppCompatActivity): BMIViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory).get(BMIViewModel::class.java)
     }
 }

@@ -105,7 +105,6 @@ class SelectExercise : AppCompatActivity() {
             NavigateNextPage(context)
         }
     }
-
     private fun updateTextColor(button: ToggleButton, isChecked: Boolean) {
         val color = if (isChecked) {
             ContextCompat.getColor(this, R.color.background)
