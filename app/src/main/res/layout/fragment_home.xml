@@ -12,21 +12,55 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp">
-
+            android:layout_height="350dp">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/top_background"
                 android:scaleType="centerCrop" />
-
             <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="350dp"
                 android:background="#80000000" />
 
+            <TextView
+                android:id="@+id/textHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/opensans_bold"
+                android:text="@string/title_homepage"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="100dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/blink_button_primary"/>
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/button_homepage"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/background"
+                android:background="@drawable/button_primary"/>
             <ImageButton
-                android:id="@+id/btnSetting"
+                android:id="@+id/btnUser"
                 android:scrollbarFadeDuration="@integer/material_motion_duration_long_1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -36,55 +70,22 @@
                 android:layout_gravity="end"
                 android:background="@drawable/backround_button" />
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="15dp"
-                android:layout_gravity="center"
-                android:background="@drawable/backround_button" />
-
-            <TextView
-                android:id="@+id/weatherTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
-                android:text=""
-                android:textSize="16sp" />
-
-            <ImageView
-                android:id="@+id/iconWeather"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="15dp"
-                tools:src="@tools:sample/avatars" />
-
         </FrameLayout>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recommended for you"
+            android:textSize="16sp"
+            android:layout_margin="15dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"/>
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:layout_margin="16dp"
+            android:layout_margin="15dp"
             android:elevation="8dp"
             android:iconifiedByDefault="false"
-            android:queryHint="Search here..."/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="100dp"
-            android:visibility="visible"
-            android:nestedScrollingEnabled="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            android:queryHint="Search here..."/>
     </LinearLayout>
 </FrameLayout>
