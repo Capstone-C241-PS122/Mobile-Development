@@ -173,7 +173,8 @@ class MainMenu : AppCompatActivity() {
             if (selectedImageUri != null) {
                 Log.d("MainMenu", result.toString())
                 if (result != null) {
-                    moveToDetailActivity(selectedImageUri, result)
+//                    moveToDetailActivity(selectedImageUri, result)
+                    moveToDetailActivity(Uri.fromFile(file), result)
                 }
             }
         } else if (requestCode == CAPTURE_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {

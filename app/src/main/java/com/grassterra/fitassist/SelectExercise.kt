@@ -57,11 +57,11 @@ class SelectExercise : AppCompatActivity() {
             button.setOnCheckedChangeListener { _, isChecked ->
                 updateTextColor(button, isChecked)
                 if (isChecked) {
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        selectExerciseViewModel.toggle(button.text.toString())
-                        Log.d("ToggleButton", "${button.text} is checked")
-                        Log.d("ToggleButton", selectExerciseViewModel.getAll().toString())
-                    }
+                    Log.d("ToggleButton", "${button.text} is checked")
+                }
+                lifecycleScope.launch(Dispatchers.IO) {
+                    selectExerciseViewModel.toggle(button.text.toString())
+                    Log.d("ToggleButton", selectExerciseViewModel.getAll().toString())
                 }
             }
             updateTextColor(button, button.isChecked)
