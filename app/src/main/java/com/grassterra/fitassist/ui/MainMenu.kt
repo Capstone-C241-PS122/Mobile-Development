@@ -34,7 +34,8 @@ import com.grassterra.fitassist.databinding.AlertDialogBinding
 import com.grassterra.fitassist.helper.ImageClassifierHelper
 import com.grassterra.fitassist.helper.ParcelableMap
 import com.grassterra.fitassist.helper.ViewModelFactory
-import com.grassterra.fitassist.helper.compressImageFile
+import com.grassterra.fitassist.helper.reshapeAndNormalizeImageFile
+import com.grassterra.fitassist.helper.resizeImageFile
 import com.grassterra.fitassist.helper.uriToFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -166,22 +167,26 @@ class MainMenu : AppCompatActivity() {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val selectedImageUri = data.data
-            val compressedFile =
-                selectedImageUri?.let { uriToFile(this, it)?.let { compressImageFile(it, 2) } }
-            val result = analyzeImage(Uri.fromFile(compressedFile))
+            val file = selectedImageUri?.let { uriToFile(this, it)?.let { resizeImageFile(it) } }
+            val tensor = file?.let { reshapeAndNormalizeImageFile(it) }
+            val result = tensor?.let { analyzeImage(it) }
             if (selectedImageUri != null) {
                 Log.d("MainMenu", result.toString())
-                moveToDetailActivity(Uri.fromFile(compressedFile), result)
+                if (result != null) {
+                    moveToDetailActivity(selectedImageUri, result)
+                }
             }
         } else if (requestCode == CAPTURE_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
-            val file = File(currentPhotoPath)
-            val compressedFile = compressImageFile(file, 2)
-            val result = analyzeImage(Uri.fromFile(compressedFile))
-            moveToDetailActivity(Uri.fromFile(compressedFile), result)
+            val file = resizeImageFile(File(currentPhotoPath))
+            val tensor = file?.let { reshapeAndNormalizeImageFile(it) }
+            val result = tensor?.let { analyzeImage(it) }
+            if (result != null) {
+                moveToDetailActivity(Uri.fromFile(file), result)
+            }
         }
     }
 
-    private fun analyzeImage(imageUri: Uri): Map<String, Float> {
+    private fun analyzeImage(normalizedBitmap: Array<Array<Array<FloatArray>>>): Map<String, Float> {
         var res: Map<String, Float> = emptyMap()
         imageClassifierHelper = ImageClassifierHelper(
             context = this,
@@ -189,6 +194,7 @@ class MainMenu : AppCompatActivity() {
                 override fun onError(error: String) {
                     Log.d("MainMenu", "classifier error!")
                 }
+
                 override fun onResults(results: TensorBuffer) {
                     val outputArray = results.floatArray
 
@@ -217,9 +223,49 @@ class MainMenu : AppCompatActivity() {
                 }
             }
         )
-        imageClassifierHelper.classifyStaticImage(imageUri)
+        imageClassifierHelper.classifyNormalizedBitmap(normalizedBitmap)
         return res
     }
+
+//    private fun analyzeImage(imageUri: Uri): Map<String, Float> {
+//        var res: Map<String, Float> = emptyMap()
+//        imageClassifierHelper = ImageClassifierHelper(
+//            context = this,
+//            classifierListener = object : ImageClassifierHelper.ClassifierListener {
+//                override fun onError(error: String) {
+//                    Log.d("MainMenu", "classifier error!")
+//                }
+//                override fun onResults(results: TensorBuffer) {
+//                    val outputArray = results.floatArray
+//
+//                    // Utilize predefined list of labels
+//                    val classLabels = arrayOf(
+//                        "cable_machine",
+//                        "calfraise_machine",
+//                        "chestfly_machine",
+//                        "elliptical_trainer",
+//                        "hacksquat_machine",
+//                        "hyperextension_bench",
+//                        "latpulldown_machine",
+//                        "legcurl_machine",
+//                        "legpress_machine",
+//                        "rotarycalf_machine",
+//                        "rowing_machine",
+//                        "shoulder_press",
+//                        "smith_machine"
+//                    )
+//
+//                    // Create a map of class labels to their corresponding output values
+//                    val resultMap = outputArray.indices.associate { classLabels[it] to outputArray[it] }
+//
+//                    // Sort the map by values in descending order
+//                    res = resultMap.entries.sortedByDescending { it.value }.associate { it.toPair() }
+//                }
+//            }
+//        )
+//        imageClassifierHelper.classifyStaticImage(imageUri)
+//        return res
+//    }
 
 
     private fun moveToDetailActivity(imageUri: Uri, map: Map<String, Float>){
