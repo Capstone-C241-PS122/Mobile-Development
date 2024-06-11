@@ -3,7 +3,9 @@ package com.grassterra.fitassist.helper
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.net.Uri
+import android.util.Log
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -54,28 +56,40 @@ fun saveBitmapToFile(bitmap: Bitmap, file: File) {
     }
 }
 
-fun reshapeAndNormalizeImageFile(file: File): Array<Array<Array<FloatArray>>>? {
+fun reshapeAndNormalizeImageFile(file: File): ByteBuffer? {
     // Decode the image file into a Bitmap
     val bitmap = BitmapFactory.decodeFile(file.absolutePath) ?: return null
 
     // Resize the Bitmap to 224x224
     val resizedBitmap = resizeBitmap(bitmap, 224, 224)
 
-    // Normalize the Bitmap and convert it to the desired tensor format
-    return convertBitmapToNormalizedTensor(resizedBitmap)
+    // Normalize the Bitmap and convert it to ByteBuffer
+    return convertBitmapToNormalizedByteBuffer(resizedBitmap)
 }
 
-fun convertBitmapToNormalizedTensor(bitmap: Bitmap): Array<Array<Array<FloatArray>>> {
-    val tensor = Array(1) { Array(224) { Array(224) { FloatArray(3) } } }
+fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
+    val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
     for (y in 0 until 224) {
         for (x in 0 until 224) {
-            val pixel = bitmap.getPixel(x, y)
-            tensor[0][y][x][0] = ((pixel shr 16) and 0xFF) / 127.5f - 1 // Red channel
-            tensor[0][y][x][1] = ((pixel shr 8) and 0xFF) / 127.5f - 1 // Green channel
-            tensor[0][y][x][2] = (pixel and 0xFF) / 127.5f - 1 // Blue channel
+            val px = bitmap.getPixel(x, y)
+
+            // Get channel values from the pixel value.
+            val r = Color.red(px)
+            val g = Color.green(px)
+            val b = Color.blue(px)
+
+            // Normalize channel values to [-1.0, 1.0].
+            val rf = (r - 127) / 255f
+            val gf = (g - 127) / 255f
+            val bf = (b - 127) / 255f
+
+            input.putFloat(rf)
+            input.putFloat(gf)
+            input.putFloat(bf)
         }
     }
-    return tensor
+    Log.d("ByteBuffer", input.toString())
+    return input
 }
 
 //fun compressAndResizeImageFile(file: File, maxSizeMB: Int = 1): File? {

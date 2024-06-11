@@ -5,7 +5,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -167,27 +170,22 @@ class MainMenu : AppCompatActivity() {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             val selectedImageUri = data.data
-            val file = selectedImageUri?.let { uriToFile(this, it)?.let { resizeImageFile(it) } }
-            val tensor = file?.let { reshapeAndNormalizeImageFile(it) }
-            val result = tensor?.let { analyzeImage(it) }
+            val result = selectedImageUri?.let { analyzeImage(it) }
             if (selectedImageUri != null) {
                 Log.d("MainMenu", result.toString())
                 if (result != null) {
 //                    moveToDetailActivity(selectedImageUri, result)
-                    moveToDetailActivity(Uri.fromFile(file), result)
+                    moveToDetailActivity(selectedImageUri, result)
                 }
             }
         } else if (requestCode == CAPTURE_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
-            val file = resizeImageFile(File(currentPhotoPath))
-            val tensor = file?.let { reshapeAndNormalizeImageFile(it) }
-            val result = tensor?.let { analyzeImage(it) }
-            if (result != null) {
-                moveToDetailActivity(Uri.fromFile(file), result)
-            }
+            val file = File(currentPhotoPath)
+            val result = analyzeImage(Uri.fromFile(file))
+            moveToDetailActivity(Uri.fromFile(file), result)
         }
     }
 
-    private fun analyzeImage(normalizedBitmap: Array<Array<Array<FloatArray>>>): Map<String, Float> {
+    private fun analyzeImage(imageUri: Uri): Map<String, Float> {
         var res: Map<String, Float> = emptyMap()
         imageClassifierHelper = ImageClassifierHelper(
             context = this,
@@ -224,9 +222,35 @@ class MainMenu : AppCompatActivity() {
                 }
             }
         )
-        imageClassifierHelper.classifyNormalizedBitmap(normalizedBitmap)
+
+        val bitmap = loadImageAsBitmap(imageUri)
+        bitmap?.let {
+            imageClassifierHelper.classifyStaticImage(it)
+        }
+
         return res
     }
+
+    private fun loadImageAsBitmap(imageUri: Uri): Bitmap? {
+        return try {
+            val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                val source = ImageDecoder.createSource(contentResolver, imageUri)
+                ImageDecoder.decodeBitmap(source)
+            } else {
+                MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
+            }
+
+            // Ensure the bitmap is in a mutable format that supports pixel access
+            bitmap.copy(Bitmap.Config.ARGB_8888, true)?.let {
+                Bitmap.createScaledBitmap(it, 224, 224, true)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+
 
 //    private fun analyzeImage(imageUri: Uri): Map<String, Float> {
 //        var res: Map<String, Float> = emptyMap()
