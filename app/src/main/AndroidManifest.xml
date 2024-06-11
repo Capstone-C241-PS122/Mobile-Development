@@ -23,9 +23,6 @@
             android:name=".ui.ActivityDetailsArticle"
             android:exported="false" />
         <activity
-            android:name=".TestFitur.RuntTrackerActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.ActivityCalculateNutrition"
             android:exported="false" />
         <activity
