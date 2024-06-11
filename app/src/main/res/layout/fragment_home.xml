@@ -47,7 +47,7 @@
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/blink_button_primary"/>
             <Button
-                android:layout_width="200dp"
+                android:layout_width="220dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
@@ -55,9 +55,10 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/button_homepage"
                 android:textAllCaps="false"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:drawableEnd="@drawable/chevron_right_24px"
                 android:background="@drawable/button_primary"/>
             <ImageButton
                 android:id="@+id/btnUser"

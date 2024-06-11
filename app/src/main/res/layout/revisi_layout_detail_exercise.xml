@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="450dp">
+
+            <ImageView
+                android:id="@+id/resultImage"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/example_input" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:background="@drawable/view_gradient_detail" />
+
+            <TextView
+                android:id="@+id/idNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_gravity="bottom"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:text="Name Equipment" />
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/backround_button"
+                android:scrollbarFadeDuration="@integer/material_motion_duration_long_1"
+                android:src="@drawable/close_24px" />
+        </FrameLayout>
+        <TextView
+            android:id="@+id/textDescriptionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorTextDescription"
+            android:fontFamily="@font/roboto_reguler"
+            android:text="Dumbbells or dumbbells are fitness tools used for strength training. It is a type of free weight consisting of a short rod that usually has two equal weights at either end. Dumbbells can be used for a variety of exercises that target different muscle groups, including the arms, shoulders, chest, back, and legs." />
+    </LinearLayout>
+</ScrollView>
+

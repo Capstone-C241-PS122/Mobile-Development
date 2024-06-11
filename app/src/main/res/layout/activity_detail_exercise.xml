@@ -1,62 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".ui.DetailExerciseActivity">
+    android:background="@color/background">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    </com.google.android.material.appbar.AppBarLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="510dp">
-
-                <ImageView
-                    android:id="@+id/resultImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="510dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/example_input" />
-
-                <ImageButton
-                    android:id="@+id/btnBack"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="35dp"
-                    android:layout_marginTop="35dp"
-                    android:background="@drawable/backround_button"
-                    android:scrollbarFadeDuration="@integer/material_motion_duration_long_1"
-                    android:src="@drawable/close_24px" />
-            </FrameLayout>
-        </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/idNameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:text="Dumbell" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="450dp">
+
+                <ImageView
+                    android:id="@+id/resultImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/example_input" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:background="@drawable/view_gradient_detail" />
+
+                <TextView
+                    android:id="@+id/idNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_gravity="bottom"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/backgroundWhilepressed"
+                    android:textSize="24sp"
+                    android:text="Hacksquat Machine" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="#FF8CB6" />
+
+            </FrameLayout>
             <TextView
                 android:id="@+id/textDescriptionLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -65,24 +70,91 @@
                 android:fontFamily="@font/roboto_reguler"
                 android:text="Dumbbells or dumbbells are fitness tools used for strength training. It is a type of free weight consisting of a short rod that usually has two equal weights at either end. Dumbbells can be used for a variety of exercises that target different muscle groups, including the arms, shoulders, chest, back, and legs." />
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:textSize="18sp"
-                android:text="Focus Area" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:padding="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:textSize="16sp"
-                android:textColor="@color/colorTextDescription"
                 android:fontFamily="@font/roboto_reguler"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+                android:textColor="@color/colorTextDescription"
+                android:text="The hack squat machine is an exercise tool used to strengthen and develop leg muscles, particularly the quadriceps, hamstrings, and gluteus. With a supported body position and controlled movement, the hack squat allows users to press down on a platform with their feet in a movement resembling a traditional squat, but with the weight directed vertically. It helps increase leg strength and muscle mass by reducing pressure on the upper body, making it suitable for a focused and safe leg workout."/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:textSize="18sp"
+                android:text="Video Tutorial"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/backgroundWhilepressed"/>
+            <ImageButton
+                android:id="@+id/playVideo"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:src="@drawable/play_circle_24px"
+                android:background="@color/background_card"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="15dp">
+                <TextView
+                    android:id="@+id/name_exercise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hack Squat"
+                    android:textSize="18sp"
+                    android:layout_gravity="top"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/backgroundWhilepressed"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Body Part:"
+                    android:textSize="18sp"
+                    android:layout_marginTop="35dp"
+                    android:layout_gravity="top"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/colorTextDescription"/>
+                <TextView
+                    android:id="@+id/bodyPart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Glutes, Quadrisep"
+                    android:textSize="18sp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_gravity="top"
+                    android:fontFamily="@font/roboto_reguler"
+                    android:textColor="@color/colorTextDescription"/>
+                
+            </FrameLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </androidx.core.widget.NestedScrollView>
+    <View
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/background"
+        android:elevation="4dp"
+        android:visibility="invisible"
+        app:layout_anchor="@id/appBarLayout"
+        app:layout_anchorGravity="bottom" />
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="35dp"
+        android:background="@android:color/transparent"
+        android:elevation="4dp"
+        android:src="@drawable/close_24px"
+        android:scaleType="fitXY"
+        app:layout_anchor="@id/appBarLayout"
+        app:layout_anchorGravity="start|top" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

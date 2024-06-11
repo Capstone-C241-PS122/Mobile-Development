@@ -12,9 +12,4 @@
         android:id="@+id/id_mybody"
         android:icon="@drawable/conditions_24px"
         android:title="@string/menu_mybody" />
-    <item
-        android:enabled="false"
-        android:visible="true"
-        android:title="" />
-
 </menu>
