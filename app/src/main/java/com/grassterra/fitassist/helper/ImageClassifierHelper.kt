@@ -11,6 +11,7 @@ import android.util.Log
 import com.grassterra.fitassist.R
 import com.grassterra.fitassist.ml.GymClassification
 import org.tensorflow.lite.DataType
+import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.support.common.ops.CastOp
 import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
@@ -19,6 +20,7 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import org.tensorflow.lite.task.core.BaseOptions
 import org.tensorflow.lite.task.vision.classifier.Classifications
 import org.tensorflow.lite.task.vision.classifier.ImageClassifier
+import java.io.File
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
@@ -72,12 +74,6 @@ class ImageClassifierHelper(
         private const val TAG = "ImageClassifierHelper"
     }
 }
-
-
-
-
-
-
 
 //class ImageClassifierHelper(
 //    val modelName: String = "gym_classification.tflite",

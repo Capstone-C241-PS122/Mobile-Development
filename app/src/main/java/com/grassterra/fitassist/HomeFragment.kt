@@ -1,16 +1,27 @@
 package com.grassterra.fitassist
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.grassterra.fitassist.databinding.FragmentHomeBinding
+import com.grassterra.fitassist.ui.MainMenu
+import java.io.File
+import java.io.IOException
 
 class HomeFragment : Fragment() {
+    private val CAPTURE_IMAGE_REQUEST = 2
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -35,6 +46,14 @@ class HomeFragment : Fragment() {
         }
         val searchIcon: ImageView? = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
         val closeIcon: ImageView? = searchView.findViewById(androidx.appcompat.R.id.search_close_btn)
+
+//        binding.btnScan.setOnClickListener {
+//            if (checkPermission(Manifest.permission.CAMERA)) {
+//                startCamera()
+//            } else {
+//                requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+//            }
+//        }
         searchIcon?.setOnClickListener {
             searchView.setQuery("", false)
             searchView.clearFocus()
@@ -70,6 +89,33 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+//    private fun startCamera() {
+//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//        var photoFile: File? = null
+//        try {
+//            photoFile = createImageFile()
+//        } catch (ex: IOException) {
+//            ex.printStackTrace()
+//        }
+//        if (photoFile != null) {
+//            val photoURI = FileProvider.getUriForFile(this, "com.grassterra.fitassist.fileprovider", photoFile)
+//            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+//            startActivityForResult(intent, CAPTURE_IMAGE_REQUEST)
+//        }
+//    }
+//
+//    private fun checkPermission(permission: String): Boolean {
+//        return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+//    }
+//
+//    private val requestPermissionLauncher = registerForActivityResult(
+//        ActivityResultContracts.RequestPermission()
+//    ) { isGranted: Boolean ->
+//        if (!isGranted) {
+//            Log.d("req", "denied")
+//        }
+//    }
 
 
 }
