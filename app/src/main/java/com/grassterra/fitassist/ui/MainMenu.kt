@@ -202,7 +202,7 @@ class MainMenu : AppCompatActivity() {
                     // Utilize predefined list of labels
                     val classLabels = arrayOf(
                         "cable_machine",
-                        "calfraise_machine",
+                        "calf_raise_machine",
                         "chestfly_machine",
                         "elliptical_trainer",
                         "hacksquat_machine",

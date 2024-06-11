@@ -60,9 +60,8 @@ class BurnCaloriesTrackerFragment : Fragment() {
 
     private fun updateStopwatchDisplay() {
         val seconds = (elapsedTime / 1000) % 60
-        val minutes = (elapsedTime / (1000 * 60)) % 60
-        val hours = (elapsedTime / (1000 * 60 * 60)) % 24
-        binding.tvStopwatch.text = String.format("%02d:%02d:%02d", hours, minutes, seconds)
+        val minutes = (elapsedTime / (1000 * 60)) % 6
+        binding.tvStopwatch.text = String.format("%02d:%02d", minutes, seconds)
     }
 
     private fun startOrResumeStopwatch() {
@@ -77,7 +76,6 @@ class BurnCaloriesTrackerFragment : Fragment() {
             binding.btnStopwatch.text = "Stop"
         }
     }
-
     private fun stopStopwatch() {
         if (isRunningNow) {
             isRunningNow = false
