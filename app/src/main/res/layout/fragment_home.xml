@@ -47,6 +47,7 @@
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/blink_button_primary"/>
             <Button
+                android:id="@+id/btnScan"
                 android:layout_width="220dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
