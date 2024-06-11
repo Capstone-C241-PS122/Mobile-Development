@@ -1,7 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="280dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/background">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/textureViewVideo"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:background="@color/background_card"
+            android:src="@drawable/play_circle_24px"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/tvDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="18dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_reguler"
+            android:text="00:01:00"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvNameExercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:text="Hacksquat"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/tvBodyPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginStart="15dp"
+            android:text="Body part: Biceps"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_reguler"
+            android:textColor="@color/colorTextgrey"/>
+        <TextView
+            android:id="@+id/tvHackSquat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:layout_marginStart="15dp"
+            android:text="Equiqment: Hacksquat Machine"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_reguler"
+            android:textColor="@color/colorTextgrey"/>
+    </FrameLayout>
 </LinearLayout>

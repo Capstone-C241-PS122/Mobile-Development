@@ -34,23 +34,32 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:layout_gravity="bottom"
-            android:background="@drawable/navigation_bottom"
+            android:background="@color/backgroundNavigationBottom"
             app:itemIconSize="24dp"
             app:itemIconTint="@drawable/selector_icon_nav"
             app:itemTextColor="@drawable/selector_icon_nav"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/menu_navigation" />
-
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="135dp"
+            android:layout_marginEnd="15dp"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/blink_button_utama"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
         <ImageButton
             android:id="@+id/btnupload"
             android:layout_width="67dp"
             android:layout_height="67dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="150dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/button_upload"
-            android:src="@drawable/add_24px"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/icon_scan_equipment"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

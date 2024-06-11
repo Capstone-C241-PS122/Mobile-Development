@@ -25,9 +25,7 @@ class ActivityInputHeight : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInputHeightBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         userData = intent.getParcelableExtra("userdata") ?: Userdata()
-
         cursorDrawable = resources.getDrawable(R.drawable.drawable_indicator, null)
         startBlinkingCursor()
         binding.numberPicker.apply {

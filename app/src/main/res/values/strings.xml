@@ -7,7 +7,6 @@
     //list menu
     <string name="menu_mybody">My body</string>
     <string name="menu_home">Home</string>
-
     <string name="select_gender">Select Your Gender</string>
     <string name="woman">Woman</string>
     <string name="man">Man</string>
@@ -48,4 +47,8 @@
     <string name="header_mybody">Check your body</string>
     //BurnCaloriesTracker
     <string name="running_calories_tracker">Running Calories Tracker</string>
+    //HomePage
+    <string name="button_homepage">Scan Gym Equipment</string>
+    <string name="title_homepage">Classify Gym and Fitness Equipment Quickly and Easily</string>
+    <string name="description_homepage">Get information about each tool, including how to use it and its benefits</string>
 </resources>

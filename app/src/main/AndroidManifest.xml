@@ -23,9 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".TestFitur.RuntTrackerActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".ui.ActivityDetailsArticle"
+            android:exported="false" />
         <activity
             android:name=".ui.ActivityCalculateNutrition"
             android:exported="false" />
