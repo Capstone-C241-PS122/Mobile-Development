@@ -2,6 +2,7 @@ package com.grassterra.fitassist.helper
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
@@ -48,27 +49,15 @@ class ImageClassifierHelper(
         }
     }
 
-    fun classifyNormalizedBitmap(normalizedBitmap: Array<Array<Array<FloatArray>>>) {
+    fun classifyStaticImage(bitmap: Bitmap) {
         if (gymClassifier == null) {
             setupGymClassifier()
         }
 
-        // Create input feature from the normalized bitmap
+        val normalizedInput = convertBitmapToNormalizedByteBuffer(bitmap)
+
         val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
-
-        // Populate the TensorBuffer with the normalized bitmap values
-        val byteBuffer = ByteBuffer.allocateDirect(1 * 224 * 224 * 3 * 4)  // 4 bytes for each float value
-        byteBuffer.order(ByteOrder.nativeOrder())
-
-        for (y in 0 until 224) {
-            for (x in 0 until 224) {
-                for (c in 0..2) {
-                    byteBuffer.putFloat(normalizedBitmap[0][y][x][c])
-                }
-            }
-        }
-
-        inputFeature0.loadBuffer(byteBuffer)
+        inputFeature0.loadBuffer(normalizedInput)
 
         // Run inference
         val outputs = gymClassifier?.process(inputFeature0)
@@ -77,15 +66,13 @@ class ImageClassifierHelper(
         outputFeature0?.let { buffer ->
             classifierListener?.onResults(buffer)
         }
-
-        // Release the model resources
-        gymClassifier?.close()
     }
 
     companion object {
         private const val TAG = "ImageClassifierHelper"
     }
 }
+
 
 
 
