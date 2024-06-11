@@ -2,9 +2,14 @@ package com.grassterra.fitassist
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
+import android.widget.EditText
+import android.widget.NumberPicker
 import androidx.appcompat.app.AppCompatActivity
 import com.grassterra.fitassist.database.user.Userdata
 import com.grassterra.fitassist.databinding.ActivityInputWeightBinding
@@ -35,12 +40,49 @@ class ActivityInputWeight : AppCompatActivity() {
             setOnValueChangedListener { _, _, newVal ->
                 userData.weight = newVal
             }
+            setNumberPickerTextColor(this, Color.WHITE)
+            setNumberPickerDividerColor(this, Color.WHITE)
         }
         binding.btnNext.setOnClickListener {
             nullCheck(userData)
             NavigateNextPage(this)
         }
         typeText(fullText)
+    }
+    private fun setNumberPickerTextColor(numberPicker: NumberPicker, color: Int) {
+        try {
+            val fields = NumberPicker::class.java.declaredFields
+            for (field in fields) {
+                if (field.name == "mSelectorWheelPaint") {
+                    field.isAccessible = true
+                    val paint = field.get(numberPicker) as Paint
+                    paint.color = color
+                    numberPicker.invalidate()
+                }
+                if (field.name == "mInputText") {
+                    field.isAccessible = true
+                    val inputText = field.get(numberPicker) as EditText
+                    inputText.setTextColor(color)
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun setNumberPickerDividerColor(numberPicker: NumberPicker, color: Int) {
+        try {
+            val fields = NumberPicker::class.java.declaredFields
+            for (field in fields) {
+                if (field.name == "mSelectionDivider") {
+                    field.isAccessible = true
+                    field.set(numberPicker, ColorDrawable(color))
+                    numberPicker.invalidate()
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun typeText(text: String, index: Int = 0) {

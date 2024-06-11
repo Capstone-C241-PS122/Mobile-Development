@@ -34,7 +34,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/backgroundNavigationBottom"
             app:itemIconSize="24dp"
@@ -45,7 +45,7 @@
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginBottom="135dp"
+            android:layout_marginBottom="130dp"
             android:layout_marginEnd="15dp"
             app:lottie_loop="true"
             app:lottie_autoPlay="true"
@@ -56,7 +56,7 @@
             android:id="@+id/btnupload"
             android:layout_width="67dp"
             android:layout_height="67dp"
-            android:layout_marginBottom="150dp"
+            android:layout_marginBottom="140dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/button_upload"
             android:src="@drawable/icon_scan_equipment"
