@@ -10,7 +10,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="370dp">
-
         <ImageView
             android:id="@+id/resultImage"
             android:layout_width="match_parent"

@@ -6,8 +6,6 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.util.Log
-import org.tensorflow.lite.Interpreter
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -68,6 +66,31 @@ fun reshapeAndNormalizeImageFile(file: File): ByteBuffer? {
     return convertBitmapToNormalizedByteBuffer(resizedBitmap)
 }
 
+<<<<<<< HEAD
+fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
+    val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
+    for (y in 0 until 224) {
+        for (x in 0 until 224) {
+            val px = bitmap.getPixel(x, y)
+            // Get channel values from the pixel value.
+            val r = Color.red(px)
+            val g = Color.green(px)
+            val b = Color.blue(px)
+            // Normalize channel values to [-1.0, 1.0].
+            val rf = (r / 127.5f) - 1.0f
+            val gf = (g / 127.5f) - 1.0f
+            val bf = (b / 127.5f) - 1.0f
+
+            input.putFloat(rf)
+            input.putFloat(gf)
+            input.putFloat(bf)
+        }
+    }
+    return input
+}
+
+=======
+>>>>>>> 325f22aa092c843a72f529800cc16a6fe736686d
 //fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
 //    val inputShape = intArrayOf(1, 224, 224, 3) // Assuming input shape is [1, 224, 224, 3]
 //    val input = ByteBuffer.allocateDirect(inputShape[0] * inputShape[1] * inputShape[2] * inputShape[3] * 4).order(ByteOrder.nativeOrder())
