@@ -55,7 +55,7 @@
             android:fontFamily="@font/roboto_reguler"
             android:textColor="@color/colorTextgrey"/>
         <TextView
-            android:id="@+id/tvHackSquat"
+            android:id="@+id/tvEquipment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"

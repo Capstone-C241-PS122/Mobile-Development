@@ -85,8 +85,13 @@ class MainMenu : AppCompatActivity() {
                 }
             }
         } else {
-            //TODO: MOVE TO MAINACTIVITY
+            //back to MainActivity to fill user data
             userData = Userdata()
+            if(mainViewModel.isEmpty()){
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
         binding.btnupload.setOnClickListener {
@@ -174,7 +179,6 @@ class MainMenu : AppCompatActivity() {
             if (selectedImageUri != null) {
                 Log.d("MainMenu", result.toString())
                 if (result != null) {
-//                    moveToDetailActivity(selectedImageUri, result)
                     moveToDetailActivity(selectedImageUri, result)
                 }
             }
