@@ -58,24 +58,6 @@ fun saveBitmapToFile(bitmap: Bitmap, file: File) {
 }
 
 fun reshapeAndNormalizeImageFile(file: File): ByteBuffer? {
-//    val modelFile = File("gym_classification.tflite")
-//    val interpreter = Interpreter(modelFile)
-//    val classLabels = arrayOf(
-//        "cable_machine",
-//        "calfraise_machine",
-//        "chestfly_machine",
-//        "elliptical_trainer",
-//        "hacksquat_machine",
-//        "hyperextension_bench",
-//        "latpulldown_machine",
-//        "legcurl_machine",
-//        "legpress_machine",
-//        "rotarycalf_machine",
-//        "rowing_machine",
-//        "shoulder_press",
-//        "smith_machine"
-//    )
-
     // Decode the image file into a Bitmap
     val bitmap = BitmapFactory.decodeFile(file.absolutePath) ?: return null
 
@@ -84,30 +66,6 @@ fun reshapeAndNormalizeImageFile(file: File): ByteBuffer? {
 
     // Normalize the Bitmap and convert it to ByteBuffer
     return convertBitmapToNormalizedByteBuffer(resizedBitmap)
-}
-
-fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
-    val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
-    for (y in 0 until 224) {
-        for (x in 0 until 224) {
-            val px = bitmap.getPixel(x, y)
-
-            // Get channel values from the pixel value.
-            val r = Color.red(px)
-            val g = Color.green(px)
-            val b = Color.blue(px)
-
-            // Normalize channel values to [-1.0, 1.0].
-            val rf = (r / 127.5f) - 1.0f
-            val gf = (g / 127.5f) - 1.0f
-            val bf = (b / 127.5f) - 1.0f
-
-            input.putFloat(rf)
-            input.putFloat(gf)
-            input.putFloat(bf)
-        }
-    }
-    return input
 }
 
 //fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
@@ -139,49 +97,33 @@ fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
 //    return input
 //}
 
-//fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap, interpreter: Interpreter, classNames: Array<String>): ByteBuffer {
-//    val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
-//    for (y in 0 until 224) {
-//        for (x in 0 until 224) {
-//            val px = bitmap.getPixel(x, y)
-//
-//            // Get channel values from the pixel value.
-//            val r = Color.red(px)
-//            val g = Color.green(px)
-//            val b = Color.blue(px)
-//
-//            // Normalize channel values to [-1.0, 1.0].
-//            val rf = (r / 127.5f) - 1
-//            val gf = (g / 127.5f) - 1
-//            val bf = (b / 127.5f) - 1
-//
-//            input.putFloat(rf)
-//            input.putFloat(gf)
-//            input.putFloat(bf)
-//        }
-//    }
-//
-//    // Reset buffer position to 0
+fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
+    val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
+    for (y in 0 until 224) {
+        for (x in 0 until 224) {
+            val px = bitmap.getPixel(x, y)
+            val r = Color.red(px)
+            val g = Color.green(px)
+            val b = Color.blue(px)
+            val rf = (r / 127.5f) - 1.0f
+            val gf = (g / 127.5f) - 1.0f
+            val bf = (b / 127.5f) - 1.0f
+            input.putFloat(rf)
+            input.putFloat(gf)
+            input.putFloat(bf)
+        }
+    }
+//    logBitmapDimensions(bitmap)
 //    input.rewind()
-//
-//    // Run inference
-//    val outputShape = interpreter.getOutputTensor(0).shape()
-//    val outputData = Array(outputShape[0]) { FloatArray(outputShape[1]) }
-//
-//    interpreter.run(input, outputData)
-//
-//    // Convert output tensor to predicted class
-//    val predictedClass = outputData[0].indices.maxByOrNull { outputData[0][it] } ?: -1
-//    val predictedLabel = classNames.getOrElse(predictedClass) { "Unknown" }
-//
-//    // Log prediction
-//    Log.d("Prediction", "Predicted class: $predictedLabel")
-//
-//    // Log the raw output data for debugging
-//    Log.d("RawOutputData", "Raw output data: ${outputData.contentDeepToString()}")
-//
-//    return input
-//}
+//    printByteBuffer(input)
+    return input
+}
+
+fun logBitmapDimensions(bitmap: Bitmap) {
+    Log.d("ResizedBitmap", "Width: ${bitmap.width}, Height: ${bitmap.height}")
+}
+
+
 fun printByteBuffer(byteBuffer: ByteBuffer) {
     // Create a copy of the ByteBuffer to avoid changing the position of the original buffer
     val bufferCopy = byteBuffer.asFloatBuffer()
