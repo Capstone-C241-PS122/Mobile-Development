@@ -9,8 +9,17 @@ import android.view.animation.AlphaAnimation
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
+import androidx.lifecycle.lifecycleScope
+import com.grassterra.fitassist.database.history.HistoryItem
 import com.grassterra.fitassist.databinding.ActivityDetailExerciseBinding
 import com.grassterra.fitassist.helper.ParcelableMap
+import com.grassterra.fitassist.repository.HistoryItemRepository
+import com.grassterra.fitassist.repository.UserRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class DetailExerciseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailExerciseBinding
@@ -74,6 +83,27 @@ class DetailExerciseActivity : AppCompatActivity() {
             }
             binding.textDescriptionLabel.setText(stringBuilder)
             binding.idNameLabel.setText(maxLabel)
+        }
+//        saveExercise(imageUri)
+    }
+
+    fun getCurrentDateTime(): String {
+        val date = Date()
+        val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        return formatter.format(date)
+    }
+
+    fun saveExercise(imageUri: Uri){
+        val equipment = binding.idNameLabel.text.toString()
+        val bodypart = binding.bodyPart.text.toString()
+        val img = imageUri.toString()
+        val exercise = binding.nameExercise.text.toString()
+        val date = getCurrentDateTime()
+        val historyItem = HistoryItem(equipment,bodypart,img,exercise,date)
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val mHistoryItemRepository: HistoryItemRepository = HistoryItemRepository(application)
+            mHistoryItemRepository.insert(historyItem)
         }
     }
 }
