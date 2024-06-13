@@ -1,9 +1,10 @@
 package com.grassterra.fitassist.ui
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grassterra.fitassist.databinding.ActivityLibraryVideoBinding
@@ -28,6 +29,13 @@ class LibraryVideo : AppCompatActivity() {
         libraryVideoViewModel.videoList.observe(this){listVideo ->
             setData(listVideo)
         }
+        binding.btnBack.setOnClickListener{
+           GoToBack(this)
+        }
+    }
+    private fun GoToBack(context: Context){
+        val intent = Intent(context,MainMenu::class.java)
+        context.startActivity(intent)
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): LibraryVideoViewModel {
