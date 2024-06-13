@@ -87,10 +87,14 @@ class MainMenu : AppCompatActivity() {
         } else {
             //back to MainActivity to fill user data
             userData = Userdata()
-            if(mainViewModel.isEmpty()){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+            lifecycleScope.launch(Dispatchers.IO) {
+                if (mainViewModel.isEmpty()) {
+                    withContext(Dispatchers.Main) {
+                        val intent = Intent(this@MainMenu, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
             }
         }
 
