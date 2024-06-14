@@ -3,6 +3,7 @@ package com.grassterra.fitassist.ui
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,13 +23,11 @@ class BurnCaloriesTrackerFragment : Fragment() {
                 elapsedTime += 1000
                 val seconds = (elapsedTime / 1000) % 60
                 val minutes = (elapsedTime / (1000 * 60)) % 60
-                val hours = (elapsedTime / (1000 * 60 * 60)) % 24
-                binding.tvStopwatch.text = String.format("%02d:%02d:%02d", hours, minutes, seconds)
+                binding.tvStopwatch.text = String.format("%02d:%02d", minutes, seconds)
                 handler.postDelayed(this, 1000)
             }
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +38,17 @@ class BurnCaloriesTrackerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.numberPickerWeight.apply {
+            minValue = 0
+            maxValue = 40
+            value = 5
+            setOnValueChangedListener { _, _, newVal ->
+                Log.d("InputWeight", newVal.toString())
+            }
+        }
+        binding.btnReset.setOnClickListener{
+            resetStopwatch()
+        }
         binding.btnStopwatch.setOnClickListener {
             if (isRunningNow) {
                 stopStopwatch()
@@ -83,6 +92,17 @@ class BurnCaloriesTrackerFragment : Fragment() {
             binding.btnStopwatch.text = "Resume"
         }
     }
+    private fun resetStopwatch() {
+        elapsedTime = 0L
+        isRunningNow = false
+        binding.btnStopwatch.text = "Start"
+        updateUI()
+    }
+
+    private fun updateUI() {
+        binding.tvStopwatch.text = "00:00"
+    }
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

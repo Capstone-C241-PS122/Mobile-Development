@@ -51,4 +51,5 @@
     <string name="button_homepage">Scan Gym Equipment</string>
     <string name="title_homepage">Classify Gym and Fitness Equipment Quickly and Easily</string>
     <string name="description_homepage">Get information about each tool, including how to use it and its benefits</string>
+    <string name="choose_activity_exercise">Select a Activity Exercise</string>
 </resources>
