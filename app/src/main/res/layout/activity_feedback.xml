@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -45,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="8dp"
-            android:hint="Enter Description"
+            android:hint="@string/enter_description"
             android:textColorHint="@color/colorTextHint"
             android:inputType="textMultiLine"
             android:background="@drawable/background_input"
@@ -64,7 +63,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/roboto_medium"
             android:textColor="@color/background"
-            android:text="Send"
+            android:text="@string/send"
             android:elevation="10dp"
             android:textAllCaps="false"/>
     </LinearLayout>
