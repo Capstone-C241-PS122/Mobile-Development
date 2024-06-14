@@ -1,7 +1,9 @@
 package com.grassterra.fitassist.repository
 
+import com.grassterra.fitassist.helper.LabelRequest
 import com.grassterra.fitassist.helper.Resource
 import com.grassterra.fitassist.response.FeedbackResponse
+import com.grassterra.fitassist.response.LabelPostResponse
 import com.grassterra.fitassist.response.LibraryGetResponse
 import com.grassterra.fitassist.response.NutritionPostResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
@@ -79,5 +81,10 @@ class ApiRepository(private val apiService: ApiService) {
         } catch (e: Exception){
             Resource.Error(e.message.toString())
         }
+    }
+
+    suspend fun postLabel(labelRequest: LabelRequest): Resource<List<LabelPostResponse>>{
+        val resp = apiService.postLabel(labelRequest)
+        return Resource.Success(resp)
     }
 }
