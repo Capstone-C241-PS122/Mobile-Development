@@ -17,9 +17,9 @@ class ActivityCalculateNutrition : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCalculateNutritionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.buttonCalculate.setOnClickListener{
-            resultCalculate()
 
+        binding.buttonCalculate.setOnClickListener {
+            resultCalculate()
         }
     }
     private fun resultCalculate() {
@@ -27,19 +27,31 @@ class ActivityCalculateNutrition : AppCompatActivity() {
         val foodWeight = binding.editTextWeight.text.toString().toIntOrNull() ?: 0
         CoroutineScope(Dispatchers.Main).launch {
             try {
-                apiService.postNutrition(name = foodName,weight = foodWeight)
-                showToast("Data sent successfully")
-            } catch (e: Exception) {
-                if (e is HttpException) {
-                    showToast("Error: ${e.message()}")
+                val response = apiService.postNutrition(name = foodName, weight = foodWeight)
+                if (response != null && response.message == "Prediksi Nutrisi Berhasil") {
+                    val resultText = StringBuilder().apply {
+                        append("Calories: ${response.calories ?: "N/A"}\n")
+                        append("Protein: ${response.proteins ?: "N/A"}\n")
+                        append("Carbs: ${response.carbohydrate ?: "N/A"}\n")
+                        append("Fat: ${response.fat ?: "N/A"}")
+                    }.toString()
+
+                    binding.textViewResult.text = resultText
+                    showToast("Data retrieved successfully")
                 } else {
-                    showToast("Error: ${e.message}")
+                    showToast("Error: Invalid response or message")
+                }
+            } catch (e: Exception) {
+                when (e) {
+                    is HttpException -> showToast("Error: ${e.message()}")
+                    else -> showToast("Error: ${e.message}")
                 }
             } finally {
                 binding.editTextFood.text.clear()
                 binding.editTextWeight.text.clear()
             }
         }
+
     }
     private fun showToast(message: String) {
         Toast.makeText(this@ActivityCalculateNutrition, message, Toast.LENGTH_SHORT).show()
