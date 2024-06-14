@@ -17,7 +17,6 @@ class LibraryVideoViewModel(application: Application): ViewModel() {
     val videoList: LiveData<List<ListVideoItem>> = _videoList
 
     init {
-        //TODO
         val apiRepository = ApiRepository(ApiConfig.getApiService())
         getAllVideo(apiRepository)
     }

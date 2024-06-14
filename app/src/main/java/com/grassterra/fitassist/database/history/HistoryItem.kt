@@ -9,10 +9,11 @@ import kotlinx.parcelize.Parcelize
 @Entity
 @Parcelize
 data class HistoryItem (
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
 
     @ColumnInfo(name = "equipment")
-    var equipment: String? = "",
+    var equipment: String,
 
     @ColumnInfo(name = "bodypart")
     var bodypart: String? = "",

@@ -4,15 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.grassterra.fitassist.database.history.HistoryItem
 import com.grassterra.fitassist.databinding.ActivityDetailExerciseBinding
 import com.grassterra.fitassist.helper.ParcelableMap
+import com.grassterra.fitassist.helper.Resource
+import com.grassterra.fitassist.helper.ViewModelFactory
 import com.grassterra.fitassist.repository.HistoryItemRepository
 import com.grassterra.fitassist.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +33,9 @@ class DetailExerciseActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityDetailExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val detailExerciseViewModel = obtainViewModel(this@DetailExerciseActivity)
+
         binding.btnBack.setOnClickListener{
             BackMainMenu(this)
         }
@@ -39,7 +46,7 @@ class DetailExerciseActivity : AppCompatActivity() {
                 fadeOutView(binding.topBar)
             }
         })
-        setupImage()
+        setupView(detailExerciseViewModel)
     }
     private fun fadeInView(view: View) {
         val anim = AlphaAnimation(0.0f, 1.0f)
@@ -59,13 +66,10 @@ class DetailExerciseActivity : AppCompatActivity() {
         context.startActivity(intent)
     }
 
-    private fun setupImage() {
+    private fun setupView(detailExerciseViewModel: DetailExerciseViewModel) {
         val imageUriString = intent.getStringExtra("imageUri")
         val imageUri = Uri.parse(imageUriString)
         binding.resultImage.setImageURI(imageUri)
-
-//        val result = intent.getStringExtra("result")
-//        binding.textDescriptionLabel.setText(result)
 
         val parcelableMap = intent.getParcelableExtra<ParcelableMap>("result")
         parcelableMap?.map?.let {
@@ -81,10 +85,31 @@ class DetailExerciseActivity : AppCompatActivity() {
                     maxLabel = label
                 }
             }
-            binding.textDescriptionLabel.setText(stringBuilder)
-            binding.idNameLabel.setText(maxLabel)
+//            binding.textDescriptionLabel.setText(stringBuilder)
+//            binding.idNameLabel.setText(maxLabel)
+
+            maxLabel?.let { it1 ->
+                detailExerciseViewModel.postLabel(it1).observe(this) { resource ->
+                    when (resource) {
+                        is Resource.Success -> {
+                            // Handle the success
+                            val response = resource.data.get(0)
+                            Log.d("DetailExerciseActivity", "Response: $response")
+                            binding.idNameLabel.setText(response.nameEquipment)
+                            binding.description.setText(response.description)
+                            binding.nameExercise.setText(response.nameExercise)
+                            binding.bodyPart.setText(response.bodypart)
+                        }
+
+                        is Resource.Error -> {
+                            // Handle the error
+                            Log.e("DetailExerciseActivity", "Error: ${resource.errorMessage}")
+                        }
+                    }
+                }
+            }
         }
-//        saveExercise(imageUri)
+        saveExercise(imageUri, detailExerciseViewModel)
     }
 
     fun getCurrentDateTime(): String {
@@ -93,17 +118,28 @@ class DetailExerciseActivity : AppCompatActivity() {
         return formatter.format(date)
     }
 
-    fun saveExercise(imageUri: Uri){
+    fun saveExercise(imageUri: Uri, detailExerciseViewModel: DetailExerciseViewModel){
         val equipment = binding.idNameLabel.text.toString()
         val bodypart = binding.bodyPart.text.toString()
         val img = imageUri.toString()
         val exercise = binding.nameExercise.text.toString()
-        val date = getCurrentDateTime()
-        val historyItem = HistoryItem(equipment,bodypart,img,exercise,date)
+        val date = getCurrentDateTime() // You need to implement this function to get the current date/time as a String
+        val historyItem = HistoryItem(
+            equipment = equipment,
+            bodypart = bodypart,
+            imageuri = img,
+            exercise = exercise,
+            date = date
+        )
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val mHistoryItemRepository: HistoryItemRepository = HistoryItemRepository(application)
-            mHistoryItemRepository.insert(historyItem)
+            detailExerciseViewModel.saveHistory(historyItem)
+            Log.d("SUC", historyItem.toString())
         }
+    }
+
+    private fun obtainViewModel(activity: AppCompatActivity): DetailExerciseViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory).get(DetailExerciseViewModel::class.java)
     }
 }

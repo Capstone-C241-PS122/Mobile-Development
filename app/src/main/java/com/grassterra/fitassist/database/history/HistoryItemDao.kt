@@ -2,11 +2,12 @@ package com.grassterra.fitassist.database.history
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
 interface HistoryItemDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(historyItem: HistoryItem)
 
     @Query("SELECT * from HistoryItem")
