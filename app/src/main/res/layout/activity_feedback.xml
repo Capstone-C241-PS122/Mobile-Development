@@ -13,7 +13,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/btnBack"
@@ -40,11 +40,32 @@
                 android:layout_marginBottom="15dp"
                 android:layout_gravity="bottom"/>
         </FrameLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <EditText
+            android:id="@+id/editText_description"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:visibility="visible"/>
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:hint="Enter Description"
+            android:textColorHint="@color/colorTextHint"
+            android:inputType="textMultiLine"
+            android:background="@drawable/background_input"
+            android:textColor="@color/colorTextgrey"
+            android:maxLength="200"
+            android:paddingStart="12dp"
+            android:paddingBottom="70dp"/>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_light"
+            android:textSize="18sp"
+            android:layout_margin="15dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/background"
+            android:text="Send"
+            android:elevation="10dp"
+            android:textAllCaps="false"/>
     </LinearLayout>
 </FrameLayout>

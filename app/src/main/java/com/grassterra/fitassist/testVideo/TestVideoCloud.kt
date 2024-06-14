@@ -15,7 +15,7 @@ class TestVideoCloud : AppCompatActivity() {
         val mediaController = MediaController(this)
         mediaController.setAnchorView(binding.videoView)
         binding.videoView.setMediaController(mediaController)
-        val videoUrl = "https://storage.googleapis.com/bucket_fitassist/Cable_Machine_Tutorial.mp4"
+        val videoUrl = "https://storage.googleapis.com/bucket_fitassist/video_background.mp4"
         val uri = Uri.parse(videoUrl)
         binding.videoView.setVideoURI(uri)
         binding.videoView.start()
