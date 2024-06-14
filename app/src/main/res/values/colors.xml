@@ -13,9 +13,9 @@
     //additional
     <color name="backgroundAdditional">#D9D9D9</color>
     //allColorNavigation
-    <color name="backgroundNavigationBottom">#161616</color>
+    <color name="backgroundNavigationBottom">#121212</color>
     <color name="backgroundIconButtonActive">#FF6AA0</color>
-    <color name="backgroundIconButtonInactive">#FFFFFF</color>
+    <color name="backgroundIconButtonInactive">#484848</color>
     <color name="backgroundWhilepressed">#FF8CB6</color>
     <color name="colorPlusButton">#FFBED5</color>
     //background button
@@ -28,4 +28,6 @@
     //background card
     <color name="background_card">#2D2D2D</color>
     <color name="colorTextgrey">#DCD9D9</color>
+    <color name="colorStopBeforePressed">#151515</color>
+    <color name="colorStopAfterPressed">#393939</color>
 </resources>
