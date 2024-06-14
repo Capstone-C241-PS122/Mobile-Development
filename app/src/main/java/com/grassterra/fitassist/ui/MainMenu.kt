@@ -82,7 +82,6 @@ class MainMenu : AppCompatActivity() {
                 }
             }
         } else {
-            //back to MainActivity to fill user data
             userData = Userdata()
             lifecycleScope.launch(Dispatchers.IO) {
                 if (mainViewModel.isEmpty()) {
@@ -358,7 +357,7 @@ class MainMenu : AppCompatActivity() {
             when (item.itemId) {
                 R.id.id_home -> selectedFragment = HomeFragment()
                 R.id.id_mybody -> selectedFragment = MyBodyFragment()
-                R.id.id_running -> selectedFragment = BurnCaloriesTrackerFragment()
+                R.id.id_burn_calories -> selectedFragment = BurnCaloriesTrackerFragment()
 
             }
             if (selectedFragment != null) {
