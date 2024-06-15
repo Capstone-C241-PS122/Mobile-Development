@@ -111,9 +111,6 @@ class MainMenu : AppCompatActivity() {
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         val navigationView: NavigationView = findViewById(R.id.navigationView)
-        binding.btnSidebar.setOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_history -> {
@@ -131,8 +128,9 @@ class MainMenu : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                else -> false
             }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
         }
 
         setupBottomNavigation()

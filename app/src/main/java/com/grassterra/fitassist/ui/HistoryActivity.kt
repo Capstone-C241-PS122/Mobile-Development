@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.grassterra.fitassist.database.history.HistoryItem
 import com.grassterra.fitassist.databinding.ActivityHistoryBinding
 import com.grassterra.fitassist.helper.ViewModelFactory
-import com.grassterra.fitassist.response.ListVideoItem
 import com.grassterra.fitassist.ui.adapter.HistoryItemAdapter
-import com.grassterra.fitassist.ui.adapter.LibraryVideoAdapter
 
 class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding
@@ -22,14 +20,11 @@ class HistoryActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
         val historyViewModel = obtainViewModel(this@HistoryActivity)
-
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.recyclerView.addItemDecoration(itemDecoration)
-
         historyViewModel.historyList.observe(this){listHistory ->
             setData(listHistory)
         }
