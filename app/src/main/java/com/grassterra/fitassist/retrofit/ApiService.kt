@@ -8,10 +8,8 @@ import com.grassterra.fitassist.response.LibraryGetResponse
 import com.grassterra.fitassist.response.ListVideoItem
 import com.grassterra.fitassist.response.NutritionResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
-import com.grassterra.fitassist.response.WorkoutVideoResponse
-import retrofit2.Call
+import okhttp3.RequestBody
 import retrofit2.http.Body
-import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -45,9 +43,7 @@ interface ApiService {
     suspend fun getAllVideo(): List<ListVideoItem>
 
     @POST("feedback")
-    suspend fun postFeedback(
-        @Field("description") description: String?=null
-    ): FeedbackResponse
+    suspend fun postFeedback(@Body requestBody: RequestBody): FeedbackResponse
 
     @POST("up/video")
     suspend fun postLabel(

@@ -9,8 +9,10 @@ import com.grassterra.fitassist.response.LibraryGetResponse
 import com.grassterra.fitassist.response.ListVideoItem
 import com.grassterra.fitassist.response.NutritionResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
-import com.grassterra.fitassist.response.WorkoutVideoResponse
 import com.grassterra.fitassist.retrofit.ApiService
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 class ApiRepository(private val apiService: ApiService) {
 
@@ -82,17 +84,22 @@ class ApiRepository(private val apiService: ApiService) {
         return Resource.Success(resp)
     }
 
-    suspend fun postFeedback(): Resource<FeedbackResponse>{
+    suspend fun postFeedback(description: String): Resource<FeedbackResponse> {
         return try {
-            val resp = apiService.postFeedback()
-            if (resp.error == false){
-                Resource.Success(resp)
+            val jsonObject = JSONObject().apply {
+                put("description", description)
             }
-            else{
-                Resource.Error(resp.message.toString())
+            val requestBody = jsonObject.toString()
+                .toRequestBody("application/json".toMediaTypeOrNull())
+
+            val response = apiService.postFeedback(requestBody)
+            if (!response.error!!) {
+                Resource.Success(response)
+            } else {
+                Resource.Error(response.message ?: "Unknown error")
             }
-        } catch (e: Exception){
-            Resource.Error(e.message.toString())
+        } catch (e: Exception) {
+            Resource.Error("Error: ${e.message}")
         }
     }
 
