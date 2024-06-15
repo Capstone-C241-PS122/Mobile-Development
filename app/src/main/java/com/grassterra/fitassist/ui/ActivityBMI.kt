@@ -5,7 +5,6 @@ import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.ActivityBmiBinding
 import com.grassterra.fitassist.helper.ViewModelFactory
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +31,6 @@ class ActivityBMI : AppCompatActivity() {
         binding.etHeight.text.clear()
         binding.etWeight.text.clear()
         binding.tvResult.text = ""
-        binding.imgResult.setImageResource(0)
     }
     private fun setFields(bmiViewModel: BMIViewModel){
         lifecycleScope.launch(Dispatchers.IO){
@@ -50,34 +48,26 @@ class ActivityBMI : AppCompatActivity() {
             val height = heightStr.toFloat() / 100
             val weight = weightStr.toFloat()
             val bmi = weight / (height * height)
-
             val bmiCategory: String
-            val imgResource: Int
-
             when {
                 bmi < 18.5 -> {
                     bmiCategory = "Underweight"
-                    imgResource = R.drawable.underweight
                 }
 
                 bmi < 23.9 -> {
                     bmiCategory = "Normal weight"
-                    imgResource = R.drawable.normal_weight
                 }
 
                 bmi < 32.9 -> {
                     bmiCategory = "Overweight"
-                    imgResource = R.drawable.overweight
                 }
 
                 else -> {
                     bmiCategory = "Obesity"
-                    imgResource = R.drawable.obesity
                 }
             }
 
             binding.tvResult.text = String.format("BMI: %.2f (%s)", bmi, bmiCategory)
-            binding.imgResult.setImageResource(imgResource)
         }
     }
 

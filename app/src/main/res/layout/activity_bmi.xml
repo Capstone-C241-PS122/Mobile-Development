@@ -1,55 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ui.ActivityBMI">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_gravity="start"
+            android:background="@drawable/arrow_back_24px"/>
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="80dp"
+            android:layout_gravity="end"
+            android:background="@drawable/refresh_24px"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/bmi_header"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/top_bar"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="bottom"/>
+    </FrameLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_marginBottom="70dp">
     <EditText
         android:id="@+id/etHeight"
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Masukkan tinggi badan (cm)"
+        android:layout_height="58dp"
+        android:paddingStart="8dp"
+        android:textColor="@color/colorTextgrey"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/colorTextHint"
+        android:background="@drawable/background_input"
+        android:hint="@string/enter_your_height_cm"
         android:inputType="numberDecimal"
         android:padding="8dp"/>
 
     <EditText
         android:id="@+id/etWeight"
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Masukkan berat badan (kg)"
+        android:layout_height="58dp"
+        android:paddingStart="8dp"
+        android:textColor="@color/colorTextgrey"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/colorTextHint"
+        android:background="@drawable/background_input"
+        android:hint="@string/enter_your_weight_kg"
         android:inputType="numberDecimal"
-        android:padding="8dp"
-        android:layout_marginTop="8dp"/>
+        android:padding="8dp"/>
 
     <Button
         android:id="@+id/btnCalculate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hitung BMI"
-        android:layout_marginTop="16dp"/>
-    <Button
-        android:id="@+id/btnReset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Reset"
-        android:layout_marginTop="16dp"/>
-
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_light"
+        android:textSize="18sp"
+        android:layout_margin="15dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/background"
+        android:text="@string/calculate"
+        android:elevation="10dp"
+        android:textAllCaps="false"/>
     <TextView
         android:id="@+id/tvResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_margin="50dp"
+        android:textColor="@color/white"
         android:text=""
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:layout_marginTop="16dp"/>
-
-    <ImageView
-        android:id="@+id/imgResult"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerInside"
-        android:layout_marginTop="16dp"/>
-
 </LinearLayout>
+</FrameLayout>

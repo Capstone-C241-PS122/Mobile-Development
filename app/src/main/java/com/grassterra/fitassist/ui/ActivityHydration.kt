@@ -20,17 +20,23 @@ class ActivityHydration : AppCompatActivity() {
 
         val bmiViewModel = obtainViewModel(this@ActivityHydration)
         setFields(bmiViewModel)
-
+        binding.btnReset.setOnClickListener{
+            resetFields()
+        }
         binding.btnCalculate.setOnClickListener{
             resultHydration()
         }
+    }
+    private fun resetFields() {
+        binding.etWeight.text.clear()
+        binding.resultTextView.text = ""
     }
     private fun resultHydration(){
         val weight = binding.etWeight.text.toString().toDoubleOrNull() ?: 0.0
         val faktoKonversi = 37
         val hydration = weight * faktoKonversi
         val roundHydration = hydration.toInt()
-        binding.resultTextView.text = "$roundHydration ml/day or $hydration liter "
+        binding.resultTextView.text = "$roundHydration ml/day "
     }
 
     private fun setFields(bmiViewModel: BMIViewModel) {
