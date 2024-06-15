@@ -6,7 +6,7 @@
         android:title="@string/menu_home" />
     <item
         android:id="@+id/id_burn_calories"
-        android:icon="@drawable/sprint_24px"
+        android:icon="@drawable/burn_calorie"
         android:title="@string/burn_calories" />
     <item
         android:id="@+id/id_mybody"

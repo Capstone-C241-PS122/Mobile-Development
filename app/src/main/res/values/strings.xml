@@ -52,7 +52,7 @@
     <string name="title_homepage">Classify Gym and Fitness Equipment Quickly and Easily</string>
     <string name="description_homepage">Get information about each tool, including how to use it and its benefits</string>
     <string name="choose_activity_exercise">Select a Activity Exercise</string>
-    <string name="burn_calories">Burn Calories Assistant</string>
+    <string name="burn_calories">Burn Calories</string>
     <string name="nama_makanan">Nama Makanan</string>
     <string name="berat_makanan_gram">Berat Makanan (gram)</string>
     <string name="hitung">Hitung</string>
@@ -69,6 +69,7 @@
     <string name="bmr_header">BMR</string>
     <string name="enter_your_age">Enter your Age</string>
     <string name="hydration">Hydration</string>
+    <string name="recommended_for_you">Recommended for you</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>

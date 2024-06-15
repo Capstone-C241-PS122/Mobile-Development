@@ -12,18 +12,6 @@
         android:layout_height="match_parent"
         android:background="@color/background"
         tools:context="ui.MainMenu">
-        <ImageButton
-            android:id="@+id/btnSidebar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_margin="46dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/more_vert_24px"
-            android:padding="8dp"
-            android:onClick="openSidebar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
         <FrameLayout
             android:id="@+id/idHostFragment"
             android:layout_width="match_parent"
@@ -37,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/backgroundNavigationBottom"
-            app:itemIconSize="24dp"
+            app:itemIconSize="30dp"
             app:itemIconTint="@drawable/selector_icon_nav"
             app:itemTextColor="@drawable/selector_icon_nav"
             app:layout_constraintBottom_toBottomOf="parent"
