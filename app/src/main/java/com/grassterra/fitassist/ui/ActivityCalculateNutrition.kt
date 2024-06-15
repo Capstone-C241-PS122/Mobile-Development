@@ -1,7 +1,6 @@
 package com.grassterra.fitassist.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.grassterra.fitassist.databinding.ActivityCalculateNutritionBinding
@@ -84,7 +83,6 @@ class ActivityCalculateNutrition : AppCompatActivity() {
             }
         }
     }
-
     private fun showToast(message: String) {
         Toast.makeText(this@ActivityCalculateNutrition, message, Toast.LENGTH_SHORT).show()
     }

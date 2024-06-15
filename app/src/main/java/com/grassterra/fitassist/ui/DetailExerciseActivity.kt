@@ -93,8 +93,6 @@ class DetailExerciseActivity : AppCompatActivity() {
                             binding.nameExercise.text = response.nameExercise
                             binding.bodyPart.text = response.bodypart
                             val videoUrl = response.urlVideo
-
-                            // Set up VideoView
                             if (!videoUrl.isNullOrEmpty()) {
                                 val uri = Uri.parse(videoUrl)
                                 binding.videoView.setMediaController(
@@ -111,7 +109,6 @@ class DetailExerciseActivity : AppCompatActivity() {
                             }
                         }
                         is Resource.Error -> {
-                            // Handle the error
                             Log.e("DetailExerciseActivity", "Error: ${resource.errorMessage}")
                             showToast("Error: ${resource.errorMessage}")
                         }
