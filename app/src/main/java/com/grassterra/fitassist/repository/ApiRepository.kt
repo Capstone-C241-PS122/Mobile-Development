@@ -5,25 +5,23 @@ import com.grassterra.fitassist.helper.Resource
 import com.grassterra.fitassist.response.FeedbackResponse
 import com.grassterra.fitassist.response.LabelPostResponse
 import com.grassterra.fitassist.response.LibraryGetResponse
-import com.grassterra.fitassist.response.NutritionPostResponse
+import com.grassterra.fitassist.response.NutritionResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
 import com.grassterra.fitassist.response.WorkoutVideoResponse
 import com.grassterra.fitassist.retrofit.ApiService
-import kotlinx.coroutines.processNextEventInCurrentThread
 
 class ApiRepository(private val apiService: ApiService) {
 
-    suspend fun postNutrition(name: String, weight: Int): Resource<NutritionPostResponse>{
+    suspend fun postNutrition(name: String, weight: Int): Resource<NutritionResponse> {
         return try {
             val resp = apiService.postNutrition(name, weight)
-            if (resp.error == false){
+            if (resp.error == false) {
                 Resource.Success(resp)
+            } else {
+                Resource.Error(resp.message ?: "Unknown error")
             }
-            else{
-                Resource.Error(resp.message.toString())
-            }
-        } catch (e: Exception){
-            Resource.Error(e.message.toString())
+        } catch (e: Exception) {
+            Resource.Error(e.message ?: "Exception occurred")
         }
     }
 
@@ -87,4 +85,5 @@ class ApiRepository(private val apiService: ApiService) {
         val resp = apiService.postLabel(labelRequest)
         return Resource.Success(resp)
     }
+
 }
