@@ -27,7 +27,9 @@ class LibraryVideo : AppCompatActivity() {
         binding.recyclerView.addItemDecoration(itemDecoration)
 
         libraryVideoViewModel.videoList.observe(this){listVideo ->
-            setData(listVideo)
+            if (listVideo != null) {
+                setData(listVideo)
+            }
         }
         binding.btnBack.setOnClickListener{
            GoToBack(this)

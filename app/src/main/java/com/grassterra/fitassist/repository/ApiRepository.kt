@@ -2,15 +2,44 @@ package com.grassterra.fitassist.repository
 
 import com.grassterra.fitassist.helper.LabelRequest
 import com.grassterra.fitassist.helper.Resource
+import com.grassterra.fitassist.response.ArticlesResponse
 import com.grassterra.fitassist.response.FeedbackResponse
 import com.grassterra.fitassist.response.LabelPostResponse
 import com.grassterra.fitassist.response.LibraryGetResponse
+import com.grassterra.fitassist.response.ListVideoItem
+import com.grassterra.fitassist.response.NutritionPostResponse
 import com.grassterra.fitassist.response.NutritionResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
 import com.grassterra.fitassist.response.WorkoutVideoResponse
 import com.grassterra.fitassist.retrofit.ApiService
 
 class ApiRepository(private val apiService: ApiService) {
+
+    suspend fun getArticles(bodypart:String): Resource<ArticlesResponse>{
+        return try {
+            val resp = apiService.getArticle(bodypart)
+            if (resp.error == false) {
+                Resource.Success(resp)
+            } else {
+                Resource.Error(resp.message)
+            }
+        } catch (e: Exception){
+            Resource.Error(e.message.toString())
+        }
+    }
+
+    suspend fun getArticles2(): Resource<ArticlesResponse>{
+        return try {
+            val resp = apiService.getAllArticle()
+            if (resp.error == false) {
+                Resource.Success(resp)
+            } else {
+                Resource.Error(resp.message)
+            }
+        } catch (e: Exception){
+            Resource.Error(e.message.toString())
+        }
+    }
 
     suspend fun postNutrition(name: String, weight: Int): Resource<NutritionResponse> {
         return try {
@@ -39,9 +68,9 @@ class ApiRepository(private val apiService: ApiService) {
         }
     }
 
-    suspend fun getArticle(id: Int): Resource<WorkoutArticleResponse>{
+    suspend fun getDetailArticle(id: Int): Resource<WorkoutArticleResponse>{
         return try {
-            val resp = apiService.getArticle(id = id)
+            val resp = apiService.getDetailArticle(id = id)
             if (resp.error == "false"){
                 Resource.Success(resp)
             }
@@ -53,18 +82,9 @@ class ApiRepository(private val apiService: ApiService) {
         }
     }
 
-    suspend fun getAllVideo(): Resource<WorkoutVideoResponse>{
-        return try {
-            val resp = apiService.getAllVideo()
-            if (resp.error == false){
-                Resource.Success(resp)
-            }
-            else{
-                Resource.Error(resp.message.toString())
-            }
-        } catch (e: Exception){
-            Resource.Error(e.message.toString())
-        }
+    suspend fun getAllVideo(): Resource<List<ListVideoItem>>{
+        val resp = apiService.getAllVideo()
+        return Resource.Success(resp)
     }
 
     suspend fun postFeedback(): Resource<FeedbackResponse>{

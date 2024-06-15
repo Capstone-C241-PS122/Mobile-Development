@@ -1,9 +1,12 @@
 package com.grassterra.fitassist.retrofit
 
 import com.grassterra.fitassist.helper.LabelRequest
+import com.grassterra.fitassist.response.ArticlesResponse
 import com.grassterra.fitassist.response.FeedbackResponse
 import com.grassterra.fitassist.response.LabelPostResponse
 import com.grassterra.fitassist.response.LibraryGetResponse
+import com.grassterra.fitassist.response.ListVideoItem
+import com.grassterra.fitassist.response.NutritionPostResponse
 import com.grassterra.fitassist.response.NutritionResponse
 import com.grassterra.fitassist.response.SearchResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
@@ -17,10 +20,14 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("search/article")
-    suspend fun searchArticle(
-        @Query("Title") Title: String
-    ): Call<SearchResponse>
+    @GET("articles")
+    suspend fun getArticle(
+        @Query("bodypart") bodypart: String? = null
+    ): ArticlesResponse
+
+    @GET("articles")
+    suspend fun getAllArticle(
+    ): ArticlesResponse
 
     @GET("nutrition")
     suspend fun postNutrition(
@@ -31,13 +38,13 @@ interface ApiService {
     @GET("library")
     suspend fun getLibrary(): LibraryGetResponse
 
-    @GET("article/{id}")
-    suspend fun getArticle(
+    @GET("articles/{id}")
+    suspend fun getDetailArticle(
         @Path("id") id: Int? = 1
     ): WorkoutArticleResponse
 
     @GET("video")
-    suspend fun getAllVideo(): WorkoutVideoResponse
+    suspend fun getAllVideo(): List<ListVideoItem>
 
     @POST("feedback")
     suspend fun postFeedback(
