@@ -59,4 +59,18 @@
     <string name="send">Send</string>
     <string name="enter_description">Enter Description</string>
     <string name="submit">Submit</string>
+    <string name="nutrition_food">Nutrition Food</string>
+    <string name="name_food_indo">Name Indonesian Food</string>
+    <string name="food_weight_gram">Food weight(gram)</string>
+    <string name="calculate">Calculate</string>
+    <string name="bmi_header">BMI</string>
+    <string name="enter_your_height_cm">Enter your height (cm)</string>
+    <string name="enter_your_weight_kg">Enter your Weight (kg)</string>
+    <string name="bmr_header">BMR</string>
+    <string name="enter_your_age">Enter your Age</string>
+    <string name="hydration">Hydration</string>
+    <string-array name="gender_array">
+        <item>Man</item>
+        <item>Woman</item>
+    </string-array>
 </resources>
