@@ -146,7 +146,7 @@ class DetailExerciseActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             detailExerciseViewModel.saveHistory(historyItem)
-            Log.d("SUC", historyItem.toString())
+            Log.d("SUCCES", historyItem.toString())
         }
     }
 
