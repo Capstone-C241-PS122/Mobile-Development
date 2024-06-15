@@ -7,7 +7,6 @@ import com.grassterra.fitassist.response.FeedbackResponse
 import com.grassterra.fitassist.response.LabelPostResponse
 import com.grassterra.fitassist.response.LibraryGetResponse
 import com.grassterra.fitassist.response.ListVideoItem
-import com.grassterra.fitassist.response.NutritionPostResponse
 import com.grassterra.fitassist.response.NutritionResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
 import com.grassterra.fitassist.response.WorkoutVideoResponse
@@ -44,11 +43,7 @@ class ApiRepository(private val apiService: ApiService) {
     suspend fun postNutrition(name: String, weight: Int): Resource<NutritionResponse> {
         return try {
             val resp = apiService.postNutrition(name, weight)
-            if (resp.error == false) {
-                Resource.Success(resp)
-            } else {
-                Resource.Error(resp.message ?: "Unknown error")
-            }
+            Resource.Success(resp)
         } catch (e: Exception) {
             Resource.Error(e.message ?: "Exception occurred")
         }

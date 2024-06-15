@@ -18,7 +18,9 @@ class HistoryViewModel(application: Application): ViewModel() {
     private val historyItemRepository = HistoryItemRepository(application)
 
     init {
-        getAllHistory()
+        viewModelScope.launch {
+            getAllHistory()
+        }
     }
 
     private fun getAllHistory(){

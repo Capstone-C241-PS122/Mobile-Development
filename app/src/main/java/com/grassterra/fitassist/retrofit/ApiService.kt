@@ -6,9 +6,7 @@ import com.grassterra.fitassist.response.FeedbackResponse
 import com.grassterra.fitassist.response.LabelPostResponse
 import com.grassterra.fitassist.response.LibraryGetResponse
 import com.grassterra.fitassist.response.ListVideoItem
-import com.grassterra.fitassist.response.NutritionPostResponse
 import com.grassterra.fitassist.response.NutritionResponse
-import com.grassterra.fitassist.response.SearchResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
 import com.grassterra.fitassist.response.WorkoutVideoResponse
 import retrofit2.Call
