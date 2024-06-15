@@ -14,6 +14,7 @@ import com.grassterra.fitassist.repository.FavoriteExerciseRepository
 import com.grassterra.fitassist.repository.UserRepository
 import com.grassterra.fitassist.response.ListArticleItem
 import com.grassterra.fitassist.retrofit.ApiConfig
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -27,12 +28,14 @@ class MainViewModel(application: Application): ViewModel() {
     private val apiRepository: ApiRepository = ApiRepository(ApiConfig.getApiService())
 
     init {
-        val bodyparts = mFavoriteExerciseRepository.getALl()
-        if(bodyparts.size == 0){
-            getArticle()
-        }else{
-            val randomBodyPart = bodyparts.random()
-            getArticleBodyPart(randomBodyPart.name)
+        viewModelScope.launch(Dispatchers.IO) {
+            val bodyparts = mFavoriteExerciseRepository.getALl()
+            if(bodyparts.size == 0){
+                getArticle()
+            }else{
+                val randomBodyPart = bodyparts.random()
+                getArticleBodyPart(randomBodyPart.name)
+            }
         }
     }
 
