@@ -13,8 +13,8 @@ import com.grassterra.fitassist.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 
 class LibraryVideoViewModel(application: Application): ViewModel() {
-    private val _videoList = MutableLiveData<List<ListVideoItem>>()
-    val videoList: LiveData<List<ListVideoItem>> = _videoList
+    private val _videoList = MutableLiveData<List<ListVideoItem>?>()
+    val videoList: MutableLiveData<List<ListVideoItem>?> = _videoList
 
     init {
         val apiRepository = ApiRepository(ApiConfig.getApiService())
@@ -26,7 +26,7 @@ class LibraryVideoViewModel(application: Application): ViewModel() {
             val res = apiRepository.getAllVideo()
             when (res){
                 is Resource.Success ->{
-                    _videoList.value = res.data.listVideo
+                    _videoList.value = res.data
                 }
                 is Resource.Error ->{
                     Log.d("LibraryViewModel", res.errorMessage)

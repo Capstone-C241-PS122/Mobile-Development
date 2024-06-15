@@ -37,9 +37,6 @@ import com.grassterra.fitassist.databinding.AlertDialogBinding
 import com.grassterra.fitassist.helper.ImageClassifierHelper
 import com.grassterra.fitassist.helper.ParcelableMap
 import com.grassterra.fitassist.helper.ViewModelFactory
-import com.grassterra.fitassist.helper.reshapeAndNormalizeImageFile
-import com.grassterra.fitassist.helper.resizeImageFile
-import com.grassterra.fitassist.helper.uriToFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

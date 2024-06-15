@@ -34,7 +34,6 @@ class DetailExerciseViewModel(application: Application): ViewModel() {
                 result.postValue(Resource.Error(e.localizedMessage ?: "An error occurred"))
             }
         }
-
         return result
     }
 
