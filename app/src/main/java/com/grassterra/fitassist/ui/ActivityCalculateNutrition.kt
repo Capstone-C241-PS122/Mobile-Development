@@ -1,75 +1,91 @@
 package com.grassterra.fitassist.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.grassterra.fitassist.databinding.ActivityCalculateNutritionBinding
-import java.text.DecimalFormat
-import java.util.Locale
+import com.grassterra.fitassist.helper.Resource
+import com.grassterra.fitassist.repository.ApiRepository
+import com.grassterra.fitassist.retrofit.ApiConfig
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 
 class ActivityCalculateNutrition : AppCompatActivity() {
+
     private lateinit var binding: ActivityCalculateNutritionBinding
+    private lateinit var apiRepository: ApiRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCalculateNutritionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.buttonCalculate.setOnClickListener{
+
+        apiRepository = ApiRepository(apiService)
+
+        binding.buttonCalculate.setOnClickListener {
             resultCalculate()
-
         }
     }
+
+    private val apiService = ApiConfig.getApiService()
+
     private fun resultCalculate() {
-        var kalori100gram = 0.0
-        var protein100gram = 0.0
-        var karbohidrat100gram = 0.0
-        var lemak100gram = 0.0
-        val df = DecimalFormat("#.##")
-        val editTextFood = binding.editTextFood.text.toString()
+        val foodName = binding.editTextFood.text.toString().trim()
+        val foodWeight = binding.editTextWeight.text.toString().toIntOrNull() ?: 0
 
-        when (editTextFood.toLowerCase(Locale.getDefault())) {
-            "dada ayam" -> {
-                kalori100gram = 195.0
-                protein100gram  = 30.0
-                karbohidrat100gram = 0.0
-                lemak100gram = 8.0
-            }
-            "wortel" -> {
-                kalori100gram  = 41.0
-                protein100gram = 0.93
-                karbohidrat100gram = 9.58
-                lemak100gram = 0.24
-            }
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val result = apiRepository.postNutrition(foodName, foodWeight)
+                when (result) {
+                    is Resource.Success -> {
+                        val response = result.data
+                        if (response?.message == "Prediksi Nutrisi Berhasil") {
+                            val predictedNutrition = response.predictedNutrition
+                            val calories = predictedNutrition?.calories ?: 0
+                            val proteins = predictedNutrition?.proteins ?: 0.0
+                            val carbohydrates = predictedNutrition?.carbohydrate ?: 0
+                            val fat = predictedNutrition?.fat ?: 0.0
+                            val caloriesText = "Calories: $calories\n"
+                            val proteinsText = "Proteins: $proteins\n"
+                            val carbohydratesText = "Carbohydrates: $carbohydrates\n"
+                            val fatText = "Fat: $fat"
+                            val resultText = "$caloriesText$proteinsText$carbohydratesText$fatText"
 
-            else -> {
-                binding.textViewResult.text = "Makanan tidak ditemukan."
-                return
+                            withContext(Dispatchers.Main) {
+                                binding.textViewCalories.text = caloriesText
+                                binding.textViewProteins.text = proteinsText
+                                binding.textViewCarbohydrates.text = carbohydratesText
+                                binding.textViewFat.text = fatText
+
+                                showToast("Data retrieved successfully")
+                            }
+                        } else {
+                            showToast("Error: Invalid response or message")
+                        }
+                    }
+                    is Resource.Error -> {
+                        showToast("Error: ${result.errorMessage ?: "Unknown error"}")
+                    }
+                }
+            } catch (e: Exception) {
+                when (e) {
+                    is HttpException -> showToast("Error: ${e.message()}")
+                    else -> showToast("Error: ${e.message}")
+                }
+            } finally {
+                withContext(Dispatchers.Main) {
+                    binding.editTextFood.text.clear()
+                    binding.editTextWeight.text.clear()
+                }
             }
         }
-        val makananpergram = binding.editTextWeight.text.toString().toInt()
-        val dibagiPergramKalori = kalori100gram / 100
-        val dibagiPergramProtein = protein100gram / 100
-        val dibagiPergramLemak = lemak100gram / 100
-        val dibagiPergramKarbohidrat = karbohidrat100gram / 100
-        val hasilkalori = makananpergram * dibagiPergramKalori
-        val hasilprotein = makananpergram * dibagiPergramProtein
-        val hasilkarbohidrat = makananpergram * dibagiPergramKarbohidrat
-        val hasillemak = makananpergram * dibagiPergramLemak
-
-        val formattedKalori = df.format(hasilkalori)
-        val formattedProtein = df.format(hasilprotein)
-        val formattedKarbohidrat = df.format(hasilkarbohidrat)
-        val formattedLemak = df.format(hasillemak)
-
-        binding.textViewResult.text = "===== Informasi Gizi =====\n" +
-                "Makanan: $editTextFood\n" +
-                "Berat: $makananpergram gram\n" +
-                "Kalori: $formattedKalori Kalori\n" +
-                "Protein: $formattedProtein gram\n" +
-                "Karbohidrat: $formattedKarbohidrat gram\n" +
-                "Lemak: $formattedLemak gram"
-
-        binding.editTextFood.text.clear()
-        binding.editTextWeight.text.clear()
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(this@ActivityCalculateNutrition, message, Toast.LENGTH_SHORT).show()
+    }
 
 }

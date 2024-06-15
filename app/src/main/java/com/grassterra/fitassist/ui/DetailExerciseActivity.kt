@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
@@ -17,8 +18,6 @@ import com.grassterra.fitassist.databinding.ActivityDetailExerciseBinding
 import com.grassterra.fitassist.helper.ParcelableMap
 import com.grassterra.fitassist.helper.Resource
 import com.grassterra.fitassist.helper.ViewModelFactory
-import com.grassterra.fitassist.repository.HistoryItemRepository
-import com.grassterra.fitassist.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -33,9 +32,7 @@ class DetailExerciseActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityDetailExerciseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val detailExerciseViewModel = obtainViewModel(this@DetailExerciseActivity)
-
         binding.btnBack.setOnClickListener{
             BackMainMenu(this)
         }
@@ -72,45 +69,63 @@ class DetailExerciseActivity : AppCompatActivity() {
         binding.resultImage.setImageURI(imageUri)
 
         val parcelableMap = intent.getParcelableExtra<ParcelableMap>("result")
-        parcelableMap?.map?.let {
-            // Process the received map
+        parcelableMap?.map?.let { map ->
             val stringBuilder = StringBuilder()
             var maxLabel: String? = null
             var maxValue: Float = Float.MIN_VALUE
 
-            it.forEach { (label, value) ->
+            map.forEach { (label, value) ->
                 stringBuilder.append("$label: $value \n")
                 if (value > maxValue) {
                     maxValue = value
                     maxLabel = label
                 }
             }
-//            binding.textDescriptionLabel.setText(stringBuilder)
-//            binding.idNameLabel.setText(maxLabel)
 
-            maxLabel?.let { it1 ->
-                detailExerciseViewModel.postLabel(it1).observe(this) { resource ->
+            maxLabel?.let { maxLabel ->
+                detailExerciseViewModel.postLabel(maxLabel).observe(this) { resource ->
                     when (resource) {
                         is Resource.Success -> {
-                            // Handle the success
                             val response = resource.data.get(0)
                             Log.d("DetailExerciseActivity", "Response: $response")
-                            binding.idNameLabel.setText(response.nameEquipment)
-                            binding.description.setText(response.description)
-                            binding.nameExercise.setText(response.nameExercise)
-                            binding.bodyPart.setText(response.bodypart)
-                        }
+                            binding.idNameLabel.text = response.nameEquipment
+                            binding.description.text = response.description
+                            binding.nameExercise.text = response.nameExercise
+                            binding.bodyPart.text = response.bodypart
+                            val videoUrl = response.urlVideo
 
+                            // Set up VideoView
+                            if (!videoUrl.isNullOrEmpty()) {
+                                val uri = Uri.parse(videoUrl)
+                                binding.videoView.setMediaController(
+                                    android.widget.MediaController(
+                                        this
+                                    )
+                                )
+                                binding.videoView.setVideoURI(uri)
+                                binding.videoView.setOnPreparedListener { mediaPlayer ->
+                                    mediaPlayer.start()
+                                }
+                            } else {
+                                showToast("Video URL is empty or invalid")
+                            }
+                        }
                         is Resource.Error -> {
                             // Handle the error
                             Log.e("DetailExerciseActivity", "Error: ${resource.errorMessage}")
+                            showToast("Error: ${resource.errorMessage}")
                         }
                     }
                 }
             }
         }
+
         saveExercise(imageUri, detailExerciseViewModel)
     }
+    private fun showToast(message: String) {
+        Toast.makeText(this@DetailExerciseActivity, message, Toast.LENGTH_SHORT).show()
+    }
+
 
     fun getCurrentDateTime(): String {
         val date = Date()

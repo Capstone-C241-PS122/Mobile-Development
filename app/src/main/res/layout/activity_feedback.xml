@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
@@ -13,13 +11,13 @@
         android:orientation="vertical">
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:background="@color/background_bar">
+            android:layout_height="110dp"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
             <Button
                 android:id="@+id/btnBack"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="25dp"
                 android:layout_gravity="start"
@@ -32,8 +30,41 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="25dp"
                 android:fontFamily="@font/roboto_medium"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textColor="@color/white"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/top_bar"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="bottom"/>
         </FrameLayout>
+        <EditText
+            android:id="@+id/editText_description"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="8dp"
+            android:hint="@string/enter_description"
+            android:textColorHint="@color/colorTextHint"
+            android:inputType="textMultiLine"
+            android:background="@drawable/background_input"
+            android:textColor="@color/colorTextgrey"
+            android:maxLength="200"
+            android:paddingStart="12dp"
+            android:paddingBottom="70dp"/>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_light"
+            android:textSize="18sp"
+            android:layout_margin="15dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/background"
+            android:text="@string/send"
+            android:elevation="10dp"
+            android:textAllCaps="false"/>
     </LinearLayout>
 </FrameLayout>

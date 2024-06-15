@@ -6,8 +6,6 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
 import android.util.Log
-import org.tensorflow.lite.Interpreter
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -67,6 +65,27 @@ fun reshapeAndNormalizeImageFile(file: File): ByteBuffer? {
     // Normalize the Bitmap and convert it to ByteBuffer
     return convertBitmapToNormalizedByteBuffer(resizedBitmap)
 }
+fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
+    val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
+    for (y in 0 until 224) {
+        for (x in 0 until 224) {
+            val px = bitmap.getPixel(x, y)
+            // Get channel values from the pixel value.
+            val r = Color.red(px)
+            val g = Color.green(px)
+            val b = Color.blue(px)
+            // Normalize channel values to [-1.0, 1.0].
+            val rf = (r / 255f)
+            val gf = (g / 255f)
+            val bf = (b / 255f)
+
+            input.putFloat(rf)
+            input.putFloat(gf)
+            input.putFloat(bf)
+        }
+    }
+    return input
+}
 
 //fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
 //    val inputShape = intArrayOf(1, 224, 224, 3) // Assuming input shape is [1, 224, 224, 3]
@@ -96,28 +115,6 @@ fun reshapeAndNormalizeImageFile(file: File): ByteBuffer? {
 //    }
 //    return input
 //}
-
-fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
-    val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
-    for (y in 0 until 224) {
-        for (x in 0 until 224) {
-            val px = bitmap.getPixel(x, y)
-            val r = Color.red(px)
-            val g = Color.green(px)
-            val b = Color.blue(px)
-            val rf = (r / 127.5f) - 1.0f
-            val gf = (g / 127.5f) - 1.0f
-            val bf = (b / 127.5f) - 1.0f
-            input.putFloat(rf)
-            input.putFloat(gf)
-            input.putFloat(bf)
-        }
-    }
-//    logBitmapDimensions(bitmap)
-//    input.rewind()
-//    printByteBuffer(input)
-    return input
-}
 
 fun logBitmapDimensions(bitmap: Bitmap) {
     Log.d("ResizedBitmap", "Width: ${bitmap.width}, Height: ${bitmap.height}")

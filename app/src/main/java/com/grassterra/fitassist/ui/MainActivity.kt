@@ -5,16 +5,9 @@ import android.content.Intent
 import android.graphics.Matrix
 import android.media.MediaPlayer
 import android.net.Uri
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Surface
-import android.view.View
-import android.view.ViewGroup
-import android.view.Window
-import android.view.animation.AlphaAnimation
-import androidx.core.view.isVisible
-import com.grassterra.fitassist.R
+import androidx.appcompat.app.AppCompatActivity
 import com.grassterra.fitassist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,10 +19,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val videoUri = Uri.parse("android.resource://" + packageName + "/" + R.raw.video_background)
+        val videoUrl = "https://storage.googleapis.com/bucket_fitassist/video_background.mp4"
         binding.textureView.post {
             mediaPlayer = MediaPlayer().apply {
-                setDataSource(this@MainActivity, videoUri)
+                setDataSource(this@MainActivity, Uri.parse(videoUrl))
                 setSurface(Surface(binding.textureView.surfaceTexture))
                 isLooping = true
                 setVolume(0f, 0f)
@@ -40,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                 prepareAsync()
             }
         }
+
         binding.btnStarted.setOnClickListener {
             NavigateNextPage(this)
         }

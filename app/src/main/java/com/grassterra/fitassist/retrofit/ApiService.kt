@@ -1,6 +1,5 @@
 package com.grassterra.fitassist.retrofit
 
-import com.google.gson.annotations.SerializedName
 import com.grassterra.fitassist.helper.LabelRequest
 import com.grassterra.fitassist.response.ArticlesResponse
 import com.grassterra.fitassist.response.FeedbackResponse
@@ -8,6 +7,8 @@ import com.grassterra.fitassist.response.LabelPostResponse
 import com.grassterra.fitassist.response.LibraryGetResponse
 import com.grassterra.fitassist.response.ListVideoItem
 import com.grassterra.fitassist.response.NutritionPostResponse
+import com.grassterra.fitassist.response.NutritionResponse
+import com.grassterra.fitassist.response.SearchResponse
 import com.grassterra.fitassist.response.WorkoutArticleResponse
 import com.grassterra.fitassist.response.WorkoutVideoResponse
 import retrofit2.Call
@@ -32,7 +33,7 @@ interface ApiService {
     suspend fun postNutrition(
         @Query("name") name: String? = null,
         @Query("weight") weight: Int? = 0
-    ): NutritionPostResponse
+    ): NutritionResponse
 
     @GET("library")
     suspend fun getLibrary(): LibraryGetResponse

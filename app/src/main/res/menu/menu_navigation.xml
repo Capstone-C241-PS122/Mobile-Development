@@ -5,9 +5,9 @@
         android:icon="@drawable/home_24px"
         android:title="@string/menu_home" />
     <item
-        android:id="@+id/id_running"
+        android:id="@+id/id_burn_calories"
         android:icon="@drawable/sprint_24px"
-        android:title="Running Tracker" />
+        android:title="@string/burn_calories" />
     <item
         android:id="@+id/id_mybody"
         android:icon="@drawable/conditions_24px"

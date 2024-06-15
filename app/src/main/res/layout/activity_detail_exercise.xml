@@ -51,12 +51,6 @@
                     android:textSize="24sp"
                     android:text="" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="#FF8CB6" />
-
             </FrameLayout>
             <TextView
                 android:id="@+id/textDescriptionLabel"
@@ -91,13 +85,11 @@
                 android:text="Video Tutorial"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/backgroundWhilepressed"/>
-            <ImageButton
-                android:id="@+id/playVideo"
+            <VideoView
+                android:id="@+id/videoView"
                 android:layout_margin="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:src="@drawable/play_circle_24px"
-                android:background="@color/background_card"/>
+                android:layout_height="220dp"/>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"

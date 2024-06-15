@@ -51,4 +51,12 @@
     <string name="button_homepage">Scan Gym Equipment</string>
     <string name="title_homepage">Classify Gym and Fitness Equipment Quickly and Easily</string>
     <string name="description_homepage">Get information about each tool, including how to use it and its benefits</string>
+    <string name="choose_activity_exercise">Select a Activity Exercise</string>
+    <string name="burn_calories">Burn Calories Assistant</string>
+    <string name="nama_makanan">Nama Makanan</string>
+    <string name="berat_makanan_gram">Berat Makanan (gram)</string>
+    <string name="hitung">Hitung</string>
+    <string name="send">Send</string>
+    <string name="enter_description">Enter Description</string>
+    <string name="submit">Submit</string>
 </resources>

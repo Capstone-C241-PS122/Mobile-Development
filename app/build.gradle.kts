@@ -61,15 +61,16 @@ dependencies {
     implementation ("org.tensorflow:tensorflow-lite:2.10.0") // Ensure this is the latest stable version
     implementation ("org.tensorflow:tensorflow-lite-gpu:2.10.0") // Optional: Add GPU support if needed
     implementation ("org.tensorflow:tensorflow-lite-support:0.3.1") // For TensorImage and TensorBuffer
-    implementation("androidx.room:room-runtime:2.5.2")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
     implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation("androidx.media3:media3-session:1.3.1")
     ksp("androidx.room:room-compiler:2.5.2")
-    implementation("androidx.compose.animation:animation-core-android:1.6.7")
+    implementation("androidx.compose.animation:animation-core-android:1.6.8")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
