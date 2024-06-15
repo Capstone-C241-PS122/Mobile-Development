@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="ui.MainActivity">
+    tools:context=".ui.userInput.MainActivity">
 
     <TextureView
         android:id="@+id/textureView"
-        tools:context=".ui.MainActivity"
+        tools:context=".ui.userInput.MainActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY" />

@@ -21,63 +21,63 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".ui.ActivityDetailsArticle"
+            android:name=".ui.article.ActivityDetailsArticle"
             android:exported="false" />
         <activity
-            android:name=".ui.ActivityCalculateNutrition"
+            android:name=".ui.myBody.ActivityCalculateNutrition"
             android:exported="false" />
         <activity
-            android:name=".ui.ActivityHydration"
+            android:name=".ui.myBody.ActivityHydration"
             android:exported="false" />
         <activity
-            android:name=".ui.ActivityBMR"
+            android:name=".ui.myBody.ActivityBMR"
             android:exported="false" />
         <activity
-            android:name=".ui.ActivityBMI"
+            android:name=".ui.myBody.ActivityBMI"
             android:exported="false" />
         <activity
-            android:name=".ui.FeedbackActivity"
+            android:name=".ui.feedback.FeedbackActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.LibraryVideo"
+            android:name=".ui.library.LibraryVideo"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.HistoryActivity"
+            android:name=".ui.history.HistoryActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SelectExercise"
+            android:name=".ui.userInput.SelectExercise"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityInputAge"
+            android:name=".ui.userInput.ActivityInputAge"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityInputHeight"
+            android:name=".ui.userInput.ActivityInputHeight"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityInputWeight"
+            android:name=".ui.userInput.ActivityInputWeight"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.ActivitySelectgender"
+            android:name=".ui.userInput.ActivitySelectgender"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.DetailExerciseActivity"
+            android:name=".ui.exercise.DetailExerciseActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.userInput.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.MainMenu"
+            android:name=".ui.mainMenu.MainMenu"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">

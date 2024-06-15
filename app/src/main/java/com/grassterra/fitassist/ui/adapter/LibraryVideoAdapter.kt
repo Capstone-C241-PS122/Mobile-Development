@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.grassterra.fitassist.databinding.ListItemLibraryVideoBinding
 import com.grassterra.fitassist.response.ListVideoItem
-import com.grassterra.fitassist.ui.FullScreenDialogFragment
+import com.grassterra.fitassist.ui.fragments.FullScreenDialogFragment
 
 class LibraryVideoAdapter: ListAdapter<ListVideoItem, LibraryVideoAdapter.MyViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

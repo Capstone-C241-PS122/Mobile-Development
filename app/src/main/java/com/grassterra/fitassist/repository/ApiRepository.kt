@@ -68,7 +68,7 @@ class ApiRepository(private val apiService: ApiService) {
     suspend fun getDetailArticle(id: Int): Resource<WorkoutArticleResponse>{
         return try {
             val resp = apiService.getDetailArticle(id = id)
-            if (resp.error == "false"){
+            if (resp.error == false){
                 Resource.Success(resp)
             }
             else{
