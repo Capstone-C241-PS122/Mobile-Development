@@ -14,6 +14,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -61,10 +62,17 @@ class MainMenu : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val mainViewModel = obtainViewModel(this@MainMenu)
         val flag = intent.getBooleanExtra("flag", false)
-
+        binding.drawerLayout.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+                super.onDrawerSlide(drawerView, slideOffset)
+                if (slideOffset == 0f) {
+                    binding.lottieAnimationSwipeView.cancelAnimation()
+                    binding.lottieAnimationSwipeView.visibility = View.INVISIBLE
+                }
+            }
+        })
         Log.d("MainMenu", flag.toString())
 
         if (flag) {
@@ -132,7 +140,6 @@ class MainMenu : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
-
         setupBottomNavigation()
     }
 
@@ -140,7 +147,6 @@ class MainMenu : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, PICK_IMAGE_REQUEST)
     }
-
     private fun startCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         var photoFile: File? = null
