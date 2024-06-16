@@ -1,5 +1,6 @@
 package com.grassterra.fitassist.ui.profile
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -35,6 +36,9 @@ class ProfileActivity : AppCompatActivity() {
         setFields(bmiViewModel)
         binding.btnCalculate.setOnClickListener {
             saveData(bmiViewModel)
+        }
+        binding.btnBack.setOnClickListener {
+            goToBack(this)
         }
     }
 
@@ -77,6 +81,12 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun goToBack(context: Context) {
+        val intent = Intent(context, MainMenu::class.java)
+        context.startActivity(intent)
+        finish()
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): BMIViewModel {
