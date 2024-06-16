@@ -12,17 +12,20 @@ import com.grassterra.fitassist.databinding.ItemListHistoryBinding
 import com.grassterra.fitassist.databinding.ListItemLibraryVideoBinding
 
 
-class HistoryItemAdapter: ListAdapter<HistoryItem, HistoryItemAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class HistoryItemAdapter : ListAdapter<HistoryItem, HistoryItemAdapter.MyViewHolder>(DIFF_CALLBACK) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemListHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
+
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
+
     class MyViewHolder(val binding: ItemListHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: HistoryItem){
+        fun bind(item: HistoryItem) {
             binding.tvNameExercise.text = item.exercise
             binding.tvBodyPart.text = item.bodypart
             binding.tvDate.text = item.date
@@ -32,11 +35,13 @@ class HistoryItemAdapter: ListAdapter<HistoryItem, HistoryItemAdapter.MyViewHold
                 .into(this.binding.imgResult)
         }
     }
+
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<HistoryItem>() {
             override fun areItemsTheSame(oldItem: HistoryItem, newItem: HistoryItem): Boolean {
-                return oldItem == newItem
+                return oldItem.id == newItem.id  // Assuming each HistoryItem has a unique id
             }
+
             override fun areContentsTheSame(oldItem: HistoryItem, newItem: HistoryItem): Boolean {
                 return oldItem == newItem
             }

@@ -16,7 +16,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("articles")
+    @GET("search")
     suspend fun getArticle(
         @Query("bodypart") bodypart: String? = null
     ): ArticlesResponse

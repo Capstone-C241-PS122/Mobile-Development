@@ -31,6 +31,7 @@ import com.grassterra.fitassist.helper.ViewModelFactory
 import com.grassterra.fitassist.response.ListArticleItem
 import com.grassterra.fitassist.ui.adapter.ArticleAdapter
 import com.grassterra.fitassist.ui.exercise.DetailExerciseActivity
+import com.grassterra.fitassist.ui.profile.ProfileActivity
 import com.grassterra.fitassist.ui.userInput.MainActivity
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.File
@@ -71,7 +72,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnUser.setOnClickListener {
-            val intent = Intent(requireActivity(), MainActivity::class.java)
+            val intent = Intent(requireActivity(), ProfileActivity::class.java)
             startActivity(intent)
         }
         binding.scrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
