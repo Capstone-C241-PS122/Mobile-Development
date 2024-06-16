@@ -81,86 +81,18 @@
     <!-- NestedScrollView for scrolling content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="match_parent">
-=======
         android:layout_height="match_parent"
         android:layout_marginTop="350dp"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <!-- Vertical LinearLayout for content -->
->>>>>>> a933717d84c24cc00b9b963905f8ea2130894452
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<<<<<<< HEAD
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="350dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/top_background"
-                    android:scaleType="centerCrop" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:background="#80000000" />
-
-                <TextView
-                    android:id="@+id/textHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="12dp"
-                    android:fontFamily="@font/opensans_bold"
-                    android:text="@string/title_homepage"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:layout_width="300dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="100dp"
-                    android:layout_gravity="center"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/blink_button_primary"/>
-
-                <Button
-                    android:id="@+id/btnScan"
-                    android:layout_width="220dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="100dp"
-                    android:text="@string/button_homepage"
-                    android:textAllCaps="false"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="@color/white"
-                    android:drawableEnd="@drawable/chevron_right_24px"
-                    android:background="@drawable/button_primary"/>
-
-                <ImageButton
-                    android:id="@+id/btnUser"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/person_24px"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="45dp"
-                    android:layout_gravity="end"
-                    android:background="@drawable/backround_button" />
-            </FrameLayout>
-=======
             <!-- Recommended text -->
->>>>>>> a933717d84c24cc00b9b963905f8ea2130894452
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
