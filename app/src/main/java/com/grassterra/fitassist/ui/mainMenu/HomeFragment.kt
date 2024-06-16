@@ -14,10 +14,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.view.animation.AlphaAnimation
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -73,7 +74,15 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
         }
-
+        binding.scrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
+            if (scrollY > 1 && binding.topBar.visibility != View.VISIBLE) {
+                fadeInView(binding.topBar)
+                fadeInView(binding.tvtopBar)
+            } else if (scrollY == 0 && binding.topBar.visibility == View.VISIBLE) {
+                fadeOutView(binding.topBar)
+                fadeOutView(binding.tvtopBar)
+            }
+        })
         binding.btnScan.setOnClickListener {
             if (checkPermission(Manifest.permission.CAMERA)) {
                 startCamera()
@@ -101,6 +110,19 @@ class HomeFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+    private fun fadeInView(view: View) {
+        val anim = AlphaAnimation(0.0f, 1.0f)
+        anim.duration = 500
+        view.visibility = View.VISIBLE
+        view.startAnimation(anim)
+    }
+
+    private fun fadeOutView(view: View) {
+        val anim = AlphaAnimation(1.0f, 0.0f)
+        anim.duration = 500
+        view.startAnimation(anim)
+        view.visibility = View.INVISIBLE
     }
 
     private fun startCamera() {

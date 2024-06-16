@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/backgroundNavigationBottom"
-            app:itemIconSize="30dp"
+            app:itemIconSize="24dp"
             app:itemIconTint="@drawable/selector_icon_nav"
             app:itemTextColor="@drawable/selector_icon_nav"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -7,110 +7,43 @@
     android:background="@color/background"
     tools:context=".ui.mainMenu.HomeFragment">
 
-    <!-- Fixed elements outside NestedScrollView -->
-    <FrameLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_height="wrap_content">
 
-        <!-- Background image or color -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/top_background"
-            android:scaleType="centerCrop" />
-
-        <!-- Overlay background with transparency -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:background="#80000000" />
-
-        <!-- Header text -->
-        <TextView
-            android:id="@+id/textHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="12dp"
-            android:fontFamily="@font/opensans_bold"
-            android:text="@string/title_homepage"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <!-- Lottie Animation -->
-        <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="100dp"
-            android:layout_gravity="center"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/blink_button_primary"/>
-
-        <!-- Button -->
-        <Button
-            android:id="@+id/btnScan"
-            android:layout_width="220dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="100dp"
-            android:text="@string/button_homepage"
-            android:textAllCaps="false"
-            android:textSize="15sp"
-            android:fontFamily="@font/roboto_bold"
-            android:textColor="@color/white"
-            android:drawableEnd="@drawable/chevron_right_24px"
-            android:background="@drawable/button_primary"/>
-
-        <!-- User Button -->
-        <ImageButton
-            android:id="@+id/btnUser"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/person_24px"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="45dp"
-            android:layout_gravity="end"
-            android:background="@drawable/backround_button" />
-
-    </FrameLayout>
-
+    </com.google.android.material.appbar.AppBarLayout>
     <!-- NestedScrollView for scrolling content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="match_parent">
-=======
         android:layout_height="match_parent"
-        android:layout_marginTop="350dp"
+        android:id="@+id/scrollView"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Vertical LinearLayout for content -->
->>>>>>> a933717d84c24cc00b9b963905f8ea2130894452
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<<<<<<< HEAD
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="350dp">
 
+                <!-- Background image or color -->
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/top_background"
                     android:scaleType="centerCrop" />
+
+                <!-- Overlay background with transparency -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
                     android:background="#80000000" />
 
+                <!-- Header text -->
                 <TextView
                     android:id="@+id/textHeader"
                     android:layout_width="wrap_content"
@@ -125,6 +58,7 @@
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
+                <!-- Lottie Animation -->
                 <com.airbnb.lottie.LottieAnimationView
                     android:layout_width="300dp"
                     android:layout_height="100dp"
@@ -134,6 +68,7 @@
                     app:lottie_loop="true"
                     app:lottie_rawRes="@raw/blink_button_primary"/>
 
+                <!-- Button -->
                 <Button
                     android:id="@+id/btnScan"
                     android:layout_width="220dp"
@@ -146,8 +81,9 @@
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="@color/white"
                     android:drawableEnd="@drawable/chevron_right_24px"
-                    android:background="@drawable/button_primary"/>
+                    android:background="@drawable/button_primary" />
 
+                <!-- User Button -->
                 <ImageButton
                     android:id="@+id/btnUser"
                     android:layout_width="40dp"
@@ -158,17 +94,15 @@
                     android:layout_gravity="end"
                     android:background="@drawable/backround_button" />
             </FrameLayout>
-=======
-            <!-- Recommended text -->
->>>>>>> a933717d84c24cc00b9b963905f8ea2130894452
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/recommended_for_you"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:layout_margin="15dp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/roboto_bold"/>
+                android:fontFamily="@font/roboto_bold" />
 
             <!-- RecyclerView for dynamic content -->
             <androidx.recyclerview.widget.RecyclerView
@@ -190,5 +124,31 @@
         android:layout_gravity="center"
         android:visibility="visible"
         tools:visibility="visible" />
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@color/background"
+            android:elevation="4dp"
+            android:visibility="invisible"
+            app:layout_anchor="@id/appBarLayout"
+            app:layout_anchorGravity="bottom" />
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tvtopBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recommended_for_you"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_gravity="start"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        android:textColor="@color/colorTextgrey"
+        app:layout_anchor="@id/appBarLayout"
+        app:layout_anchorGravity="start|top"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -32,4 +32,6 @@
     <color name="colorTextHint">#848484</color>
     <color name="colorStopBeforePressed">#151515</color>
     <color name="colorStopAfterPressed">#393939</color>
+    <color name="colorTextgrey2">#737373</color>
+    <color name="colorDanger">#FF4444</color>
 </resources>

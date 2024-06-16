@@ -72,7 +72,14 @@
     <string name="recommended_for_you">Recommended for you</string>
     <string name="detail_exercise">Detail Exercise</string>
     <string name="video_tutorial">Video Tutorial</string>
-    <string name="body_part">Body Part:</string>
+    <string name="body_part">Body Part</string>
+    <string name="capstone_c241_ps122">Capstone C241-PS122</string>
+    <string name="finish">Finish</string>
+    <string name="_00_00">00:00</string>
+    <string name="start">Start</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure_you_want_to_proceed">Are you sure you want to proceed?</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>
