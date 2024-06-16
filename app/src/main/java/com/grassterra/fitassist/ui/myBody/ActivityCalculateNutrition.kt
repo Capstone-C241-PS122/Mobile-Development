@@ -22,16 +22,13 @@ class ActivityCalculateNutrition : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCalculateNutritionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         apiRepository = ApiRepository(apiService)
-
         binding.buttonCalculate.setOnClickListener {
             resultCalculate()
         }
     }
 
     private val apiService = ApiConfig.getApiService()
-
     private fun resultCalculate() {
         val foodName = binding.editTextFood.text.toString().trim()
         val foodWeight = binding.editTextWeight.text.toString().toIntOrNull() ?: 0
@@ -74,11 +71,6 @@ class ActivityCalculateNutrition : AppCompatActivity() {
                 when (e) {
                     is HttpException -> showToast("Error: ${e.message()}")
                     else -> showToast("Error: ${e.message}")
-                }
-            } finally {
-                withContext(Dispatchers.Main) {
-                    binding.editTextFood.text.clear()
-                    binding.editTextWeight.text.clear()
                 }
             }
         }

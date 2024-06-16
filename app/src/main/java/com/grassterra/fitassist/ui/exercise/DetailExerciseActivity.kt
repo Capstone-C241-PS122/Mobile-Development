@@ -40,8 +40,10 @@ class DetailExerciseActivity : AppCompatActivity() {
         binding.scrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
             if (scrollY > 0 && binding.topBar.visibility != View.VISIBLE) {
                 fadeInView(binding.topBar)
+                fadeInView(binding.tvtopBar)
             } else if (scrollY == 0 && binding.topBar.visibility == View.VISIBLE) {
                 fadeOutView(binding.topBar)
+                fadeOutView(binding.tvtopBar)
             }
         })
         setupView(detailExerciseViewModel)
@@ -113,7 +115,7 @@ class DetailExerciseActivity : AppCompatActivity() {
                             }
 
                             val videoUrl = response.urlVideo
-                            if (!videoUrl.isNullOrEmpty()) {
+                            if (videoUrl.isNotEmpty()) {
                                 val uri = Uri.parse(videoUrl)
                                 binding.videoView.setMediaController(
                                     android.widget.MediaController(
