@@ -12,7 +12,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/btnBack"

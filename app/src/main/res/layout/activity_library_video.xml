@@ -13,7 +13,6 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_marginTop="15dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/btnBack"
@@ -26,10 +25,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
                 android:text="@string/libraryvideo"
                 android:layout_marginTop="40dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginStart="65dp"
                 android:fontFamily="@font/roboto_medium"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>

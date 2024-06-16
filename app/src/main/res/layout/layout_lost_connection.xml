@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layoutLostConnection"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background">
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="25dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_error"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/please_check_your_internet_connection_and_try_again"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_reguler"
+        android:layout_margin="15dp"
+        android:textAlignment="center"
+        android:textColor="@color/white" />
+    <Button
+        android:id="@+id/btnRetry"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/colorTextgrey"
+        android:background="@drawable/button_primary"
+        android:text="@string/retry"/>
+</LinearLayout>

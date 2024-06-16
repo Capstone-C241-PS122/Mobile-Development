@@ -1,23 +1,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="100dp"
     android:orientation="vertical"
     android:gravity="center_vertical"
-    android:padding="16dp"
     android:background="@color/background">
-
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/logo_apk" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_bold"
-        android:textSize="22sp"
+        android:paddingStart="16dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/colorTextgrey"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="19sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/divider_alert"/>
 </LinearLayout>

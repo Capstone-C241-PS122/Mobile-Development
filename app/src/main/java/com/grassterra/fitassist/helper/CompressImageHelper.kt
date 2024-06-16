@@ -75,10 +75,9 @@ fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
             val g = Color.green(px)
             val b = Color.blue(px)
             // Normalize channel values to [-1.0, 1.0].
-            val rf = (r / 255f)
-            val gf = (g / 255f)
-            val bf = (b / 255f)
-
+            val rf = (r / 255f )
+            val gf = (g / 255f )
+            val bf = (b / 255f )
             input.putFloat(rf)
             input.putFloat(gf)
             input.putFloat(bf)

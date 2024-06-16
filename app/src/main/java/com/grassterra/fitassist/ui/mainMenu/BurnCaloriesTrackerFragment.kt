@@ -1,5 +1,6 @@
 package com.grassterra.fitassist.ui.mainMenu
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.grassterra.fitassist.databinding.FragmentBurnCaloriesTrackerBinding
 
@@ -39,10 +41,9 @@ class BurnCaloriesTrackerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupNumberPicker()
+        setupColorNumberPicker()
         setupButtons()
-
         savedInstanceState?.let {
             isRunningNow = it.getBoolean("isRunningNow", false)
             elapsedTime = it.getLong("elapsedTime", 0L)
@@ -54,7 +55,16 @@ class BurnCaloriesTrackerFragment : Fragment() {
         }
         calculateAndDisplayCalories()
     }
-
+    private fun setupColorNumberPicker() {
+        val count = binding.numberPickerWeight.childCount
+        for (i in 0 until count) {
+            val child = binding.numberPickerWeight.getChildAt(i)
+            if (child is EditText) {
+                child.setTextColor(Color.WHITE)
+                break
+            }
+        }
+    }
     private fun setupNumberPicker() {
         binding.numberPickerWeight.apply {
             minValue = 0

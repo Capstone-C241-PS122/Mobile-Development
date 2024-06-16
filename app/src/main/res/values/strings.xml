@@ -80,6 +80,9 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="are_you_sure_you_want_to_proceed">Are you sure you want to proceed?</string>
+    <string name="add_with_gallery_or_camera">Add with Gallery or Camera</string>
+    <string name="retry">Retry</string>
+    <string name="please_check_your_internet_connection_and_try_again">Please check your internet connection and try again.</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>

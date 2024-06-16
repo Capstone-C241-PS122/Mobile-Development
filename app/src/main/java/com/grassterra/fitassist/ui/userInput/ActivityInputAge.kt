@@ -20,7 +20,7 @@ class ActivityInputAge : AppCompatActivity() {
     private val handler = Handler()
     private val typingDelay: Long = 100
     private val blinkDelay: Long = 250
-    private val fullText = "How old are you? \uD83C\uDF82"
+    private val fullText = "How old are you?"
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
     private lateinit var userData: Userdata
