@@ -39,6 +39,7 @@ class LibraryVideo : AppCompatActivity() {
     private fun GoToBack(context: Context){
         val intent = Intent(context, MainMenu::class.java)
         context.startActivity(intent)
+        finish()
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): LibraryVideoViewModel {
