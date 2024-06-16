@@ -12,24 +12,23 @@
         android:orientation="vertical">
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="100dp"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="15dp"
                 android:layout_gravity="start"
                 android:background="@drawable/arrow_back_24px"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
                 android:text="@string/history"
                 android:layout_marginTop="40dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginStart="65dp"
                 android:fontFamily="@font/roboto_medium"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
@@ -39,6 +38,15 @@
                 android:background="@drawable/top_bar"
                 android:layout_marginBottom="15dp"
                 android:layout_gravity="bottom"/>
+            <Button
+                android:id="@+id/showDialogButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="15dp"
+                android:layout_gravity="end"
+                android:backgroundTint="@color/colorDanger"
+                android:background="@drawable/delete_24px"/>
         </FrameLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

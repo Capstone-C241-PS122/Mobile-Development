@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.grassterra.fitassist.databinding.ActivityDetailsArticleBinding
 import com.grassterra.fitassist.helper.Resource
 import com.grassterra.fitassist.helper.ViewModelFactory
-import com.grassterra.fitassist.ui.exercise.DetailExerciseViewModel
 
 class ActivityDetailsArticle : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsArticleBinding
@@ -16,7 +15,6 @@ class ActivityDetailsArticle : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val detailsArticleViewModel = obtainViewModel(this@ActivityDetailsArticle)
         setupView(detailsArticleViewModel)
     }

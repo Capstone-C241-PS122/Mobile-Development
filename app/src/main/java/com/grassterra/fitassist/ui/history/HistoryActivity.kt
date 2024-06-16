@@ -4,15 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grassterra.fitassist.database.history.HistoryItem
 import com.grassterra.fitassist.databinding.ActivityHistoryBinding
+import com.grassterra.fitassist.databinding.AlertCheckDeleteBinding
 import com.grassterra.fitassist.helper.ViewModelFactory
-import com.grassterra.fitassist.ui.mainMenu.MainMenu
 import com.grassterra.fitassist.ui.adapter.HistoryItemAdapter
+import com.grassterra.fitassist.ui.mainMenu.MainMenu
 
 class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding
@@ -29,11 +31,30 @@ class HistoryActivity : AppCompatActivity() {
         historyViewModel.historyList.observe(this){listHistory ->
             setData(listHistory)
         }
-        
         binding.btnBack.setOnClickListener{
             GoToBack(this)
         }
+        binding.showDialogButton.setOnClickListener {
+            showYesNoDialog()
+        }
     }
+    private fun showYesNoDialog() {
+        val dialogBinding = AlertCheckDeleteBinding.inflate(layoutInflater)
+        val alertDialog = AlertDialog.Builder(this)
+            .setView(dialogBinding.root)
+            .create()
+
+        dialogBinding.btnYes.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        dialogBinding.btnNo.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
     private fun GoToBack(context: Context){
         val intent = Intent(context, MainMenu::class.java)
         context.startActivity(intent)
