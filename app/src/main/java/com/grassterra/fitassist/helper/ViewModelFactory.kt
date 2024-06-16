@@ -3,12 +3,14 @@ package com.grassterra.fitassist.helper
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.grassterra.fitassist.ui.BMIViewModel
-import com.grassterra.fitassist.ui.DetailExerciseViewModel
-import com.grassterra.fitassist.ui.HistoryViewModel
-import com.grassterra.fitassist.ui.LibraryVideoViewModel
-import com.grassterra.fitassist.ui.MainViewModel
-import com.grassterra.fitassist.ui.SelectExerciseViewModel
+import com.grassterra.fitassist.ui.article.DetailsArticleViewModel
+import com.grassterra.fitassist.ui.myBody.BMIViewModel
+import com.grassterra.fitassist.ui.exercise.DetailExerciseViewModel
+import com.grassterra.fitassist.ui.history.HistoryViewModel
+import com.grassterra.fitassist.ui.mainMenu.HomeViewModel
+import com.grassterra.fitassist.ui.library.LibraryVideoViewModel
+import com.grassterra.fitassist.ui.mainMenu.MainViewModel
+import com.grassterra.fitassist.ui.userInput.SelectExerciseViewModel
 
 class ViewModelFactory private constructor(private val mApplication: Application) : ViewModelProvider.NewInstanceFactory() {
     companion object {
@@ -44,6 +46,12 @@ class ViewModelFactory private constructor(private val mApplication: Application
         }
         else if (modelClass.isAssignableFrom(HistoryViewModel::class.java)) {
             return HistoryViewModel(mApplication) as T
+        }
+        else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            return HomeViewModel(mApplication) as T
+        }
+        else if (modelClass.isAssignableFrom(DetailsArticleViewModel::class.java)) {
+            return DetailsArticleViewModel(mApplication) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }

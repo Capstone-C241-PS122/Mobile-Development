@@ -1,57 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:orientation="vertical"
-    android:background="@color/background">
-    <ImageView
-        android:id="@+id/imgResult"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="4dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/example_input"/>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/bg_card2"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/imgResult"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/example_input"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent" />
+
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="11/06/2024"
             android:textSize="16sp"
-            android:layout_gravity="end"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
             android:fontFamily="@font/roboto_medium"
-            android:textColor="@color/colorTextgrey"/>
+            android:textColor="@color/colorTextgrey"
+            card_view:layout_constraintTop_toBottomOf="@id/imgResult"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            />
+
         <TextView
             android:id="@+id/tvNameExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="15dp"
             android:text="Hacksquat"
             android:textSize="20sp"
             android:fontFamily="@font/roboto_medium"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            card_view:layout_constraintTop_toBottomOf="@id/tvDate"
+            card_view:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            />
+
         <TextView
             android:id="@+id/tvBodyPart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:layout_marginStart="15dp"
             android:text="Body part: Biceps"
             android:textSize="16sp"
             android:fontFamily="@font/roboto_reguler"
-            android:textColor="@color/colorTextgrey"/>
+            android:textColor="@color/colorTextgrey"
+            card_view:layout_constraintTop_toBottomOf="@id/tvNameExercise"
+            card_view:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            />
+
         <TextView
             android:id="@+id/tvHackSquat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
-            android:layout_marginStart="15dp"
-            android:text="Equiqment: Hacksquat Machine"
+            android:text="Equipment: Hacksquat Machine"
             android:textSize="16sp"
             android:fontFamily="@font/roboto_reguler"
-            android:textColor="@color/colorTextgrey"/>
-    </FrameLayout>
-</LinearLayout>
+            android:textColor="@color/colorTextgrey"
+            card_view:layout_constraintTop_toBottomOf="@id/tvBodyPart"
+            card_view:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

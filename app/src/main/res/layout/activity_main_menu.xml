@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
-        tools:context="ui.MainMenu">
+        tools:context=".ui.mainMenu.MainMenu">
         <FrameLayout
             android:id="@+id/idHostFragment"
             android:layout_width="match_parent"
