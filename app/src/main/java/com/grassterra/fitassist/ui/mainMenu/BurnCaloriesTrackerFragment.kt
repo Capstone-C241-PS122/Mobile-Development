@@ -8,7 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.grassterra.fitassist.databinding.FragmentBurnCaloriesTrackerBinding
+import com.grassterra.fitassist.helper.ViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class BurnCaloriesTrackerFragment : Fragment() {
     private var _binding: FragmentBurnCaloriesTrackerBinding? = null
@@ -40,8 +47,9 @@ class BurnCaloriesTrackerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupNumberPicker()
-        setupButtons()
+        val mainViewModel = obtainViewModel(requireActivity())
+        setupNumberPicker(mainViewModel)
+        setupButtons(mainViewModel)
 
         savedInstanceState?.let {
             isRunningNow = it.getBoolean("isRunningNow", false)
@@ -52,23 +60,23 @@ class BurnCaloriesTrackerFragment : Fragment() {
                 updateStopwatchDisplay()
             }
         }
-        calculateAndDisplayCalories()
+        calculateAndDisplayCalories(mainViewModel)
     }
 
-    private fun setupNumberPicker() {
+    private fun setupNumberPicker(mainViewModel: MainViewModel) {
         binding.numberPickerWeight.apply {
             minValue = 0
             maxValue = 40
             value = 5
             setOnValueChangedListener { _, _, _ ->
-                calculateAndDisplayCalories()
+                calculateAndDisplayCalories(mainViewModel)
             }
         }
     }
 
-    private fun setupButtons() {
+    private fun setupButtons(mainViewModel: MainViewModel) {
         binding.btnReset.setOnClickListener {
-            resetStopwatch()
+            resetStopwatch(mainViewModel)
         }
 
         binding.btnStopwatch.setOnClickListener {
@@ -79,55 +87,59 @@ class BurnCaloriesTrackerFragment : Fragment() {
             }
         }
     }
-    private fun calculateAndDisplayCalories() {
-        calculateAndDisplayCaloriesWithElapsedTime(elapsedTime)
+    private fun calculateAndDisplayCalories(mainViewModel: MainViewModel) {
+        calculateAndDisplayCaloriesWithElapsedTime(elapsedTime, mainViewModel)
     }
 
-    private fun calculateAndDisplayCaloriesWithElapsedTime(elapsedTime: Long) {
-        val beratBadan = 60.0
-        val beratBeban = binding.numberPickerWeight.value.toDouble()
-        val durasiWaktu = getElapsedTimeInMinutes(elapsedTime)
+    private fun calculateAndDisplayCaloriesWithElapsedTime(elapsedTime: Long, mainViewModel: MainViewModel) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val beratBadan = mainViewModel.getUser()?.weight?.toDouble()
+            val beratBeban = binding.numberPickerWeight.value.toDouble()
+            val durasiWaktu = getElapsedTimeInMinutes(elapsedTime)
 
-        val metValues = mapOf(
-            1.0 to 2.3,
-            2.0 to 3.0,
-            3.0 to 3.5,
-            4.0 to 4.0,
-            5.0 to 5.0,
-            6.0 to 5.5,
-            7.0 to 6.0,
-            8.0 to 6.0,
-            9.0 to 6.5,
-            10.0 to 6.5,
-            12.0 to 7.0,
-            15.0 to 7.5,
-            18.0 to 8.0,
-            20.0 to 8.0,
-            25.0 to 8.5,
-            30.0 to 9.0,
-            35.0 to 9.5,
-            40.0 to 10.0
-        )
+            val metValues = mapOf(
+                1.0 to 2.3,
+                2.0 to 3.0,
+                3.0 to 3.5,
+                4.0 to 4.0,
+                5.0 to 5.0,
+                6.0 to 5.5,
+                7.0 to 6.0,
+                8.0 to 6.0,
+                9.0 to 6.5,
+                10.0 to 6.5,
+                12.0 to 7.0,
+                15.0 to 7.5,
+                18.0 to 8.0,
+                20.0 to 8.0,
+                25.0 to 8.5,
+                30.0 to 9.0,
+                35.0 to 9.5,
+                40.0 to 10.0
+            )
 
-        val metValue = metValues[beratBeban] ?: 1.0
-        val caloriesBurnedPerMinute = (metValue * beratBadan * 3.5) / 200
-        val totalCaloriesBurned = caloriesBurnedPerMinute * durasiWaktu
+            val metValue = metValues[beratBeban] ?: 1.0
+            val caloriesBurnedPerMinute = (metValue * beratBadan!! * 3.5) / 200
+            val totalCaloriesBurned = caloriesBurnedPerMinute * durasiWaktu
 
-        Log.d("CaloriesCalculation", "beratBadan: $beratBadan")
-        Log.d("CaloriesCalculation", "beratBeban: $beratBeban")
-        Log.d("CaloriesCalculation", "durasiWaktu: $durasiWaktu")
-        Log.d("CaloriesCalculation", "metValue: $metValue")
+            Log.d("CaloriesCalculation", "beratBadan: $beratBadan")
+            Log.d("CaloriesCalculation", "beratBeban: $beratBeban")
+            Log.d("CaloriesCalculation", "durasiWaktu: $durasiWaktu")
+            Log.d("CaloriesCalculation", "metValue: $metValue")
 
-        binding.totalBurnCalories.text = "Total Burn Calories : %.2f kalori".format(totalCaloriesBurned)
+            withContext(Dispatchers.Main) {
+                binding.totalBurnCalories.text = "Total Burn Calories : %.2f kalori".format(totalCaloriesBurned)
+            }
+        }
     }
 
-    private fun resetStopwatch() {
+    private fun resetStopwatch(mainViewModel: MainViewModel) {
         val elapsedTimeBeforeReset = elapsedTime
         elapsedTime = 0L
         isRunningNow = false
         binding.btnStopwatch.text = "Start"
         updateStopwatchDisplay()
-        calculateAndDisplayCaloriesWithElapsedTime(elapsedTimeBeforeReset)
+        calculateAndDisplayCaloriesWithElapsedTime(elapsedTimeBeforeReset, mainViewModel)
         binding.totalBurnCalories.visibility = View.VISIBLE
     }
 
@@ -179,6 +191,11 @@ class BurnCaloriesTrackerFragment : Fragment() {
         if (isRunningNow) {
             elapsedTime = System.currentTimeMillis() - startTime
         }
+    }
+
+    private fun obtainViewModel(activity: FragmentActivity): MainViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory).get(MainViewModel::class.java)
     }
 }
 
