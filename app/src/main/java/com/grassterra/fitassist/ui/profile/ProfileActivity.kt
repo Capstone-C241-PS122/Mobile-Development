@@ -4,9 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.grassterra.fitassist.R
@@ -28,40 +34,57 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, ArrayList())
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Initialize adapter with custom layouts
+        val genders = resources.getStringArray(R.array.gender_array).toList()
+        val adapter = object : ArrayAdapter<String>(this, R.layout.spinner_selected_item, genders) {
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = super.getDropDownView(position, convertView, parent)
+                (view as TextView).setTextColor(ContextCompat.getColor(context, R.color.black))
+                return view
+            }
+        }
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.etGender.adapter = adapter
-        adapter.addAll(resources.getStringArray(R.array.gender_array).toList())
+
         val bmiViewModel = obtainViewModel(this@ProfileActivity)
         setFields(bmiViewModel)
+
         binding.btnCalculate.setOnClickListener {
             saveData(bmiViewModel)
         }
+
         binding.btnBack.setOnClickListener {
             goToBack(this)
         }
     }
 
+
     private fun saveData(bmiViewModel: BMIViewModel) {
+        val weight = binding.etWeight.text.toString().toIntOrNull() ?: 60
+        val height = binding.etHeight.text.toString().toIntOrNull() ?: 160
+        val age = binding.etAge.text.toString().toIntOrNull() ?: 17
+        val gender = binding.etGender.selectedItem.toString()
+
+        val mgender = gender.equals("pria", ignoreCase = true)
+        val userData = Userdata(weight, height, age, mgender)
+
         lifecycleScope.launch(Dispatchers.IO) {
-            val weight = binding.etWeight.text.toString().toIntOrNull() ?: 60
-            val height = binding.etHeight.text.toString().toIntOrNull() ?: 160
-            val age = binding.etAge.text.toString().toIntOrNull() ?: 17
-            val gender = binding.etGender.selectedItem.toString()
-
-            val mgender = gender.equals("pria", ignoreCase = true)
-            val userData = Userdata(weight, height, age, mgender)
             bmiViewModel.overwriteUser(userData)
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@ProfileActivity, "Saved Successfully!", Toast.LENGTH_SHORT).show()
 
-            withContext(Dispatchers.Main){
-                Toast.makeText(this@ProfileActivity, "Saved Succesfully!", Toast.LENGTH_SHORT).show()
-                delay(1000)
-                val intent = Intent(this@ProfileActivity, MainMenu::class.java)
-                startActivity(intent)
-                finish()
+                // Delay the transition to the next activity using Handler
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent(this@ProfileActivity, MainMenu::class.java)
+                    startActivity(intent)
+                    finish()
+                }, 1000)
             }
         }
     }
+
+
 
     private fun setFields(bmiViewModel: BMIViewModel) {
         lifecycleScope.launch(Dispatchers.IO) {

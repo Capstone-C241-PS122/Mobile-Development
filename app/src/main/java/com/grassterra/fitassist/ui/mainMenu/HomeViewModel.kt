@@ -26,49 +26,52 @@ class HomeViewModel(application: Application): ViewModel() {
     private val mFavoriteExerciseRepository: FavoriteExerciseRepository = FavoriteExerciseRepository(application)
 
     init {
-        _isLoading.value = true
+        reGetArticles()
+    }
+
+    fun reGetArticles(){
         viewModelScope.launch(Dispatchers.IO) {
             val bodyparts = mFavoriteExerciseRepository.getALl()
             if(bodyparts.size == 0){
                 Log.d("not in",bodyparts.toString())
                 getArticle()
             }else{
-                Log.d("in",bodyparts.toString())
                 val randomBodyPart = bodyparts.random()
                 Log.d("in",randomBodyPart.name)
                 getArticleBodyPart(randomBodyPart.name)
-            }
-            withContext(Dispatchers.Main) {
-                _isLoading.value = false
             }
         }
     }
 
     private fun getArticleBodyPart(bodypart: String){
         viewModelScope.launch {
+            _isLoading.value = true
             val res = apiRepository.getArticles(bodypart)
             when (res){
                 is Resource.Success ->{
-                    _articleList.value = res.data.listArticle.take(20)
+                    _articleList.value = res.data.listArticle.take(20).shuffled()
                 }
                 is Resource.Error ->{
                     Log.d("MainViewModel", res.errorMessage)
                 }
             }
+            _isLoading.value = false
         }
     }
 
     private fun getArticle(){
         viewModelScope.launch {
+            _isLoading.value = true
             val res = apiRepository.getArticles2()
             when (res){
                 is Resource.Success ->{
-                    _articleList.value = res.data.listArticle.take(20)
+                    _articleList.value = res.data.listArticle.take(20).shuffled()
                 }
                 is Resource.Error ->{
                     Log.d("MainViewModel", res.errorMessage)
                 }
             }
+            _isLoading.value = false
         }
     }
 }

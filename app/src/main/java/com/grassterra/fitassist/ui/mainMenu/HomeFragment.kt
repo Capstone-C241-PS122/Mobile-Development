@@ -85,6 +85,9 @@ class HomeFragment : Fragment() {
                 requestPermissionLauncher.launch(Manifest.permission.CAMERA)
             }
         }
+        binding.btnReload.setOnClickListener {
+            homeViewModel.reGetArticles()
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

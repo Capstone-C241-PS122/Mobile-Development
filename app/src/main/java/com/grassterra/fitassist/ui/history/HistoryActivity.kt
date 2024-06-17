@@ -77,6 +77,7 @@ class HistoryActivity : AppCompatActivity() {
     private fun goToBack(context: Context) {
         val intent = Intent(context, MainMenu::class.java)
         context.startActivity(intent)
+        finish()
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): HistoryViewModel {

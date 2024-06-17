@@ -1,5 +1,7 @@
 package com.grassterra.fitassist.ui.myBody
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +9,7 @@ import com.grassterra.fitassist.databinding.ActivityCalculateNutritionBinding
 import com.grassterra.fitassist.helper.Resource
 import com.grassterra.fitassist.repository.ApiRepository
 import com.grassterra.fitassist.retrofit.ApiConfig
+import com.grassterra.fitassist.ui.mainMenu.MainMenu
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +28,9 @@ class ActivityCalculateNutrition : AppCompatActivity() {
         apiRepository = ApiRepository(apiService)
         binding.buttonCalculate.setOnClickListener {
             resultCalculate()
+        }
+        binding.btnBack.setOnClickListener {
+            goToBack(this)
         }
     }
 
@@ -75,8 +81,14 @@ class ActivityCalculateNutrition : AppCompatActivity() {
             }
         }
     }
+
+    private fun goToBack(context: Context) {
+        val intent = Intent(context, MainMenu::class.java)
+        context.startActivity(intent)
+        finish()
+    }
+
     private fun showToast(message: String) {
         Toast.makeText(this@ActivityCalculateNutrition, message, Toast.LENGTH_SHORT).show()
     }
-
 }
