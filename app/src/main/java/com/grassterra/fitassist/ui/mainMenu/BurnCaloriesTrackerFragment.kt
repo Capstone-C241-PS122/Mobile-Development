@@ -1,5 +1,6 @@
 package com.grassterra.fitassist.ui.mainMenu
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -43,14 +45,12 @@ class BurnCaloriesTrackerFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val mainViewModel = obtainViewModel(requireActivity())
         setupNumberPicker(mainViewModel)
+        setupColorNumberPicker()
         setupButtons(mainViewModel)
-
         savedInstanceState?.let {
             isRunningNow = it.getBoolean("isRunningNow", false)
             elapsedTime = it.getLong("elapsedTime", 0L)
@@ -61,6 +61,17 @@ class BurnCaloriesTrackerFragment : Fragment() {
             }
         }
         calculateAndDisplayCalories(mainViewModel)
+    }
+
+    private fun setupColorNumberPicker() {
+        val count = binding.numberPickerWeight.childCount
+        for (i in 0 until count) {
+            val child = binding.numberPickerWeight.getChildAt(i)
+            if (child is EditText) {
+                child.setTextColor(Color.WHITE)
+                break
+            }
+        }
     }
 
     private fun setupNumberPicker(mainViewModel: MainViewModel) {
@@ -87,6 +98,7 @@ class BurnCaloriesTrackerFragment : Fragment() {
             }
         }
     }
+
     private fun calculateAndDisplayCalories(mainViewModel: MainViewModel) {
         calculateAndDisplayCaloriesWithElapsedTime(elapsedTime, mainViewModel)
     }
@@ -119,7 +131,7 @@ class BurnCaloriesTrackerFragment : Fragment() {
             )
 
             val metValue = metValues[beratBeban] ?: 1.0
-            val caloriesBurnedPerMinute = (metValue * beratBadan!! * 3.5) / 200
+            val caloriesBurnedPerMinute = (metValue * (beratBadan ?: 0.0) * 3.5) / 200
             val totalCaloriesBurned = caloriesBurnedPerMinute * durasiWaktu
 
             Log.d("CaloriesCalculation", "beratBadan: $beratBadan")
@@ -147,6 +159,7 @@ class BurnCaloriesTrackerFragment : Fragment() {
         Log.d("ElapsedTime", "elapsedTime: $elapsedTime")
         return elapsedTime / 1000.0 / 60.0
     }
+
     private fun updateStopwatchDisplay() {
         val seconds = (elapsedTime / 1000) % 60
         val minutes = (elapsedTime / (1000 * 60)) % 60
@@ -155,10 +168,10 @@ class BurnCaloriesTrackerFragment : Fragment() {
 
     private fun startOrResumeStopwatch() {
         if (!isRunningNow) {
-            if (elapsedTime == 0L) {
-                startTime = System.currentTimeMillis()
+            startTime = if (elapsedTime == 0L) {
+                System.currentTimeMillis()
             } else {
-                startTime = System.currentTimeMillis() - elapsedTime
+                System.currentTimeMillis() - elapsedTime
             }
             isRunningNow = true
             handler.post(updateStopwatchRunnable)
@@ -198,4 +211,3 @@ class BurnCaloriesTrackerFragment : Fragment() {
         return ViewModelProvider(activity, factory).get(MainViewModel::class.java)
     }
 }
-

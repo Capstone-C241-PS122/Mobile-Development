@@ -69,6 +69,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("androidx.media3:media3-session:1.3.1")
+    implementation("androidx.compose.material3:material3-android:1.2.1")
     ksp("androidx.room:room-compiler:2.5.2")
     implementation("androidx.compose.animation:animation-core-android:1.6.8")
     testImplementation("junit:junit:4.13.2")

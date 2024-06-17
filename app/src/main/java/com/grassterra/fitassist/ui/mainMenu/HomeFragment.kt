@@ -22,7 +22,6 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.grassterra.fitassist.databinding.FragmentHomeBinding
 import com.grassterra.fitassist.helper.ImageClassifierHelper
@@ -54,11 +53,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(requireContext(), layoutManager.orientation)
-        binding.recyclerView.addItemDecoration(itemDecoration)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val homeViewModel = obtainViewModel(requireActivity())
@@ -70,16 +66,15 @@ class HomeFragment : Fragment() {
         homeViewModel.isLoading.observe(viewLifecycleOwner){
             showLoading(it)
         }
-
         binding.btnUser.setOnClickListener {
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
             startActivity(intent)
         }
         binding.scrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
-            if (scrollY > 1 && binding.topBar.visibility != View.VISIBLE) {
+            if (scrollY > 500 && binding.topBar.visibility != View.VISIBLE) {
                 fadeInView(binding.topBar)
                 fadeInView(binding.tvtopBar)
-            } else if (scrollY == 0 && binding.topBar.visibility == View.VISIBLE) {
+            } else if (scrollY < 400 && binding.topBar.visibility == View.VISIBLE) {
                 fadeOutView(binding.topBar)
                 fadeOutView(binding.tvtopBar)
             }
@@ -92,7 +87,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -103,6 +97,7 @@ class HomeFragment : Fragment() {
         adapter.submitList(userList)
         binding.recyclerView.adapter = adapter
     }
+
 
     private fun obtainViewModel(activity: FragmentActivity): HomeViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)

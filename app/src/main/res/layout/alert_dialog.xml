@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/upload_image"
+            android:text="@string/add_with_gallery_or_camera"
             android:layout_marginStart="4dp"
             android:layout_marginTop="2dp"
             android:textSize="18sp"

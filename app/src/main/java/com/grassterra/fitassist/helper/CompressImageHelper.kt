@@ -3,7 +3,6 @@ package com.grassterra.fitassist.helper
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.net.Uri
 import android.util.Log
 import java.io.File
@@ -66,25 +65,21 @@ fun reshapeAndNormalizeImageFile(file: File): ByteBuffer? {
     return convertBitmapToNormalizedByteBuffer(resizedBitmap)
 }
 fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
-    val input = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
+    val byteBuffer = ByteBuffer.allocateDirect(224 * 224 * 3 * 4).order(ByteOrder.nativeOrder())
     for (y in 0 until 224) {
         for (x in 0 until 224) {
-            val px = bitmap.getPixel(x, y)
-            // Get channel values from the pixel value.
-            val r = Color.red(px)
-            val g = Color.green(px)
-            val b = Color.blue(px)
-            // Normalize channel values to [-1.0, 1.0].
-            val rf = (r / 255f)
-            val gf = (g / 255f)
-            val bf = (b / 255f)
+            val pixel = bitmap.getPixel(x, y)
+            val r = (pixel shr 16 and 0xFF) / 255.0f
+            val g = (pixel shr 8 and 0xFF) / 255.0f
+            val b = (pixel and 0xFF) / 255.0f
 
-            input.putFloat(rf)
-            input.putFloat(gf)
-            input.putFloat(bf)
+            byteBuffer.putFloat((r - 0.5f) / 0.5f)
+            byteBuffer.putFloat((g - 0.5f) / 0.5f)
+            byteBuffer.putFloat((b - 0.5f) / 0.5f)
         }
     }
-    return input
+    byteBuffer.rewind()
+    return byteBuffer
 }
 
 //fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {

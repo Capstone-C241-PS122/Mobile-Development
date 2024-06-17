@@ -7,6 +7,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -15,6 +17,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -59,6 +62,7 @@ class MainMenu : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
     private lateinit var imageClassifierHelper: ImageClassifierHelper
     private lateinit var userData: Userdata
+    private var layoutLostConnection: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +80,22 @@ class MainMenu : AppCompatActivity() {
                 }
             }
         })
+        layoutLostConnection = layoutInflater.inflate(R.layout.layout_lost_connection, binding.root, false)
+        binding.root.addView(layoutLostConnection)
+        if (!isNetworkAvailable(this)) {
+            showLostConnectionLayout()
+        } else {
+            hideLostConnectionLayout()
+        }
+        layoutLostConnection?.findViewById<Button>(R.id.btnRetry)?.setOnClickListener {
+            if (isNetworkAvailable(this)) {
+                hideLostConnectionLayout()
+
+            } else {
+                showLostConnectionLayout()
+            }
+        }
+
         Log.d("MainMenu", flag.toString())
 
         if (flag) {
@@ -104,7 +124,6 @@ class MainMenu : AppCompatActivity() {
                 }
             }
         }
-
         binding.btnupload.setOnClickListener {
             showAlert(this, {
                 if (checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -119,6 +138,10 @@ class MainMenu : AppCompatActivity() {
                     requestPermissionLauncher.launch(Manifest.permission.CAMERA)
                 }
             })
+        }
+        binding.btnSidebar.setOnClickListener {
+            val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+            drawerLayout.openDrawer(GravityCompat.START)
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         val navigationView: NavigationView = findViewById(R.id.navigationView)
@@ -144,6 +167,20 @@ class MainMenu : AppCompatActivity() {
             true
         }
         setupBottomNavigation()
+    }
+
+    private fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkCapabilities = connectivityManager.activeNetwork ?: return false
+        val activeNetwork = connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
+        return activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+    }
+    private fun showLostConnectionLayout() {
+        layoutLostConnection?.visibility = View.VISIBLE
+    }
+    private fun hideLostConnectionLayout() {
+        layoutLostConnection?.visibility = View.GONE
     }
     private fun startGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
