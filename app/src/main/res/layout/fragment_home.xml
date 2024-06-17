@@ -94,6 +94,7 @@
                     android:background="@drawable/backround_button" />
             </FrameLayout>
 
+            <!-- Recommended text -->
             <TextView
                 android:id="@+id/recommended"
                 android:layout_width="wrap_content"

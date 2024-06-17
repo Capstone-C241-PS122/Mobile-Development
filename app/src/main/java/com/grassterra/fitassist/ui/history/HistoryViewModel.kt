@@ -31,4 +31,11 @@ class HistoryViewModel(application: Application): ViewModel() {
             }
         }
     }
+
+    fun clearHistory(){
+        viewModelScope.launch(Dispatchers.IO) {
+            historyItemRepository.clear()
+            getAllHistory()
+        }
+    }
 }

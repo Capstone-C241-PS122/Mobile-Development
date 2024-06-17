@@ -27,6 +27,9 @@
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.article.ActivityDetailsArticle"
             android:exported="false" />
         <activity
