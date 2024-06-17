@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
     </com.google.android.material.appbar.AppBarLayout>
+
     <!-- NestedScrollView for scrolling content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -94,16 +95,38 @@
                     android:background="@drawable/backround_button" />
             </FrameLayout>
 
-            <!-- Recommended text -->
-            <TextView
-                android:id="@+id/recommended"
-                android:layout_width="wrap_content"
+            <!-- ConstraintLayout for better positioning -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/recommended_for_you"
-                android:textSize="18sp"
-                android:layout_margin="15dp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/roboto_bold" />
+                android:layout_margin="15dp">
+
+                <!-- Recommended text -->
+                <TextView
+                    android:id="@+id/recommended"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommended_for_you"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/roboto_bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <!-- Reload button -->
+                <ImageButton
+                    android:id="@+id/btnReload"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="156dp"
+                    android:background="@drawable/backround_button"
+                    android:src="@drawable/refresh_24px"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/recommended"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- RecyclerView for dynamic content -->
             <androidx.recyclerview.widget.RecyclerView
@@ -123,8 +146,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="250dp"
         android:visibility="visible"
         tools:visibility="visible" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -138,6 +163,7 @@
             app:layout_anchor="@id/appBarLayout"
             app:layout_anchorGravity="bottom" />
     </FrameLayout>
+
     <TextView
         android:id="@+id/tvtopBar"
         android:layout_width="wrap_content"

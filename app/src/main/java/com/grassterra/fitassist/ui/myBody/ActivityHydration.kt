@@ -1,5 +1,7 @@
 package com.grassterra.fitassist.ui.myBody
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.grassterra.fitassist.databinding.ActivityHydrationBinding
 import com.grassterra.fitassist.helper.ViewModelFactory
+import com.grassterra.fitassist.ui.mainMenu.MainMenu
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -25,6 +28,9 @@ class ActivityHydration : AppCompatActivity() {
         }
         binding.btnCalculate.setOnClickListener{
             resultHydration()
+        }
+        binding.btnBack.setOnClickListener {
+            goToBack(this)
         }
     }
     private fun resetFields() {
@@ -46,6 +52,12 @@ class ActivityHydration : AppCompatActivity() {
                 binding.etWeight.text = Editable.Factory.getInstance().newEditable(weight)
             }
         }
+    }
+
+    private fun goToBack(context: Context) {
+        val intent = Intent(context, MainMenu::class.java)
+        context.startActivity(intent)
+        finish()
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): BMIViewModel {

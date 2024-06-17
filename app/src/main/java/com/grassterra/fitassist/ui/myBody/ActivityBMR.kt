@@ -1,14 +1,21 @@
 package com.grassterra.fitassist.ui.myBody
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.ActivityBmrBinding
 import com.grassterra.fitassist.helper.ViewModelFactory
+import com.grassterra.fitassist.ui.mainMenu.MainMenu
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -20,10 +27,16 @@ class ActivityBMR : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBmrBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, ArrayList())
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val genders = resources.getStringArray(R.array.gender_array).toList()
+        val adapter = object : ArrayAdapter<String>(this, R.layout.spinner_selected_item, genders) {
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = super.getDropDownView(position, convertView, parent)
+                (view as TextView).setTextColor(ContextCompat.getColor(context, R.color.black))
+                return view
+            }
+        }
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         binding.etGender.adapter = adapter
-        adapter.addAll(resources.getStringArray(R.array.gender_array).toList())
         val bmiViewModel = obtainViewModel(this@ActivityBMR)
         setFields(bmiViewModel)
         binding.btnCalculate.setOnClickListener {
@@ -31,6 +44,9 @@ class ActivityBMR : AppCompatActivity() {
         }
         binding.btnReset.setOnClickListener{
             resetFields()
+        }
+        binding.btnBack.setOnClickListener {
+            goToBack(this)
         }
     }
     private fun resetFields() {
@@ -74,6 +90,12 @@ class ActivityBMR : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun goToBack(context: Context) {
+        val intent = Intent(context, MainMenu::class.java)
+        context.startActivity(intent)
+        finish()
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): BMIViewModel {
