@@ -31,7 +31,6 @@ import com.grassterra.fitassist.response.ListArticleItem
 import com.grassterra.fitassist.ui.adapter.ArticleAdapter
 import com.grassterra.fitassist.ui.exercise.DetailExerciseActivity
 import com.grassterra.fitassist.ui.profile.ProfileActivity
-import com.grassterra.fitassist.ui.userInput.MainActivity
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.File
 import java.io.IOException
@@ -92,12 +91,13 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun setData(userList: List<ListArticleItem>){
+
+    private fun setData(userList: List<ListArticleItem>) {
         val adapter = ArticleAdapter()
-        adapter.submitList(userList)
+        val filteredUserList = userList.filter { !it.description.isNullOrEmpty() }
+        adapter.submitList(filteredUserList)
         binding.recyclerView.adapter = adapter
     }
-
 
     private fun obtainViewModel(activity: FragmentActivity): HomeViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)

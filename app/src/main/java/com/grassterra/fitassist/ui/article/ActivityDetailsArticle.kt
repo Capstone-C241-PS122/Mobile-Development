@@ -1,5 +1,7 @@
 package com.grassterra.fitassist.ui.article
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -19,11 +21,11 @@ class ActivityDetailsArticle : AppCompatActivity() {
         setupView(detailsArticleViewModel)
     }
 
-    private fun setupView(detailsArticleViewModel: DetailsArticleViewModel){
+    private fun setupView(detailsArticleViewModel: DetailsArticleViewModel) {
         val id = intent.getStringExtra("id")?.toInt()
         if (id != null) {
-            detailsArticleViewModel.setArticle(id).observe(this){resource ->
-                when (resource){
+            detailsArticleViewModel.setArticle(id).observe(this) { resource ->
+                when (resource) {
                     is Resource.Success -> {
                         val resp = resource.data.article
                         binding.tvTitle.text = resp.title
@@ -32,6 +34,11 @@ class ActivityDetailsArticle : AppCompatActivity() {
                         binding.tvEquipment.text = resp.equipment
                         binding.tvType.text = resp.type
                         binding.iVLevel.text = resp.level
+                        binding.btnExploreYoutubeSearch.setOnClickListener {
+                            val query = resp.title
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/results?search_query=$query"))
+                            startActivity(intent)
+                        }
                     }
                     is Resource.Error -> {
                         Log.e("DetailExerciseActivity", "Error: ${resource.errorMessage}")
@@ -41,6 +48,7 @@ class ActivityDetailsArticle : AppCompatActivity() {
             }
         }
     }
+
 
     private fun showToast(message: String) {
         Toast.makeText(this@ActivityDetailsArticle, message, Toast.LENGTH_SHORT).show()

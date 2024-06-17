@@ -85,6 +85,10 @@
     <string name="please_check_your_internet_connection_and_try_again">Please check your internet connection and try again.</string>
     <string name="profile">Profile</string>
     <string name="save">Save</string>
+    <string name="level">Level</string>
+    <string name="equipment">Equipment</string>
+    <string name="abdominals">Abdominals</string>
+    <string name="search_on_youtube">Search on YouTube</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>
