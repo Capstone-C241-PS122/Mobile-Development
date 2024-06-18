@@ -93,6 +93,7 @@
     <string name="bmr_basal_metabolic_rate">BMR (Basal Metabolic Rate)</string>
     <string name="nutrition_indonesia_food">Nutrition Indonesia Food</string>
     <string name="indonesian_food_nutrition_calculator">Indonesian Food Nutrition Calculator</string>
+    <string name="fitassist">FitAssist</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>

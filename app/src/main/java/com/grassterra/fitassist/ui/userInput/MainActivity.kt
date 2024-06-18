@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.Surface
 import android.view.TextureView
 import androidx.appcompat.app.AppCompatActivity
+import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,12 +23,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val videoUrl = "https://storage.googleapis.com/bucket_fitassist/video_background.mp4"
+        val videoUri = Uri.parse("android.resource://" + packageName + "/" + R.raw.background_intro)
 
         binding.textureView.surfaceTextureListener = object : TextureView.SurfaceTextureListener {
             override fun onSurfaceTextureAvailable(surface: SurfaceTexture, width: Int, height: Int) {
                 mediaPlayer = MediaPlayer().apply {
-                    setDataSource(this@MainActivity, Uri.parse(videoUrl))
+                    setDataSource(this@MainActivity, videoUri)
                     setSurface(Surface(surface))
                     isLooping = true
                     setVolume(0f, 0f)

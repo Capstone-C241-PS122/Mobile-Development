@@ -2,7 +2,6 @@ package com.grassterra.fitassist.ui.profile
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,18 +11,17 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.grassterra.fitassist.R
 import com.grassterra.fitassist.database.user.Userdata
-import com.grassterra.fitassist.databinding.ActivityBmrBinding
 import com.grassterra.fitassist.databinding.ActivityProfileBinding
 import com.grassterra.fitassist.helper.ViewModelFactory
 import com.grassterra.fitassist.ui.mainMenu.MainMenu
 import com.grassterra.fitassist.ui.myBody.BMIViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -85,9 +83,6 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
     private fun setFields(bmiViewModel: BMIViewModel) {
         lifecycleScope.launch(Dispatchers.IO) {
             val user = bmiViewModel.getUser()
