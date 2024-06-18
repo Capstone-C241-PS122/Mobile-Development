@@ -68,14 +68,12 @@ class ActivityCalculateNutrition : AppCompatActivity() {
                             val proteinsText = "Proteins: $proteins\n"
                             val carbohydratesText = "Carbohydrates: $carbohydrates\n"
                             val fatText = "Fat: $fat"
-                            val resultText = "$caloriesText$proteinsText$carbohydratesText$fatText"
-
+                            val resultText = "Calories : $caloriesText" +
+                                    "Protein : $proteinsText" +
+                                    "Carbohydrates : $carbohydratesText" +
+                                    "Fat : $fatText"
                             withContext(Dispatchers.Main) {
-                                binding.textViewCalories.text = caloriesText
-                                binding.textViewProteins.text = proteinsText
-                                binding.textViewCarbohydrates.text = carbohydratesText
-                                binding.textViewFat.text = fatText
-
+                                binding.tvResultNutrition.text = resultText
                                 showToast("Data retrieved successfully")
                             }
                         } else {

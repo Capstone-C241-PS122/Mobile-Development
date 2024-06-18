@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     tools:context=".ui.mainMenu.MyBodyFragment">
     <FrameLayout
@@ -13,7 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="135dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:textColor="@color/white"
         android:text="@string/header_mybody"
         android:textSize="18sp"
@@ -40,50 +43,86 @@
             android:layout_marginBottom="15dp"
             android:layout_gravity="bottom"/>
     </FrameLayout>
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="150dp">
-        <ImageButton
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center">
+        <Button
             android:id="@+id/btnNavigateBMI"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
             android:elevation="10dp"
-            android:src="@drawable/bmi_img"
-            android:padding="5dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/background_card_by_img"/>
-        <ImageButton
+            android:padding="8dp"
+            android:text="@string/bmi_body_mass_index"
+            android:textColor="@color/colorTextgrey"
+            android:textSize="16sp"
+            android:textAlignment="textStart"
+            android:fontFamily="@font/roboto_medium"
+            android:textAllCaps="false"
+            android:background="@drawable/selector_card_mybody"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <Button
             android:id="@+id/btnNavigateBMR"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
             android:elevation="10dp"
-            android:padding="5dp"
-            android:src="@drawable/bmr_img"
-            android:layout_gravity="start"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/background_card_by_img"/>
-        <ImageButton
+            android:padding="8dp"
+            android:text="@string/bmr_basal_metabolic_rate"
+            android:textColor="@color/colorTextgrey"
+            android:textSize="16sp"
+            android:textAlignment="textStart"
+            android:fontFamily="@font/roboto_medium"
+            android:textAllCaps="false"
+            android:background="@drawable/selector_card_mybody"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <Button
             android:id="@+id/btnNavigateHydration"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
             android:elevation="10dp"
-            android:padding="5dp"
-            android:src="@drawable/hydration_img"
-            android:layout_gravity="start"
-            android:layout_marginStart="110dp"
-            android:background="@drawable/background_card_by_img"/>
-        <ImageButton
+            android:padding="8dp"
+            android:text="@string/hydration"
+            android:textColor="@color/colorTextgrey"
+            android:textSize="16sp"
+            android:textAlignment="textStart"
+            android:fontFamily="@font/roboto_medium"
+            android:textAllCaps="false"
+            android:background="@drawable/selector_card_mybody"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <Button
             android:id="@+id/btnNavigateNutritionCalculate"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
             android:elevation="10dp"
-            android:padding="5dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="110dp"
-            android:src="@drawable/nutcal_img"
-            android:background="@drawable/background_card_by_img"/>
-    </FrameLayout>
+            android:padding="8dp"
+            android:text="@string/indonesian_food_nutrition_calculator"
+            android:textColor="@color/colorTextgrey"
+            android:textSize="16sp"
+            android:textAlignment="textStart"
+            android:fontFamily="@font/roboto_medium"
+            android:textAllCaps="false"
+            android:background="@drawable/selector_card_mybody"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="-150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

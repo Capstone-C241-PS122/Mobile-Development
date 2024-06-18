@@ -77,15 +77,6 @@ class MainMenu : AppCompatActivity() {
 
         val mainViewModel = obtainViewModel(this@MainMenu)
         val flag = intent.getBooleanExtra("flag", false)
-        binding.drawerLayout.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
-            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                super.onDrawerSlide(drawerView, slideOffset)
-                if (slideOffset == 0f) {
-                    binding.lottieAnimationSwipeView.cancelAnimation()
-                    binding.lottieAnimationSwipeView.visibility = View.INVISIBLE
-                }
-            }
-        })
         layoutLostConnection = layoutInflater.inflate(R.layout.layout_lost_connection, binding.root, false)
         binding.root.addView(layoutLostConnection)
         if (!isNetworkAvailable(this)) {

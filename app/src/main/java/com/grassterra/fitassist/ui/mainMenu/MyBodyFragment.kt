@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.grassterra.fitassist.R
 import com.grassterra.fitassist.ui.myBody.ActivityBMI
@@ -30,19 +30,19 @@ class MyBodyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_my_body, container, false)
-        view.findViewById<ImageButton>(R.id.btnNavigateBMI)?.setOnClickListener {
+        view.findViewById<Button>(R.id.btnNavigateBMI)?.setOnClickListener {
             val intent = Intent(requireContext(), ActivityBMI::class.java)
             startActivity(intent)
         }
-        view.findViewById<ImageButton>(R.id.btnNavigateBMR)?.setOnClickListener{
+        view.findViewById<Button>(R.id.btnNavigateBMR)?.setOnClickListener{
             val intent = Intent(requireContext(), ActivityBMR::class.java)
             startActivity(intent)
         }
-        view.findViewById<ImageButton>(R.id.btnNavigateHydration)?.setOnClickListener{
+        view.findViewById<Button>(R.id.btnNavigateHydration)?.setOnClickListener{
             val intent = Intent(requireContext(), ActivityHydration::class.java)
             startActivity(intent)
         }
-        view.findViewById<ImageButton>(R.id.btnNavigateNutritionCalculate)?.setOnClickListener{
+        view.findViewById<Button>(R.id.btnNavigateNutritionCalculate)?.setOnClickListener{
             val intent = Intent(requireContext(), ActivityCalculateNutrition::class.java)
             startActivity(intent)
         }

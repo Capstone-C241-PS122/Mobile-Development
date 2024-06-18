@@ -63,18 +63,6 @@
             android:src="@drawable/icon_scan_equipment"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieAnimationSwipeView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="250dp"
-            android:visibility="visible"
-            app:lottie_loop="true"
-            app:lottie_colorFilter="@color/white"
-            app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/swipe"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
