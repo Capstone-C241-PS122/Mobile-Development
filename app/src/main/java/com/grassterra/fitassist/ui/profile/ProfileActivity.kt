@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -27,7 +28,7 @@ import kotlinx.coroutines.withContext
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
-    private lateinit var adapter: ArrayAdapter<CharSequence>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -64,8 +65,9 @@ class ProfileActivity : AppCompatActivity() {
         val age = binding.etAge.text.toString().toIntOrNull() ?: 17
         val gender = binding.etGender.selectedItem.toString()
 
-        val mgender = gender.equals("pria", ignoreCase = true)
+        val mgender = gender.equals("man", ignoreCase = true)
         val userData = Userdata(weight, height, age, mgender)
+        Log.d("gender", userData.toString())
 
         lifecycleScope.launch(Dispatchers.IO) {
             bmiViewModel.overwriteUser(userData)
@@ -89,16 +91,13 @@ class ProfileActivity : AppCompatActivity() {
             val height = user?.height.toString()
             val weight = user?.weight.toString()
             val age = user?.age.toString()
-            val gender = if (user?.gender == true) "pria" else "wanita"
+            val gender = if (user?.gender == true) 0 else 1
 
             withContext(Dispatchers.Main) {
                 binding.etHeight.text = Editable.Factory.getInstance().newEditable(height)
                 binding.etWeight.text = Editable.Factory.getInstance().newEditable(weight)
                 binding.etAge.text = Editable.Factory.getInstance().newEditable(age)
-                if (::adapter.isInitialized) {
-                    val position = adapter.getPosition(gender)
-                    binding.etGender.setSelection(position)
-                }
+                binding.etGender.setSelection(gender)
             }
         }
     }
