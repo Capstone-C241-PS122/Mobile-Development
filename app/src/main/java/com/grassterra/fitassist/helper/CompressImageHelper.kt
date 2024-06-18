@@ -100,9 +100,9 @@ fun convertBitmapToNormalizedByteBuffer(bitmap: Bitmap): ByteBuffer {
             val b = Color.blue(px)
 
             // Normalize channel values to [-1.0, 1.0].
-            val rf = (r / 255f)
-            val gf = (g / 255f)
-            val bf = (b / 255f)
+            val rf = (r / 255f - 0.5f) / 0.5f
+            val gf = (g / 255f - 0.5f) / 0.5f
+            val bf = (b / 255f - 0.5f) / 0.5f
 
 //            val rf = (r / 127.5f) - 1.0f
 //            val gf = (g / 127.5f) - 1.0f

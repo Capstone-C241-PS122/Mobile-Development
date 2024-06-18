@@ -85,8 +85,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.exercise.DetailExerciseActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:exported="false" />
         <activity
             android:name=".ui.userInput.MainActivity"
             android:exported="false"

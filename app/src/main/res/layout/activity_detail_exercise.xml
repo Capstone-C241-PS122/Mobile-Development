@@ -81,16 +81,20 @@
                 <VideoView
                     android:id="@+id/videoView"
                     android:layout_width="match_parent"
+                    android:layout_gravity="center"
                     android:layout_height="220dp"/>
 
                 <ImageButton
-                    android:id="@+id/fullScreenButton"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="bottom|end"
-                    android:layout_margin="8dp"
+                    android:id="@+id/playButton"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/baseline_open_in_full_24" />
+                    android:src="@drawable/play_circle_24px" />
             </FrameLayout>
             <FrameLayout
                 android:layout_width="match_parent"
