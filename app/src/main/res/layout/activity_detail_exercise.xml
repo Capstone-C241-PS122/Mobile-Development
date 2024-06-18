@@ -73,11 +73,25 @@
                 android:text="@string/video_tutorial"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/white"/>
-            <VideoView
-                android:id="@+id/videoView"
-                android:layout_margin="15dp"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+
+                <VideoView
+                    android:id="@+id/videoView"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"/>
+
+                <ImageButton
+                    android:id="@+id/fullScreenButton"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="8dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/baseline_open_in_full_24" />
+            </FrameLayout>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
