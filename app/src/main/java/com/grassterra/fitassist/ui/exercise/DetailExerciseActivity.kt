@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
+import android.widget.MediaController
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -97,7 +98,7 @@ class DetailExerciseActivity : AppCompatActivity() {
                             Log.d("DetailExerciseActivity", "Response: $response")
                             binding.idNameLabel.text = response.nameEquipment
                             binding.description.text = response.description
-                            binding.nameExercise.text = response.nameExercise
+                            binding.nameExercise.text = response.nameExercise + " For"
                             binding.bodyPart.text = response.bodypart
 
                             val equipment = binding.idNameLabel.text.toString()
@@ -128,13 +129,26 @@ class DetailExerciseActivity : AppCompatActivity() {
                                 )
                                 binding.videoView.setVideoURI(uri)
                                 binding.videoView.setOnPreparedListener { mediaPlayer ->
-                                    mediaPlayer.start()
+                                    mediaPlayer.stop()
                                 }
-                                binding.fullScreenButton.setOnClickListener {
+                                val mediaController = MediaController(binding.root.context)
+                                mediaController.setMediaPlayer(binding.videoView)
+                                mediaController.setAnchorView(binding.videoView)
+                                mediaController.setPrevNextListeners(
+                                    {
+                                        binding.videoView.stopPlayback()
+                                    },
+                                    null
+                                )
+                                binding.videoView.setMediaController(mediaController)
+                                binding.playButton.setOnClickListener {
+                                    binding.videoView.stopPlayback()
                                     val fragmentManager = (binding.root.context as AppCompatActivity).supportFragmentManager
                                     val fullScreenFragment = FullScreenDialogFragment.newInstance(uri)
                                     fullScreenFragment.show(fragmentManager, "fullScreenFragment")
                                 }
+
+
                             } else {
                                 showToast("Video URL is empty or invalid")
                             }
