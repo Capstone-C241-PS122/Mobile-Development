@@ -18,6 +18,7 @@ import com.grassterra.fitassist.databinding.ActivityDetailExerciseBinding
 import com.grassterra.fitassist.helper.ParcelableMap
 import com.grassterra.fitassist.helper.Resource
 import com.grassterra.fitassist.helper.ViewModelFactory
+import com.grassterra.fitassist.ui.fragments.FullScreenDialogFragment
 import com.grassterra.fitassist.ui.mainMenu.MainMenu
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -128,6 +129,11 @@ class DetailExerciseActivity : AppCompatActivity() {
                                 binding.videoView.setVideoURI(uri)
                                 binding.videoView.setOnPreparedListener { mediaPlayer ->
                                     mediaPlayer.start()
+                                }
+                                binding.fullScreenButton.setOnClickListener {
+                                    val fragmentManager = (binding.root.context as AppCompatActivity).supportFragmentManager
+                                    val fullScreenFragment = FullScreenDialogFragment.newInstance(uri)
+                                    fullScreenFragment.show(fragmentManager, "fullScreenFragment")
                                 }
                             } else {
                                 showToast("Video URL is empty or invalid")
