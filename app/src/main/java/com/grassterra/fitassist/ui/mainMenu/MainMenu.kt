@@ -427,8 +427,10 @@ class MainMenu : AppCompatActivity() {
             else -> HomeFragment()  // Default fragment
         }
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
+            .replace(R.id.idHostFragment, fragment)
             .commit()
+
+        Log.d("TARGET_FRAGMENT", fragmentName?:"null")
     }
 
     companion object {
