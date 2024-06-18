@@ -39,6 +39,7 @@ class ActivityInputHeight : AppCompatActivity() {
             maxValue = 300
             value = 160
             setOnValueChangedListener { _, _, newVal ->
+                userData.height = newVal
                 Log.d("InputHeight", newVal.toString())
             }
             setNumberPickerTextColor(this, Color.WHITE)
