@@ -69,6 +69,12 @@ class MainMenu : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val targetFragment = intent.getStringExtra(TARGET_FRAGMENT)
+        if (targetFragment != null) {
+            navigateToFragment(targetFragment)
+        }
+
         val mainViewModel = obtainViewModel(this@MainMenu)
         val flag = intent.getBooleanExtra("flag", false)
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
@@ -117,7 +123,9 @@ class MainMenu : AppCompatActivity() {
             lifecycleScope.launch(Dispatchers.IO) {
                 if (mainViewModel.isEmpty()) {
                     withContext(Dispatchers.Main) {
-                        val intent = Intent(this@MainMenu, MainActivity::class.java)
+                        val intent = Intent(this@MainMenu, MainActivity::class.java).apply {
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        }
                         startActivity(intent)
                         finish()
                     }
@@ -409,6 +417,25 @@ class MainMenu : AppCompatActivity() {
             true
         }
         bottomNavigationView.selectedItemId = R.id.id_home
+    }
+
+    private fun navigateToFragment(fragmentName: String) {
+        val fragment = when (fragmentName) {
+            FRAGMENT_ONE -> HomeFragment()
+            FRAGMENT_TWO -> MyBodyFragment()
+            FRAGMENT_THREE -> BurnCaloriesTrackerFragment()
+            else -> HomeFragment()  // Default fragment
+        }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
+    companion object {
+        const val TARGET_FRAGMENT = "target_fragment"
+        const val FRAGMENT_ONE = "fragment_one"
+        const val FRAGMENT_TWO = "fragment_two"
+        const val FRAGMENT_THREE = "fragment_three"
     }
 
 }
