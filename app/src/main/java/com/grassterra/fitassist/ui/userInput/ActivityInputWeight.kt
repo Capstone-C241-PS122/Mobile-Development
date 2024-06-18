@@ -20,7 +20,7 @@ class ActivityInputWeight : AppCompatActivity() {
     private val handler = Handler()
     private val typingDelay: Long = 100
     private val blinkDelay: Long = 250
-    private val fullText = "How much do you weight? \uD83E\uDDD0"
+    private val fullText = "How much do you weight?"
     private var isCursorBlinking = false
     private lateinit var cursorDrawable: Drawable
     private lateinit var userData: Userdata

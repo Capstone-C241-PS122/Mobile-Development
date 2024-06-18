@@ -5,7 +5,7 @@
     //Button text
     <string name="button_getStarted">Get Started</string>
     //list menu
-    <string name="menu_mybody">My body</string>
+    <string name="menu_mybody">My Body</string>
     <string name="menu_home">Home</string>
     <string name="select_gender">Select Your Gender</string>
     <string name="woman">Woman</string>
@@ -44,7 +44,7 @@
     <string name="bmr">BMR</string>
     <string name="water_intake">Water Intake</string>
     <string name="calc_nutrition">Calculate Nutrition</string>
-    <string name="header_mybody">Check your body</string>
+    <string name="header_mybody">Check Your Body and Calculate Nutrition for Your Favorite Indonesian Food</string>
     //BurnCaloriesTracker
     <string name="running_calories_tracker">Running Calories Tracker</string>
     //HomePage
@@ -89,6 +89,10 @@
     <string name="equipment">Equipment</string>
     <string name="abdominals">Abdominals</string>
     <string name="search_on_youtube">Search on YouTube</string>
+    <string name="bmi_body_mass_index">BMI (Body Mass Index)</string>
+    <string name="bmr_basal_metabolic_rate">BMR (Basal Metabolic Rate)</string>
+    <string name="nutrition_indonesia_food">Nutrition Indonesia Food</string>
+    <string name="indonesian_food_nutrition_calculator">Indonesian Food Nutrition Calculator</string>
     <string-array name="gender_array">
         <item>Man</item>
         <item>Woman</item>

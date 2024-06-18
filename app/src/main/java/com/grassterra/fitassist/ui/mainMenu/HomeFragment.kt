@@ -3,6 +3,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -23,6 +24,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.FragmentHomeBinding
 import com.grassterra.fitassist.helper.ImageClassifierHelper
 import com.grassterra.fitassist.helper.ParcelableMap
@@ -109,7 +111,13 @@ class HomeFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+
+        if (isLoading) {
+            val color = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.colorPrimary))
+            binding.progressBar.indeterminateTintList = color
+        }
     }
+
     private fun fadeInView(view: View) {
         val anim = AlphaAnimation(0.0f, 1.0f)
         anim.duration = 500

@@ -140,7 +140,7 @@ class BurnCaloriesTrackerFragment : Fragment() {
             Log.d("CaloriesCalculation", "metValue: $metValue")
 
             withContext(Dispatchers.Main) {
-                binding.totalBurnCalories.text = "Total Burn Calories : %.2f kalori".format(totalCaloriesBurned)
+                binding.totalBurnCalories.text = "Total Burn Calories : %.2f cal".format(totalCaloriesBurned)
             }
         }
     }

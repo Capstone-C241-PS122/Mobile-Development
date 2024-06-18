@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/card_before_pressed" android:state_pressed="false"/> <!-- Active color -->
+    <item android:drawable="@drawable/card_after_pressed" android:state_pressed="true"/> <!-- Inactive color -->
+</selector>
