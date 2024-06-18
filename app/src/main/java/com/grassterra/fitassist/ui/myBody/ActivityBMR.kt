@@ -77,17 +77,13 @@ class ActivityBMR : AppCompatActivity() {
             val height = user?.height.toString()
             val weight = user?.weight.toString()
             val age = user?.age.toString()
-            val gender = if (user?.gender == true) "pria" else "wanita"
+            val gender = if (user?.gender == true) 0 else 1
 
             withContext(Dispatchers.Main) {
                 binding.etHeight.text = Editable.Factory.getInstance().newEditable(height)
                 binding.etWeight.text = Editable.Factory.getInstance().newEditable(weight)
                 binding.etAge.text = Editable.Factory.getInstance().newEditable(age)
-                if (::adapter.isInitialized) {
-                    val position = adapter.getPosition(gender)
-                    binding.etGender.setSelection(position)
-                } else {
-                }
+                binding.etGender.setSelection(gender)
             }
         }
     }
