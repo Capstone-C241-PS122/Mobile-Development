@@ -76,7 +76,9 @@ class ProfileActivity : AppCompatActivity() {
 
                 // Delay the transition to the next activity using Handler
                 Handler(Looper.getMainLooper()).postDelayed({
-                    val intent = Intent(this@ProfileActivity, MainMenu::class.java)
+                    val intent = Intent(this@ProfileActivity, MainMenu::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    }
                     startActivity(intent)
                     finish()
                 }, 1000)
@@ -107,7 +109,9 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun goToBack(context: Context) {
-        val intent = Intent(context, MainMenu::class.java)
+        val intent = Intent(context, MainMenu::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
         context.startActivity(intent)
         finish()
     }

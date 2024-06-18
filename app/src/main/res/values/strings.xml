@@ -93,4 +93,1352 @@
         <item>Man</item>
         <item>Woman</item>
     </string-array>
+    <string-array name="nutrition">
+        <item>Abon</item>
+        <item>Abon haruwan</item>
+        <item>Agar-agar</item>
+        <item>Akar tonjong segar</item>
+        <item>Aletoge segar</item>
+        <item>Alpukat segar</item>
+        <item>Ampas kacang hijau</item>
+        <item>Ampas Tahu</item>
+        <item>Ampas tahu kukus</item>
+        <item>Ampas tahu mentah</item>
+        <item>Anak sapi daging gemuk segar</item>
+        <item>Anak sapi daging kurus segar</item>
+        <item>Anak sapi daging sedang segar</item>
+        <item>Andaliman segar</item>
+        <item>Andewi</item>
+        <item>Anggur hutan segar</item>
+        <item>Angsa</item>
+        <item>Anyang sayur</item>
+        <item>Apel</item>
+        <item>Apel malang segar</item>
+        <item>Arbei</item>
+        <item>Ares sayur</item>
+        <item>Arrowroot segar</item>
+        <item>Arwan sirsir</item>
+        <item>Asam kandis segar</item>
+        <item>Asam masak di pohon</item>
+        <item>Asam payak segar</item>
+        <item>Asan kandis kering</item>
+        <item>Asinan Bogor sayuran</item>
+        <item>Ayam</item>
+        <item>Ayam  goreng Kentuckysayap</item>
+        <item>Ayam ampela goreng</item>
+        <item>Ayam dideh/darah segar</item>
+        <item>Ayam goreng church texa sayap</item>
+        <item>Ayam goreng church texas dada</item>
+        <item>Ayam goreng kalasan paha</item>
+        <item>Ayam goreng kentucky dada</item>
+        <item>Ayam goreng Kentucky paha</item>
+        <item>Ayam goreng mbok berek dada</item>
+        <item>Ayam goreng paha</item>
+        <item>Ayam goreng pasundan dada</item>
+        <item>Ayam goreng pasundan paha</item>
+        <item>Ayam goreng pioneer dada</item>
+        <item>Ayam goreng sukabumi dada</item>
+        <item>Ayam goreng sukabumi paha</item>
+        <item>Ayam hati segar</item>
+        <item>Ayam taliwang masakan</item>
+        <item>Ayam usus goreng</item>
+        <item>Babat</item>
+        <item>Babi daging gemuk segar</item>
+        <item>Babi daging kurus segar</item>
+        <item>Babi ginjal segar</item>
+        <item>Babi hati segar</item>
+        <item>Babi hutan masak rica masakan</item>
+        <item>Bacang</item>
+        <item>Bagea kelapa asin</item>
+        <item>Bagea kelapa manis</item>
+        <item>Bagea kenari asin</item>
+        <item>Bagea kenari manis</item>
+        <item>Bagea kw 1</item>
+        <item>Bagea kw 2</item>
+        <item>Baje</item>
+        <item>Bakpia kue</item>
+        <item>Bakso</item>
+        <item>Bakung segar</item>
+        <item>Bakwan</item>
+        <item>Baligo</item>
+        <item>Bantal</item>
+        <item>Barongko</item>
+        <item>Batang Tading</item>
+        <item>Batar daan</item>
+        <item>Batatas gembili segar</item>
+        <item>Batatas kelapa ubi bakar</item>
+        <item>Batatas kelapa ubi kukus</item>
+        <item>Batatas kelapa ubi segar</item>
+        <item>Batatas tali ubi rebus</item>
+        <item>Bawang Bombay</item>
+        <item>Bawang Merah</item>
+        <item>Bawang Putih</item>
+        <item>Bayam kukus</item>
+        <item>Bayam Merah</item>
+        <item>Bayam merah segar</item>
+        <item>Bayam rebus</item>
+        <item>Bayam segar</item>
+        <item>Bayam tumis + oncom</item>
+        <item>Bayam tumis bersantan</item>
+        <item>Bebek (itik)</item>
+        <item>Bebek alabio daging segar</item>
+        <item>Bebek daging goreng</item>
+        <item>Beberuk</item>
+        <item>Beef burger</item>
+        <item>Beef teriyaki masakan</item>
+        <item>Beef yakiniku masakan</item>
+        <item>Bekasam</item>
+        <item>Bekasang</item>
+        <item>Belibis daging segar</item>
+        <item>Belimbing</item>
+        <item>Belitung talas kukus</item>
+        <item>Belut goreng</item>
+        <item>Belut segar</item>
+        <item>Belutlaut segar</item>
+        <item>Bengkuang</item>
+        <item>Bentul (Komba)  talas segar</item>
+        <item>Bentul talas kukus</item>
+        <item>Beras Cerdas</item>
+        <item>Beras ganyong</item>
+        <item>Beras Giling</item>
+        <item>Beras Giling masak (nasi)</item>
+        <item>Beras giling mentah</item>
+        <item>Beras giling var pelita mentah</item>
+        <item>Beras giling var rojolele mentah</item>
+        <item>Beras hitam mentah</item>
+        <item>Beras jagung kuning kering mentah</item>
+        <item>Beras jagung putih kering mentah</item>
+        <item>Beras Ketan Hitam</item>
+        <item>Beras Ketan Hitam kukus</item>
+        <item>Beras Ketan Hitam tape</item>
+        <item>Beras Ketan Hitam tumbuk</item>
+        <item>Beras ketan hitam tumbuk mentah</item>
+        <item>Beras Ketan Putih</item>
+        <item>Beras Ketan Putih kukus</item>
+        <item>Beras Ketan Putih tape</item>
+        <item>Beras Ketan Putih tumbuk</item>
+        <item>Beras ketan putih tumbuk mentah</item>
+        <item>Beras ladang mentah</item>
+        <item>Beras Menir</item>
+        <item>Beras menir mentah</item>
+        <item>Beras Merah tumbuk</item>
+        <item>Beras Parboiled</item>
+        <item>Beras parboiled</item>
+        <item>Beras Pecah Kulit</item>
+        <item>Beras Setengah Giling</item>
+        <item>Beras Siger</item>
+        <item>Beras tumbuk mentah</item>
+        <item>Beras tumbuk merah mentah</item>
+        <item>Betok wadi masakan</item>
+        <item>Bihun</item>
+        <item>Bihun Goreng</item>
+        <item>Bihun goreng instan</item>
+        <item>Bihun Jagung mentah</item>
+        <item>Bihun mentah</item>
+        <item>Biji Jambu Mete</item>
+        <item>Biji Jambu Mete goreng</item>
+        <item>Biji nangka/Biji salak</item>
+        <item>Bika ambon</item>
+        <item>Bika Ambon</item>
+        <item>Bir (4% alkohol)</item>
+        <item>Biskuit</item>
+        <item>Bit</item>
+        <item>Biwah segar</item>
+        <item>Bonggol Pisang</item>
+        <item>Bonggol Pisang kering</item>
+        <item>Bongkrek (tempe bungkil)</item>
+        <item>Boros Kunci</item>
+        <item>Boros Laja (lengkuas)</item>
+        <item>Botok lamtoro</item>
+        <item>Brem</item>
+        <item>Brondong</item>
+        <item>Brongkos</item>
+        <item>Buah Atung</item>
+        <item>Buah kelenting segar</item>
+        <item>Buah kelor</item>
+        <item>Buah kom segar</item>
+        <item>Buah Mentega (bisbul)</item>
+        <item>Buah merah</item>
+        <item>Buah Naga Merah segar</item>
+        <item>Buah Naga Putih segar</item>
+        <item>Buah negri segar</item>
+        <item>Buah Nona</item>
+        <item>Buah rotan segar</item>
+        <item>Buah rukam segar</item>
+        <item>Buah ruruhi segar</item>
+        <item>Buah tuppa segar</item>
+        <item>Buaya daging dendeng mentah</item>
+        <item>Bubur</item>
+        <item>Bubur sagu</item>
+        <item>Bubur tinotuan (Manado)</item>
+        <item>Bulgogi masakan</item>
+        <item>Bulung Jajan</item>
+        <item>Bulung Sangu</item>
+        <item>Buncis</item>
+        <item>Buncis asam</item>
+        <item>Buncis rebus</item>
+        <item>Bunga pepaya segar</item>
+        <item>Bunga turi segar</item>
+        <item>Bungkil Biji Karet</item>
+        <item>Bungkil Kacang Tanah</item>
+        <item>Bungkil Kelapa</item>
+        <item>Buntil</item>
+        <item>Buntil daun talas</item>
+        <item>Buras</item>
+        <item>Burung sarang segar</item>
+        <item>Cabai gembor merah segar</item>
+        <item>Cabai hijau segar</item>
+        <item>Cabai merah kering</item>
+        <item>Cabai merah segar</item>
+        <item>Cabai rawit segar</item>
+        <item>Caisin segar</item>
+        <item>Cakalang asar (asap papua)</item>
+        <item>Cake tape</item>
+        <item>Cammetutu</item>
+        <item>Cantel mentah</item>
+        <item>Cap cai sayur</item>
+        <item>Carica papaya segar</item>
+        <item>Cassavastick</item>
+        <item>Cempedak</item>
+        <item>Cengkeh kering</item>
+        <item>Centel</item>
+        <item>Ceriping getuk singkong</item>
+        <item>Chicken teriyaki masakan</item>
+        <item>Chikiniku masakan</item>
+        <item>Coklat bubuk</item>
+        <item>Coklat Manis batang</item>
+        <item>Coklat Pahit batang</item>
+        <item>Coklat Susu batang</item>
+        <item>Combro</item>
+        <item>Corned Beef</item>
+        <item>Coto mangkasara kuda masakan</item>
+        <item>Coto mangkasara sapi masakan</item>
+        <item>Cue Selar Kuning</item>
+        <item>Cuka</item>
+        <item>Cumi-cumi goreng</item>
+        <item>Cumi-cumi segar</item>
+        <item>Daging Anak Sapi</item>
+        <item>Daging Asap</item>
+        <item>Daging Babi Gemuk</item>
+        <item>Daging Babi Kurus</item>
+        <item>Daging Domba</item>
+        <item>Daging Kambing</item>
+        <item>Daging Kerbau</item>
+        <item>Daging Kuda</item>
+        <item>Daging Sapi</item>
+        <item>Daun bangun-bangun segar</item>
+        <item>Daun Bawang</item>
+        <item>Daun bawang  merah segar</item>
+        <item>Daun bebuas segar</item>
+        <item>Daun belem segar</item>
+        <item>Daun Beluntas</item>
+        <item>Daun Cincau</item>
+        <item>Daun Gandaria</item>
+        <item>Daun gedi besar segar</item>
+        <item>Daun gelang segar</item>
+        <item>Daun gunda bali segar</item>
+        <item>Daun gunda serang segar</item>
+        <item>Daun Jambu Mete muda</item>
+        <item>Daun jampang segar</item>
+        <item>Daun jawaw seluang segar</item>
+        <item>Daun jonghe segar</item>
+        <item>Daun kacang ma segar</item>
+        <item>Daun Kacang Panjang</item>
+        <item>Daun Kacang Panjang kukus</item>
+        <item>Daun kacang panjang segar</item>
+        <item>Daun kasbi/singkong karet segar</item>
+        <item>Daun Katuk</item>
+        <item>Daun katuk rebus</item>
+        <item>Daun katuk segar</item>
+        <item>Daun Kecipir</item>
+        <item>Daun Kedondong</item>
+        <item>Daun Kelor</item>
+        <item>Daun Kelor rebus</item>
+        <item>Daun Kemangi</item>
+        <item>Daun kenikir segar</item>
+        <item>Daun kesum segar</item>
+        <item>Daun kol sawi segar</item>
+        <item>Daun Koro</item>
+        <item>Daun kubis segar</item>
+        <item>Daun Kumak</item>
+        <item>Daun Labu Siam</item>
+        <item>Daun Labu Waluh</item>
+        <item>Daun lamtoro segar</item>
+        <item>Daun leilem segar</item>
+        <item>Daun Leunca</item>
+        <item>Daun Lobak</item>
+        <item>Daun Lompong Tales</item>
+        <item>Daun Mangkokan</item>
+        <item>Daun matel ambon segar</item>
+        <item>Daun Melinjo</item>
+        <item>Daun Mengkudu Kukus</item>
+        <item>Daun ndusuk segar</item>
+        <item>Daun Oyong</item>
+        <item>Daun oyong segar</item>
+        <item>Daun Pakis</item>
+        <item>Daun pakis longgiho segar</item>
+        <item>Daun pakis segar</item>
+        <item>Daun pakis wambateu segar</item>
+        <item>Daun paku segar</item>
+        <item>Daun pangisegar</item>
+        <item>Daun pare segar</item>
+        <item>Daun pepaya segar</item>
+        <item>Daun Pete Cina</item>
+        <item>Daun Poh-pohan</item>
+        <item>Daun salam  bubuk</item>
+        <item>Daun selasih segar</item>
+        <item>Daun Semanggi</item>
+        <item>Daun semanggi segar</item>
+        <item>Daun simpur segar</item>
+        <item>Daun singkil segar</item>
+        <item>Daun Singkong</item>
+        <item>Daun singkong ambon segar</item>
+        <item>Daun singkong ampenan segar</item>
+        <item>Daun singkong kopang segar</item>
+        <item>Daun Singkong lodeh</item>
+        <item>Daun Singkong rebus</item>
+        <item>Daun singkong segar</item>
+        <item>Daun Sintrong</item>
+        <item>Daun talas rebus</item>
+        <item>Daun talas segar</item>
+        <item>Daun Tales</item>
+        <item>Daun Tales rebus</item>
+        <item>Daun tespong segar</item>
+        <item>Daun Ubi Jalar</item>
+        <item>Daun Ubi Jalar kukus</item>
+        <item>Daun ubi kuning segar</item>
+        <item>Daun ubi merah kukus</item>
+        <item>Daun ubi merah segar</item>
+        <item>Daun ubi putih segar</item>
+        <item>Daun ubi tinta segar</item>
+        <item>Deblo</item>
+        <item>Dendeng belut goreng</item>
+        <item>Dendeng Daging Sapi</item>
+        <item>Dendeng mujahir goreng</item>
+        <item>Dideh darah ayam</item>
+        <item>Dideh darah sapi</item>
+        <item>Djibokum masakan</item>
+        <item>Dodol</item>
+        <item>Dodol bali</item>
+        <item>Dodol banjarmasin</item>
+        <item>Dodol galamai</item>
+        <item>Dodol kedondong</item>
+        <item>Dodol manado</item>
+        <item>Dodonkol</item>
+        <item>Domba daging gemuk segar</item>
+        <item>Domba daging kurus  segar</item>
+        <item>Domba ginjal segar</item>
+        <item>Duku</item>
+        <item>Durian</item>
+        <item>Duwet segar</item>
+        <item>Eceng Gondok</item>
+        <item>Embacang</item>
+        <item>Empal (daging) Goreng masakan</item>
+        <item>Empal Goreng</item>
+        <item>Emping (kerupuk melinjo)</item>
+        <item>Emping beras</item>
+        <item>Emping komak</item>
+        <item>Encung asam segar</item>
+        <item>Enting-enting gepuk hello kity</item>
+        <item>Enting-enting gepuk kacang tanah</item>
+        <item>Enting-enting wijen</item>
+        <item>Erbis</item>
+        <item>Es krim</item>
+        <item>Es Krim (Coconut milk)</item>
+        <item>Es Mambo</item>
+        <item>Es Sirup</item>
+        <item>Fillet o-fish</item>
+        <item>Gadeng/Gadung kering</item>
+        <item>Gado-gado</item>
+        <item>Gadung kukus</item>
+        <item>Gadung mentah</item>
+        <item>Gadung ubi kukus</item>
+        <item>Gadung ubi segar</item>
+        <item>Gambas (Oyong)</item>
+        <item>Gambas lodeh</item>
+        <item>Gandaria</item>
+        <item>Ganyong kukus</item>
+        <item>Ganyong mentah</item>
+        <item>Ganyong rebus</item>
+        <item>Ganyong segar</item>
+        <item>Gaplek</item>
+        <item>Gatep segar</item>
+        <item>Gatot</item>
+        <item>Geblek</item>
+        <item>Gelatine</item>
+        <item>Gembili</item>
+        <item>Gembili ubi segar</item>
+        <item>Gemblong</item>
+        <item>Gendar goreng</item>
+        <item>Genjer segar</item>
+        <item>Geplak</item>
+        <item>Geplak jahe</item>
+        <item>Gete kuah asam masakan</item>
+        <item>Getuk goreng</item>
+        <item>Getuk Lindri</item>
+        <item>Getuk pisang</item>
+        <item>Getuk singkong</item>
+        <item>Ginjal Babi</item>
+        <item>Ginjal Domba</item>
+        <item>Ginjal Sapi</item>
+        <item>Gudeg</item>
+        <item>Gudeg sayur</item>
+        <item>Gula Aren</item>
+        <item>Gula Kelapa</item>
+        <item>Gula Merah Tebu belum dimurnikan</item>
+        <item>Gula putih</item>
+        <item>Gulai asam keueung masakan</item>
+        <item>Gulai ikan masakan</item>
+        <item>Gulai ikan paya masakan</item>
+        <item>Gulai kambing</item>
+        <item>Gulai keumamah masakan</item>
+        <item>Gulai pakis</item>
+        <item>Gulai pliek</item>
+        <item>Gulai tiram masakan</item>
+        <item>Gurame asem manis masakan</item>
+        <item>Gurandil</item>
+        <item>Ham</item>
+        <item>Hangop</item>
+        <item>Hati Babi</item>
+        <item>Hati Sapi</item>
+        <item>Havermout</item>
+        <item>Hofa/Ubi hutan segar</item>
+        <item>Ikan asar merah masakan</item>
+        <item>Ikan Asin bilis goreng</item>
+        <item>Ikan Asin gabus goreng</item>
+        <item>Ikan Asin japuh goreng</item>
+        <item>Ikan Asin kering</item>
+        <item>Ikan Asin pari goreng</item>
+        <item>Ikan Asin pepetek goreng</item>
+        <item>Ikan Asin sirinding goreng</item>
+        <item>Ikan Asin teri goreng</item>
+        <item>Ikan Bader (Tawes)</item>
+        <item>Ikan balong segar</item>
+        <item>Ikan bambangan segar</item>
+        <item>Ikan Bandeng</item>
+        <item>Ikan bandeng presto masakan</item>
+        <item>Ikan banjar segar</item>
+        <item>Ikan baronang segar</item>
+        <item>Ikan baung bakar</item>
+        <item>Ikan baung segar</item>
+        <item>Ikan Bawal</item>
+        <item>Ikan Bekasang</item>
+        <item>Ikan Belida bakar</item>
+        <item>Ikan Belida segar</item>
+        <item>Ikan Belut Segar goreng</item>
+        <item>Ikan Belut Segar mentah</item>
+        <item>Ikan Beunteur</item>
+        <item>Ikan biawan segar</item>
+        <item>Ikan bili segar</item>
+        <item>Ikan bubara segar</item>
+        <item>Ikan bulan-bulan segar</item>
+        <item>Ikan cakalang asap mentah</item>
+        <item>Ikan cakalang asin mentah</item>
+        <item>Ikan cakalang hati segar</item>
+        <item>Ikan cakalang jantung segar</item>
+        <item>Ikan cakalang perut segar</item>
+        <item>Ikan cakalang segar</item>
+        <item>Ikan calo/ peda mentah</item>
+        <item>Ikan daun segar</item>
+        <item>Ikan Ekor Kuning</item>
+        <item>Ikan Gabus asap mentah</item>
+        <item>Ikan Gabus kering</item>
+        <item>Ikan Gabus segar</item>
+        <item>Ikan gete goreng</item>
+        <item>Ikan hitam segar</item>
+        <item>Ikan hiu kering</item>
+        <item>Ikan hiu segar</item>
+        <item>Ikan kacangan segar</item>
+        <item>Ikan kakap segar</item>
+        <item>Ikan kakatua segar</item>
+        <item>Ikan kapar segar</item>
+        <item>Ikan katombo asin</item>
+        <item>Ikan kawalinya segar</item>
+        <item>Ikan kayu kering</item>
+        <item>Ikan Kembung</item>
+        <item>Ikan kima segar</item>
+        <item>Ikan Lais bakar</item>
+        <item>Ikan Layang</item>
+        <item>Ikan layur segar</item>
+        <item>Ikan lehoma segar</item>
+        <item>Ikan Lele goreng</item>
+        <item>Ikan Lemuru</item>
+        <item>Ikan lidah segar</item>
+        <item>Ikan lomak asin mentah</item>
+        <item>Ikan malalugis segar</item>
+        <item>Ikan Mas</item>
+        <item>Ikan Mas goreng</item>
+        <item>Ikan Mas pepes</item>
+        <item>Ikan mayong segar</item>
+        <item>Ikan Mujair dendeng goreng</item>
+        <item>Ikan Mujair dendeng mentah</item>
+        <item>Ikan Mujair goreng</item>
+        <item>Ikan Mujair pepes</item>
+        <item>Ikan Mujair segar</item>
+        <item>Ikan nasu metti segar</item>
+        <item>Ikan oci kembung segar</item>
+        <item>Ikan Papuyu bakar</item>
+        <item>Ikan papuyu/ betok segar</item>
+        <item>Ikan Patin bakar</item>
+        <item>Ikan Patin segar</item>
+        <item>Ikan peda banjar mentah</item>
+        <item>Ikan Pepetek</item>
+        <item>Ikan Pindang banjar mentah</item>
+        <item>Ikan Pindang benggol mentah</item>
+        <item>Ikan Pindang layang mentah</item>
+        <item>Ikan Pindang selar mentah</item>
+        <item>Ikan sale lais mentah</item>
+        <item>Ikan Sale segar</item>
+        <item>Ikan saluang kering mentah</item>
+        <item>Ikan saluang segar</item>
+        <item>Ikan sanggang masakan</item>
+        <item>Ikan sarden segar</item>
+        <item>Ikan Segar</item>
+        <item>Ikan Selar kering</item>
+        <item>Ikan selar kuning cue mentah</item>
+        <item>Ikan selar segar</item>
+        <item>Ikan Sepat kering</item>
+        <item>Ikan sepat segar</item>
+        <item>Ikan sidat segar</item>
+        <item>Ikan sunu asin mentah</item>
+        <item>Ikan sunu segar</item>
+        <item>Ikan tahuman segar</item>
+        <item>Ikan tarmon segar</item>
+        <item>Ikan telan segar</item>
+        <item>Ikan telur asin mentah</item>
+        <item>Ikan Tembang</item>
+        <item>Ikan tempahas segar</item>
+        <item>Ikan tepung mentah</item>
+        <item>Ikan terbang segar</item>
+        <item>Ikan Teri bubuk</item>
+        <item>Ikan Teri kering</item>
+        <item>Ikan Teri Kering tawar</item>
+        <item>Ikan Teri Nasi kering</item>
+        <item>Ikan teri segar</item>
+        <item>Ikan Teri tepung</item>
+        <item>Ikan titang segar</item>
+        <item>Ikan tongkol segar</item>
+        <item>Ikan turi segar</item>
+        <item>Intip goreng</item>
+        <item>Itik alabio daging dendeng mentah</item>
+        <item>Jagung grontol</item>
+        <item>Jagung Kuning giling</item>
+        <item>Jagung Kuning muda</item>
+        <item>Jagung Kuning pipil baru</item>
+        <item>Jagung kuning pipil kering mentah</item>
+        <item>Jagung Kuning pipil lama</item>
+        <item>Jagung kuning pipil rebus</item>
+        <item>Jagung Kuning segar</item>
+        <item>Jagung kuning tepung</item>
+        <item>Jagung muda</item>
+        <item>Jagung muda kuning mentah</item>
+        <item>Jagung muda rebus</item>
+        <item>Jagung pipil var. harapan kering</item>
+        <item>Jagung pipil var. metro kering</item>
+        <item>Jagung Putih giling</item>
+        <item>Jagung Putih muda</item>
+        <item>Jagung Putih pipil baru</item>
+        <item>Jagung Putih pipil lama</item>
+        <item>Jagung Putih segar</item>
+        <item>Jagung Rebus</item>
+        <item>Jagung Sayur (tumis)</item>
+        <item>Jagung titi</item>
+        <item>Jahe</item>
+        <item>Jali</item>
+        <item>Jam selai</item>
+        <item>Jambal goreng</item>
+        <item>Jambu Air</item>
+        <item>Jambu Biji</item>
+        <item>Jambu biji putih tidak berbiji</item>
+        <item>Jambu Bol</item>
+        <item>Jambu Monyet buah</item>
+        <item>Jampang huma mentah</item>
+        <item>Jamur Coklat (kulat siau)</item>
+        <item>Jamur encik</item>
+        <item>Jamur kuping kering</item>
+        <item>Jamur kuping segar</item>
+        <item>Jamur merang segar</item>
+        <item>Jamur Putih (kulat putih)</item>
+        <item>Jamur sagu</item>
+        <item>Jamur tiram segar</item>
+        <item>Jangang bintatoeng masakan</item>
+        <item>Jantung Pisang segar</item>
+        <item>Japilus</item>
+        <item>Jaruk Tigarun</item>
+        <item>Jawawut</item>
+        <item>Jenang</item>
+        <item>Jengkol segar</item>
+        <item>Jeruk Bali</item>
+        <item>Jeruk banjar segar</item>
+        <item>Jeruk Garut</item>
+        <item>Jeruk Kalamansi segar</item>
+        <item>Jeruk Manis</item>
+        <item>Jeruk Nipis</item>
+        <item>Jeruk ragi segar</item>
+        <item>Jotang</item>
+        <item>Jukku pallu kaloa masakan</item>
+        <item>Kabau segar</item>
+        <item>Kaburan ubi segar</item>
+        <item>Kabuto</item>
+        <item>Kacang Andong</item>
+        <item>Kacang Arab</item>
+        <item>Kacang atom</item>
+        <item>Kacang babi kering</item>
+        <item>Kacang belimbing (kecipir) kering</item>
+        <item>Kacang Belimbing rebus</item>
+        <item>Kacang Belimbing tempe</item>
+        <item>Kacang beracun segar</item>
+        <item>Kacang Bogor goreng</item>
+        <item>Kacang bogor kering</item>
+        <item>Kacang Bogor rebus</item>
+        <item>Kacang bogor segar</item>
+        <item>Kacang Endel biji</item>
+        <item>Kacang ercis segar</item>
+        <item>kacang galing segar</item>
+        <item>Kacang goyang</item>
+        <item>Kacang Gude biji</item>
+        <item>Kacang gude biji kering</item>
+        <item>Kacang Gude biji muda</item>
+        <item>Kacang Gude muda</item>
+        <item>Kacang gude rebus</item>
+        <item>Kacang hijau kering</item>
+        <item>kacang hijau rebus</item>
+        <item>Kacang hijau var. bakti kering</item>
+        <item>Kacang hijau var. siwalik kering</item>
+        <item>Kacang hitam kering</item>
+        <item>Kacang Ijo</item>
+        <item>Kacang Kapri Goreng</item>
+        <item>Kacang Kapri muda</item>
+        <item>Kacang Kedelai basah</item>
+        <item>Kacang kedelai goreng</item>
+        <item>Kacang kedelai kering</item>
+        <item>Kacang Kedelai kukus</item>
+        <item>Kacang kedelai rebus</item>
+        <item>Kacang kedelai segar</item>
+        <item>Kacang komak segar</item>
+        <item>Kacang kuning kering</item>
+        <item>Kacang lebui /iris kering</item>
+        <item>Kacang mekah polong segar</item>
+        <item>Kacang mentega kering</item>
+        <item>Kacang Merah</item>
+        <item>Kacang merah /banda kering</item>
+        <item>Kacang merah kering</item>
+        <item>Kacang Merah kering rebus</item>
+        <item>Kacang merah segar</item>
+        <item>Kacang Merah segar rebus</item>
+        <item>Kacang merah tua kering</item>
+        <item>Kacang mete/biji jambu monyet goreng</item>
+        <item>Kacang mete/biji jambu monyet segar</item>
+        <item>Kacang negara</item>
+        <item>Kacang Panjang</item>
+        <item>Kacang Panjang biji</item>
+        <item>Kacang Panjang kukus</item>
+        <item>Kacang Panjang tumis</item>
+        <item>Kacang ranti polong</item>
+        <item>Kacang sukro</item>
+        <item>Kacang Sukro Putih</item>
+        <item>Kacang Tanah atom</item>
+        <item>Kacang tanah goreng</item>
+        <item>Kacang Tanah kacang sari</item>
+        <item>Kacang tanah kering</item>
+        <item>Kacang Tanah Rebus</item>
+        <item>Kacang Tanah rebus berkulit</item>
+        <item>Kacang Tanah rempeyek</item>
+        <item>Kacang Tanah sangan berselaput</item>
+        <item>Kacang tanah sangan tanpa selaput</item>
+        <item>Kacang tanah sari</item>
+        <item>Kacang Telur</item>
+        <item>Kacang tolo / tunggak kering</item>
+        <item>Kacang tolo rebus</item>
+        <item>Kacang Tunggak (tolo)</item>
+        <item>Kacang Tunggak rebus</item>
+        <item>Kacang Tunggak rempeyek</item>
+        <item>Kacang tunis kering</item>
+        <item>Kacang uci kering</item>
+        <item>Kacang urei kering</item>
+        <item>Kadada katembe</item>
+        <item>Kaholeo masakan</item>
+        <item>Kakap</item>
+        <item>Kalakai</item>
+        <item>Kalio jeroan masakan</item>
+        <item>Kalio kikil (tunjang) masakan</item>
+        <item>Kalio otak masakan</item>
+        <item>Kalio telur masakan</item>
+        <item>Kambing daging segar</item>
+        <item>Kambose</item>
+        <item>Kangkung</item>
+        <item>Kangkung kukus</item>
+        <item>Kangkung rebus</item>
+        <item>Kangkung tondano</item>
+        <item>Kangkung tumis</item>
+        <item>Kaparende sayur</item>
+        <item>Kapri Muda</item>
+        <item>Kapurung</item>
+        <item>Kapusa</item>
+        <item>Karawila</item>
+        <item>Karedok</item>
+        <item>Karedok sayur</item>
+        <item>Karoket</item>
+        <item>Katak</item>
+        <item>Katul Beras</item>
+        <item>Katul Jagung</item>
+        <item>Kawista segar</item>
+        <item>Kecap</item>
+        <item>Kecimpring singkong goreng</item>
+        <item>Kecipir biji</item>
+        <item>Kecipir buah muda</item>
+        <item>Kecipir muda segar</item>
+        <item>Kecombrang segar</item>
+        <item>Kedondong segar</item>
+        <item>Keju</item>
+        <item>Keju Kacang Tanah</item>
+        <item>Kelapa hutan kering</item>
+        <item>Kelapa Muda air</item>
+        <item>Kelapa Muda daging</item>
+        <item>Kelapa Setengah Tua daging</item>
+        <item>Kelapa Tua daging</item>
+        <item>Kelepon</item>
+        <item>Kelewih</item>
+        <item>Kelinci daging segar</item>
+        <item>Kemang</item>
+        <item>Kembang tahu</item>
+        <item>Kembang Turi</item>
+        <item>Kemiri</item>
+        <item>Kenari</item>
+        <item>Kenari banda kering</item>
+        <item>Kentang</item>
+        <item>Kentang Hitam</item>
+        <item>Keong</item>
+        <item>Kepala Susu (Krim)</item>
+        <item>Kepiting</item>
+        <item>Kerang</item>
+        <item>Kerang asap mentah</item>
+        <item>Kerang dendeng mentah</item>
+        <item>Kerbau daging segar</item>
+        <item>Keremes</item>
+        <item>Keribang ubi segar</item>
+        <item>Keripik bayam</item>
+        <item>Keripik gadung</item>
+        <item>Keripik kentang</item>
+        <item>Keripik lampung</item>
+        <item>Keripik oncom</item>
+        <item>Keripik singkong</item>
+        <item>Keripik singkong berbumbu</item>
+        <item>Keripik tempe</item>
+        <item>Keripik tempe abadi murni</item>
+        <item>Keripik tempe abadi sedang</item>
+        <item>Keripik tempe abadi telur</item>
+        <item>Keripik ubi</item>
+        <item>Kerokot segar</item>
+        <item>Kerupuk Aci</item>
+        <item>Kerupuk cumi goreng</item>
+        <item>Kerupuk Ikan berpati</item>
+        <item>Kerupuk kemplang  (ikan) mentah</item>
+        <item>Kerupuk kemplang goreng</item>
+        <item>Kerupuk kemplang panggang</item>
+        <item>Kerupuk Kulit kerbau</item>
+        <item>Kerupuk Melinjo mentah</item>
+        <item>Kerupuk Melinjo tebal goreng asin</item>
+        <item>Kerupuk Melinjo tebal goreng manis</item>
+        <item>Kerupuk Melinjo tipis goreng</item>
+        <item>Kerupuk mie kuning goreng</item>
+        <item>Kerupuk Sayong</item>
+        <item>Kerupuk Udang</item>
+        <item>Kerupuk Udang berpati</item>
+        <item>Kerupuk udang goreng</item>
+        <item>Kerupuk urat</item>
+        <item>Kesemek</item>
+        <item>Ketan hitam matang</item>
+        <item>Ketan putih matang</item>
+        <item>Ketapang</item>
+        <item>Ketela Pohon Kuning</item>
+        <item>Ketela singkong segar</item>
+        <item>Ketela pohon/singkong kukus</item>
+        <item>Ketimun</item>
+        <item>Ketimun madura segar</item>
+        <item>Ketoprak</item>
+        <item>Ketumbar</item>
+        <item>Ketupat ketan</item>
+        <item>Ketupat Tahu</item>
+        <item>Kluwek</item>
+        <item>Kodok segar</item>
+        <item>Kokosan</item>
+        <item>Komak polong segar</item>
+        <item>Kool Kembang</item>
+        <item>Kool Merah kool putih</item>
+        <item>Kopi bagian yang larut</item>
+        <item>Kopi bubuk instant</item>
+        <item>Koro andong kering</item>
+        <item>Koro Benguk biji</item>
+        <item>Koro Benguk tempe</item>
+        <item>Koro Kerupuk biji</item>
+        <item>Koro Loke biji</item>
+        <item>Koro Roway biji</item>
+        <item>Koro Wedus biji</item>
+        <item>Koro Wedus buah muda</item>
+        <item>Koro wedus polong</item>
+        <item>Kotiu hinela tawang nggole</item>
+        <item>Koya</item>
+        <item>Koya mirasa</item>
+        <item>Kranji segar</item>
+        <item>Kripik Tempe Goreng</item>
+        <item>Krokot</item>
+        <item>Kucai</item>
+        <item>Kucai Muda (Lokio)</item>
+        <item>Kuda daging segar</item>
+        <item>Kue ali</item>
+        <item>Kue Apem</item>
+        <item>Kue bangket</item>
+        <item>Kue Bugis</item>
+        <item>Kue jahe</item>
+        <item>Kue kelapa</item>
+        <item>Kue Koya</item>
+        <item>Kue lumpur</item>
+        <item>Kue mangkok</item>
+        <item>Kue Pacar Cina</item>
+        <item>Kue Pia</item>
+        <item>Kue putu cangkir</item>
+        <item>Kue putu singkong</item>
+        <item>Kue Satu</item>
+        <item>Kue Semprong</item>
+        <item>Kue sus</item>
+        <item>Kue Talam</item>
+        <item>Kue Tambang</item>
+        <item>Kue thipan</item>
+        <item>Kulit melinjo</item>
+        <item>Kundur segar</item>
+        <item>Kunyit</item>
+        <item>Kura-kura</item>
+        <item>Kwaci</item>
+        <item>Kwark (Quark)</item>
+        <item>Labu Air</item>
+        <item>Labu kuning segar</item>
+        <item>Labu Siam</item>
+        <item>Labu waluh segar</item>
+        <item>Laksa</item>
+        <item>Lamtoro (pete cina) biji muda</item>
+        <item>Lamtoro biji tua</item>
+        <item>Lamtoro tempe</item>
+        <item>Lamtoro var. gung tanpa kulit</item>
+        <item>Lamtoro var. lokal dengan kulit</item>
+        <item>Langsat</item>
+        <item>Lantar segar</item>
+        <item>Lanting getuk</item>
+        <item>Lapis legit</item>
+        <item>Lawar babi masakan</item>
+        <item>Lawar penyu masakan</item>
+        <item>Lawara jangang masakan</item>
+        <item>Lawara penjah masakan</item>
+        <item>Ledre pisang</item>
+        <item>Lema/ Rebung asam</item>
+        <item>Lemak Babi</item>
+        <item>Lemak Babi (Bacon)</item>
+        <item>Lemak ikan</item>
+        <item>Lemak Kerbau</item>
+        <item>Lemon segar</item>
+        <item>Lemon Squasih</item>
+        <item>Lemonade</item>
+        <item>Lemper</item>
+        <item>Lempog durian</item>
+        <item>Lepok/Ubi rumput</item>
+        <item>Leunca buah</item>
+        <item>Leupeut Ketan</item>
+        <item>Leverwost (sosis hati)</item>
+        <item>Lilin bungkus gedi</item>
+        <item>Lobak</item>
+        <item>Lokan segar</item>
+        <item>Lontar segar</item>
+        <item>Lopis</item>
+        <item>Lumai/Leunca segar</item>
+        <item>Lupis ketan</item>
+        <item>Madu</item>
+        <item>Maizena tepung</item>
+        <item>Makaroni</item>
+        <item>Mangga benggala segar</item>
+        <item>Mangga Gedong</item>
+        <item>Mangga Golek</item>
+        <item>Mangga Harum Manis</item>
+        <item>Mangga Indramayu</item>
+        <item>Mangga Kopek</item>
+        <item>Mangga kwini segar</item>
+        <item>Mangga manalagi segar</item>
+        <item>Mangga Muda</item>
+        <item>Mangga segar</item>
+        <item>Manggis</item>
+        <item>Margarin</item>
+        <item>Markisa segar</item>
+        <item>Markisa squash</item>
+        <item>Markisa squash BD</item>
+        <item>Martabak  manis</item>
+        <item>Martabak india</item>
+        <item>Martabak mesir</item>
+        <item>Martabak Telur</item>
+        <item>Masekat</item>
+        <item>Matoa segar</item>
+        <item>Melase</item>
+        <item>Melinjo</item>
+        <item>Melon segar</item>
+        <item>Menjangan daging dendeng mentah</item>
+        <item>Mentega</item>
+        <item>Menteng</item>
+        <item>Merica</item>
+        <item>Mi basah</item>
+        <item>Mi golosor</item>
+        <item>Mi kering</item>
+        <item>Mie aceh rebus</item>
+        <item>Mie ayam</item>
+        <item>Mie bakso</item>
+        <item>Mie basah</item>
+        <item>Mie Bendo</item>
+        <item>Mie celon</item>
+        <item>Mie Goreng</item>
+        <item>Mie kering</item>
+        <item>Mie pangsit basah</item>
+        <item>Mie Sagu</item>
+        <item>Minyak Hati Hiu (Eulamia)</item>
+        <item>Minyak Ikan</item>
+        <item>Minyak Kacang Tanah</item>
+        <item>Minyak kedelai</item>
+        <item>Minyak Kelapa</item>
+        <item>Minyak Kelapa Sawit</item>
+        <item>Minyak Wijen</item>
+        <item>Minyak Zaitun</item>
+        <item>Misoa</item>
+        <item>Misro</item>
+        <item>Moon tahu</item>
+        <item>Mostarda metan -sawi</item>
+        <item>Mujahir acar kuning masakan</item>
+        <item>Naan maran sapi masakan</item>
+        <item>Nanas</item>
+        <item>Nanas palembang segar</item>
+        <item>Nangka biji</item>
+        <item>Nangka masak di pohon</item>
+        <item>Nangka Muda</item>
+        <item>Nasi</item>
+        <item>Nasi beras merah</item>
+        <item>Nasi gemuk</item>
+        <item>Nasi Goreng</item>
+        <item>Nasi gurih</item>
+        <item>Nasi jagung</item>
+        <item>Nasi minyak</item>
+        <item>Nasi rames</item>
+        <item>Nasi tim</item>
+        <item>Nasi Uduk</item>
+        <item>Nasu likku masakan</item>
+        <item>Noga Kacang Tanah</item>
+        <item>Nopia spesial</item>
+        <item>Olah-olah</item>
+        <item>Oncom</item>
+        <item>Oncom ampas kacang hijau</item>
+        <item>Oncom Goreng</item>
+        <item>Oncom Hitam Goreng</item>
+        <item>Oncom Hitam Goreng bertepung</item>
+        <item>Oncom kacang hijau + singkong</item>
+        <item>Oncom Kacang Tanah pepes</item>
+        <item>Oncom Kedele</item>
+        <item>Oncom Merah Goreng</item>
+        <item>Oncom Merah Goreng bertepung</item>
+        <item>Oncom Merah Sayur (tumis)</item>
+        <item>Oncom pepes</item>
+        <item>Onde-onde</item>
+        <item>Ongol-ongol</item>
+        <item>Ongol-ongol sagu</item>
+        <item>Opak Singkong</item>
+        <item>Oramu ninahu ndawa olaho masakan</item>
+        <item>Otak</item>
+        <item>Oyek</item>
+        <item>Oyek (dari singkong)</item>
+        <item>Paku hinela wulelenggapaya</item>
+        <item>Pala biji</item>
+        <item>Pala daging</item>
+        <item>Paniki masak santan masakan</item>
+        <item>Papais</item>
+        <item>Papeda</item>
+        <item>Parede baleh masakan</item>
+        <item>Paria (Pare)</item>
+        <item>Paria Putih kukus</item>
+        <item>Paria putih segar</item>
+        <item>Pastel</item>
+        <item>Pati Singkong (tapioka)</item>
+        <item>Pe-Cay</item>
+        <item>Peda Ikan Banjar</item>
+        <item>Pelecing kangkung</item>
+        <item>Pelepah manuk masakan</item>
+        <item>Pempek adaan</item>
+        <item>Pempek belida</item>
+        <item>Pempek kapal selam</item>
+        <item>Pempek kelesan</item>
+        <item>Pempek kulit</item>
+        <item>Pempek tenggiri</item>
+        <item>Pencok lele masakan</item>
+        <item>Penyu serapah masakan</item>
+        <item>Pepare ular segar</item>
+        <item>Pepaya lodeh</item>
+        <item>Pepaya Muda</item>
+        <item>Pepaya segar</item>
+        <item>Pepea oncom ampas tahu</item>
+        <item>Permen</item>
+        <item>Pete Segar</item>
+        <item>Peterseli</item>
+        <item>Petis Ikan</item>
+        <item>Petis Udang</item>
+        <item>Petis udang kering</item>
+        <item>Petis udang pasta</item>
+        <item>Pilus</item>
+        <item>Pinda masakan</item>
+        <item>Pindang Ikan Banjar</item>
+        <item>Pindang Ikan Benggol</item>
+        <item>Pindang Ikan Layang</item>
+        <item>Pindang Ikan Selar Kecil</item>
+        <item>Pindang kenari masakan</item>
+        <item>Pisang Ambon</item>
+        <item>Pisang angleng (pisang ampyang) segar</item>
+        <item>Pisang ayam segar</item>
+        <item>Pisang gapi segar</item>
+        <item>Pisang Goreng</item>
+        <item>Pisang goroho segar</item>
+        <item>Pisang hijau segar</item>
+        <item>Pisang kayu segar</item>
+        <item>Pisang kepok segar</item>
+        <item>Pisang ketip segar</item>
+        <item>Pisang kidang segar</item>
+        <item>Pisang Lampung</item>
+        <item>Pisang Mas</item>
+        <item>Pisang mas bali</item>
+        <item>Pisang Oli</item>
+        <item>Pisang Raja</item>
+        <item>Pisang Raja Sere (Susu)</item>
+        <item>Pisang rotan segar</item>
+        <item>Pisang Siam goreng</item>
+        <item>Pisang talas segar</item>
+        <item>Prey (bawang daun)</item>
+        <item>Pucuk lumai/daun leunca segar</item>
+        <item>Pulut</item>
+        <item>Punai daging goreng</item>
+        <item>Pundut nasi</item>
+        <item>Purundawa</item>
+        <item>Purut segar</item>
+        <item>Putri malu segar</item>
+        <item>Putri selat</item>
+        <item>Putu Mayang</item>
+        <item>Ragi</item>
+        <item>Rajungan segar</item>
+        <item>Rambutan</item>
+        <item>Rambutan Aceh</item>
+        <item>Rambutan binjai segar</item>
+        <item>Rambutan sinyonya</item>
+        <item>Rarawuan</item>
+        <item>Rasbi (Beras Ubi)</item>
+        <item>Rasi (Beras Singkong)</item>
+        <item>Rawon masakan</item>
+        <item>Rebon (udang kecil segar)</item>
+        <item>Rebon kering</item>
+        <item>Rebon udang kecil segar</item>
+        <item>Rebung</item>
+        <item>Rebung laut mentah</item>
+        <item>Rempeyek kacang tolo</item>
+        <item>Rempeyek kacang uci</item>
+        <item>Rendang sapi masakan</item>
+        <item>Renggi goreng</item>
+        <item>Rimbang segar</item>
+        <item>Risoles</item>
+        <item>Roti boong</item>
+        <item>Roti Gambang</item>
+        <item>Roti Putih</item>
+        <item>Roti warna sawo matang</item>
+        <item>Rujak cingur</item>
+        <item>Rumput laut</item>
+        <item>Rusa daging dendeng mentah</item>
+        <item>Rusip</item>
+        <item>RW anjing masakan</item>
+        <item>Saga biji tanpa kulit</item>
+        <item>Sagu Ambon</item>
+        <item>Sagu aren kering</item>
+        <item>Sagu aren segar</item>
+        <item>Sagu forno</item>
+        <item>Sagu kasbi segar</item>
+        <item>Sagu Lemak (Kue Sagon)</item>
+        <item>Sagu lempeng</item>
+        <item>Sagu Rendang</item>
+        <item>Sagu singkong kering</item>
+        <item>Sagu sinole</item>
+        <item>Salak bali segar</item>
+        <item>Salak medan segar</item>
+        <item>Salak pondoh segar</item>
+        <item>Sale pisang siam</item>
+        <item>Santan (dengan air)</item>
+        <item>Santan (kelapa saja)</item>
+        <item>Santan murni</item>
+        <item>Saos Tomat</item>
+        <item>Sapi abon</item>
+        <item>Sapi babat segar</item>
+        <item>Sapi daging asap</item>
+        <item>Sapi daging dendeng mentah</item>
+        <item>Sapi daging gemuk segar</item>
+        <item>Sapi daging kornet</item>
+        <item>Sapi daging kurus segar</item>
+        <item>Sapi daging lemak sedang segar</item>
+        <item>Sapi daging sosis (Worst)</item>
+        <item>Sapi daleman segar</item>
+        <item>Sapi dideh/darah</item>
+        <item>Sapi ginjal segar</item>
+        <item>Sapi hati sosis (liverworst)</item>
+        <item>Sapi keleponan segar</item>
+        <item>Sapi liver segar</item>
+        <item>Sapi otak segar</item>
+        <item>Sapi paru dendeng mentah</item>
+        <item>Sapi paru goreng</item>
+        <item>Sapi usus segar</item>
+        <item>Sarang Burung</item>
+        <item>Sardines dalam kaleng</item>
+        <item>Sari Kedelai bubuk</item>
+        <item>Sarimuka</item>
+        <item>Sate Bandeng</item>
+        <item>Sate Kulit</item>
+        <item>Sate penyu masakan</item>
+        <item>Sate pusut masakan</item>
+        <item>Sate Usus</item>
+        <item>Sawi</item>
+        <item>Sawi putih / pecai segar</item>
+        <item>Sawi taiwan segar</item>
+        <item>Sawi tanah segar</item>
+        <item>Sawo</item>
+        <item>Sawo duren segar</item>
+        <item>Sawo kecik segar</item>
+        <item>Sawo Manila segar</item>
+        <item>Sayur asem</item>
+        <item>Sayur bunga pepaya</item>
+        <item>Sayur garu</item>
+        <item>Sayur kohu-kohu</item>
+        <item>Sayur lebui</item>
+        <item>Sayur lilin-terubuk</item>
+        <item>Sayur ndusuk</item>
+        <item>Sayur sop</item>
+        <item>Sayur umbut kelapa</item>
+        <item>Sayur umbut rotan</item>
+        <item>Selada</item>
+        <item>Selada Air</item>
+        <item>Selada Air rebus</item>
+        <item>Seledri</item>
+        <item>Semangka</item>
+        <item>Semur Jengkol</item>
+        <item>Sente</item>
+        <item>Sente talas segar</item>
+        <item>Sepi masakan</item>
+        <item>Serbuk Coklat</item>
+        <item>Serimping talas kebumen</item>
+        <item>Setrup sirup</item>
+        <item>Shabu-shabu</item>
+        <item>Sie reuboh masakan</item>
+        <item>Singkah (rotan muda)</item>
+        <item>Singkong Goreng</item>
+        <item>Singkong kukus</item>
+        <item>Singkong tape</item>
+        <item>Siomay</item>
+        <item>Sirsak</item>
+        <item>Sirup</item>
+        <item>Sop buntut masakan</item>
+        <item>Sop daging sapi masakan</item>
+        <item>Sop kaki sapi masakan</item>
+        <item>Sop kambing masakan</item>
+        <item>Sop konro masakan</item>
+        <item>Sop Kool</item>
+        <item>Sop Kool dan Wortel</item>
+        <item>Sop saudara masakan</item>
+        <item>Soto bandung masakan</item>
+        <item>Soto banjar masakan</item>
+        <item>Soto betawi masakan</item>
+        <item>Soto dengan Daging</item>
+        <item>Soto jeroan masakan</item>
+        <item>Soto kudus masakan</item>
+        <item>Soto madura masakan</item>
+        <item>Soto padang masakan</item>
+        <item>Soto pekalongan masakan</item>
+        <item>Soto pemalang masakan</item>
+        <item>Soto sukaraja masakan</item>
+        <item>Soto sulung masakan</item>
+        <item>Soto tanpa Daging</item>
+        <item>Spaghetti</item>
+        <item>Srikaya</item>
+        <item>Sukiyaki masakan</item>
+        <item>Sukun muda segar</item>
+        <item>Sukun tua segar</item>
+        <item>Susu asam untuk bayi bubuk</item>
+        <item>Susu bubuk</item>
+        <item>Susu Kambing</item>
+        <item>Susu Kedelai</item>
+        <item>Susu Kental Manis</item>
+        <item>Susu Kental Tak Manis</item>
+        <item>Susu Kerbau</item>
+        <item>Susu Sapi</item>
+        <item>Susu Skim (tak berlemak)</item>
+        <item>Susu skim bubuk</item>
+        <item>Susu skim segar</item>
+        <item>Susupan</item>
+        <item>Suweg kukus</item>
+        <item>Suweg mentah</item>
+        <item>Suweg talas segar</item>
+        <item>Suwir-suwir</item>
+        <item>Tahu</item>
+        <item>Tahu goreng</item>
+        <item>Tahu telur</item>
+        <item>Takwa</item>
+        <item>Talas bogor kukus</item>
+        <item>Talas pontianak segar</item>
+        <item>Talas viqueque segar</item>
+        <item>Tales kukus</item>
+        <item>Tales mentah</item>
+        <item>Taoco</item>
+        <item>Taoge goreng</item>
+        <item>Taoge kacang kedelai segar</item>
+        <item>Taoge seduh</item>
+        <item>Taoge segar</item>
+        <item>Taokoa</item>
+        <item>Tapai beras</item>
+        <item>Tapai ketan hitam</item>
+        <item>Tapai ketan putih</item>
+        <item>Tapai singkong</item>
+        <item>Tauco cap DAS cake</item>
+        <item>Tauji cap singa</item>
+        <item>Tebu Terubuk</item>
+        <item>Tedong pallu basa masakan</item>
+        <item>Teh</item>
+        <item>Teh hijau daun kering</item>
+        <item>Teh melati daun kering</item>
+        <item>Tekokak</item>
+        <item>Tekokak kering</item>
+        <item>Tekwan</item>
+        <item>Telur Ayam</item>
+        <item>Telur Ayam bagian kuning</item>
+        <item>Telur Ayam bagian putih</item>
+        <item>Telur Ayam ceplok</item>
+        <item>Telur Ayam dadar</item>
+        <item>Telur ayam kampung</item>
+        <item>Telur bebek bagian kuning segar</item>
+        <item>Telur Bebek bagian putih</item>
+        <item>Telur bebek bagian putih segar</item>
+        <item>Telur Bebek ceplok</item>
+        <item>Telur Bebek dadar</item>
+        <item>Telur bebek tambak segar</item>
+        <item>Telur Bebek telur asin</item>
+        <item>Telur burung puyuh segar</item>
+        <item>Telur Penyu</item>
+        <item>Telur Terubuk</item>
+        <item>Tempe bongkrek</item>
+        <item>Tempe Gembus</item>
+        <item>Tempe gembus yogya</item>
+        <item>Tempe Goreng</item>
+        <item>Tempe kacang babi</item>
+        <item>Tempe kacang belimbing</item>
+        <item>Tempe kedelai + jagung</item>
+        <item>Tempe kedelai murni goreng</item>
+        <item>Tempe kedelai murni mentah</item>
+        <item>Tempe koro benguk</item>
+        <item>Tempe lamtoro var. gung dengan kulit</item>
+        <item>Tempe lamtoro var. gung tanpa kulit</item>
+        <item>Tempe pasar segar</item>
+        <item>Tempe pasar goreng</item>
+        <item>Tempe Sayur</item>
+        <item>Tempoya</item>
+        <item>Tempuyak</item>
+        <item>Tepung Arrowroot</item>
+        <item>Tepung Beras</item>
+        <item>Tepung beras mentah</item>
+        <item>Tepung Ganyong</item>
+        <item>Tepung Gaplek</item>
+        <item>Tepung Garut (arrowroot)</item>
+        <item>Tepung Hunkwee</item>
+        <item>Tepung Ikan</item>
+        <item>Tepung Jagung Kuning</item>
+        <item>Tepung jagung putih</item>
+        <item>Tepung Jalejo</item>
+        <item>Tepung Kacang Kedelai</item>
+        <item>Tepung Kentang</item>
+        <item>Tepung Mocaf</item>
+        <item>Tepung Pisang</item>
+        <item>Tepung Sagu</item>
+        <item>Tepung Sente</item>
+        <item>Tepung singkong/ Tapioka</item>
+        <item>Tepung Sukun</item>
+        <item>Tepung Susu</item>
+        <item>Tepung Susu Asam untuk bayi</item>
+        <item>Tepung Susu Skim</item>
+        <item>Tepung Tales Beneng</item>
+        <item>Tepung Terigu</item>
+        <item>Tepung Ubi Ungu</item>
+        <item>Terasi</item>
+        <item>Terasi dobo</item>
+        <item>Terasi Merah</item>
+        <item>Terasi merah</item>
+        <item>Teri balado masakan</item>
+        <item>Teripang dendeng mentah</item>
+        <item>Terong</item>
+        <item>Terong + Oncom makanan</item>
+        <item>Terong Asam</item>
+        <item>Terong Belanda</item>
+        <item>Terong hintalo segar</item>
+        <item>Terong kukus</item>
+        <item>Terong segar</item>
+        <item>Terung belanda segar</item>
+        <item>Terung bengkulu segar</item>
+        <item>Terung panjang</item>
+        <item>Terung panjang kukus</item>
+        <item>Tespong daun</item>
+        <item>Tim (nasi tim)</item>
+        <item>Tinira ninahu nggaluku</item>
+        <item>Tinoransak masakan</item>
+        <item>Tipa-tipa</item>
+        <item>Tiwul</item>
+        <item>Tiwul Instan</item>
+        <item>Toge -Tahu makanan</item>
+        <item>Toge Goreng</item>
+        <item>Toge kacang ijo</item>
+        <item>Toge kacang tunggak</item>
+        <item>Toge kedelai</item>
+        <item>Toge seduh</item>
+        <item>Tomat air (juice) segar</item>
+        <item>Tomat Masak</item>
+        <item>Tomat merah segar</item>
+        <item>Tomat muda segar</item>
+        <item>Tumis bandeng</item>
+        <item>Tumis bayam bersantan</item>
+        <item>Ubi Cilembu</item>
+        <item>Ubi Jalar Goreng</item>
+        <item>Ubi jalar kuning kukus</item>
+        <item>Ubi jalar kuning segar</item>
+        <item>Ubi jalar manis segar</item>
+        <item>Ubi Jalar Merah</item>
+        <item>Ubi jalar merah segar</item>
+        <item>Ubi Jalar Putih</item>
+        <item>Ubi Jalar Rebus</item>
+        <item>Ubi Jalar Sayur</item>
+        <item>Ubi jalar tinta/ kemayung</item>
+        <item>Ubi jalar tinta/ kemayung kukus</item>
+        <item>Uceng/ bunga melinjo segar</item>
+        <item>Udang besar segar</item>
+        <item>Udang galah segar</item>
+        <item>Udang kering</item>
+        <item>Udang kering mentah</item>
+        <item>Udang papay mentah</item>
+        <item>Udang segar</item>
+        <item>Ulat sagu panggang</item>
+        <item>Ulat sagu segar</item>
+        <item>Umbi Uwi segar</item>
+        <item>Umbut rotan</item>
+        <item>Usus Sapi</item>
+        <item>Uwi</item>
+        <item>Vermicelli</item>
+        <item>Wajit camilan</item>
+        <item>Waluh balamak</item>
+        <item>Widaran</item>
+        <item>Wijen</item>
+        <item>Wingko babat</item>
+        <item>Woku ubi</item>
+        <item>Worst (sosis daging)</item>
+        <item>Wortel Segar</item>
+        <item>Wortel kukus</item>
+        <item>Wortel rebus</item>
+        <item>Yangko</item>
+        <item>Yoghurt</item>
+    </string-array>
 </resources>

@@ -141,7 +141,9 @@ class SelectExercise : AppCompatActivity() {
     private fun NavigateNextPage(context: Context) {
         loadingFragment.stopAnimation()
         binding.loadingFragmentContainer.visibility = View.GONE
-        val intent = Intent(context, MainMenu::class.java)
+        val intent = Intent(context, MainMenu::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
         intent.putExtra("flag", true)
         intent.putExtra("userdata",userData)
         startActivity(intent)

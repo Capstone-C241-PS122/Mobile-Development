@@ -3,8 +3,10 @@ package com.grassterra.fitassist.ui.myBody
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.grassterra.fitassist.R
 import com.grassterra.fitassist.databinding.ActivityCalculateNutritionBinding
 import com.grassterra.fitassist.helper.Resource
 import com.grassterra.fitassist.repository.ApiRepository
@@ -20,11 +22,19 @@ class ActivityCalculateNutrition : AppCompatActivity() {
 
     private lateinit var binding: ActivityCalculateNutritionBinding
     private lateinit var apiRepository: ApiRepository
+    private lateinit var selectedItem: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCalculateNutritionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val nutritionArray = resources.getStringArray(R.array.nutrition)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, nutritionArray)
+        binding.editTextFood.setAdapter(adapter)
+        binding.editTextFood.threshold = 1  // Start showing suggestions after 1 character is typed
+
+
         apiRepository = ApiRepository(apiService)
         binding.buttonCalculate.setOnClickListener {
             resultCalculate()
@@ -32,11 +42,14 @@ class ActivityCalculateNutrition : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             goToBack(this)
         }
+        binding.editTextFood.setOnItemClickListener { parent, view, position, id ->
+            selectedItem = parent.getItemAtPosition(position).toString()
+        }
     }
 
     private val apiService = ApiConfig.getApiService()
     private fun resultCalculate() {
-        val foodName = binding.editTextFood.text.toString().trim()
+        val foodName = selectedItem
         val foodWeight = binding.editTextWeight.text.toString().toIntOrNull() ?: 0
 
         CoroutineScope(Dispatchers.Main).launch {
@@ -83,7 +96,10 @@ class ActivityCalculateNutrition : AppCompatActivity() {
     }
 
     private fun goToBack(context: Context) {
-        val intent = Intent(context, MainMenu::class.java)
+        val intent = Intent(context, MainMenu::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            putExtra(MainMenu.TARGET_FRAGMENT, MainMenu.FRAGMENT_TWO)
+        }
         context.startActivity(intent)
         finish()
     }
