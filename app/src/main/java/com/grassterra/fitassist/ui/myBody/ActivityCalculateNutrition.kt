@@ -63,7 +63,7 @@ class ActivityCalculateNutrition : AppCompatActivity() {
                                 val predictedNutrition = response.predictedNutrition
                                 val calories = predictedNutrition?.calories ?: 0
                                 val proteins = predictedNutrition?.proteins ?: 0.0
-                                val carbohydrates = predictedNutrition?.carbohydrate ?: 0
+                                val carbohydrates = predictedNutrition?.carbohydrate ?: 0.0
                                 val fat = predictedNutrition?.fat ?: 0.0
                                 val caloriesText = "Calories: $calories\n"
                                 val proteinsText = "Proteins: $proteins\n"
